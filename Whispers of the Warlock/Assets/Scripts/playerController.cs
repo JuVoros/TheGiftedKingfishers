@@ -5,8 +5,14 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
+<<<<<<< Updated upstream
 
     [SerializeField] float jumpHeight;
+=======
+    [Range(1, 10)][SerializeField] float playerSpeed;
+    
+    
+>>>>>>> Stashed changes
     void Start()
     {
         
