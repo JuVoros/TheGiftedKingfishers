@@ -5,6 +5,8 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
+
+    [SerializeField] float jumpHeight;
     void Start()
     {
         
