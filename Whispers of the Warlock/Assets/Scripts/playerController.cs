@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     [Range(1, 10)] [SerializeField] float jumpHeight;
     [Range(1, 10)] [SerializeField] float playerSpeed;
     [Range(-5, -20)] [SerializeField] float gravityValue;
-    [Range(1, 10)] [SerializeField] float jumpsMax;
+    [Range(1, 10)] [SerializeField] int jumpsMax;
 
     [Header("------Gun Stats------")]
     [Range(1, 100)][SerializeField] int shootDamage;
@@ -32,6 +32,11 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ray tracing
+        Debug.DrawRay(Camera.main.transform.position, 
+            Camera.main.transform.forward * shootDist, Color.red);
+
+
         //checks if player is on the ground
         isGrounded = controller.isGrounded;
         if(isGrounded && playerVelocity.y < 0)
@@ -43,7 +48,7 @@ public class playerController : MonoBehaviour
         move = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
         //moving the player
-        controller.Move(move*Time.deltaTime*playerSpeed);
+        controller.Move(move * Time.deltaTime * playerSpeed);
         //check for jumps
         if(Input.GetButtonDown("Jump") && jumpedTimes < jumpsMax) 
         {

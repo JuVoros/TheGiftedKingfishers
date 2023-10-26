@@ -4,18 +4,41 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-    [SerializeField] int sensitivity;    
+    [SerializeField] int sensitivity;
+    [SerializeField] int lockVertMin;
+    [SerializeField] int lockVertMax;
+
+    [SerializeField] bool invertY;
+
+    float xRot;
     
     void Start()
     {
-        
+        //Cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //input
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
+
+        if (invertY)
+        { xRot += mouseY; }
+        else
+        { xRot -= mouseY; }
+
+        //Clamp the xRot
+        xRot = Mathf.Clamp(xRot, lockVertMin, lockVertMax);
+
+        //rotate the camera on the x-axis
+        transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+
+        //rotate the camera on the y-axis
+        transform.parent.Rotate(Vector3.up * mouseX);
     }
 }
