@@ -6418,6 +6418,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 877632933019680238, guid: ce2ac38b58280ad4381bc0e4fa794af1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 877632933019680238, guid: ce2ac38b58280ad4381bc0e4fa794af1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 877632933019680238, guid: ce2ac38b58280ad4381bc0e4fa794af1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -19858,6 +19866,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1231531460059812097, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
     - target: {fileID: 1989466711884453894, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: HP
       value: 10
@@ -19872,7 +19884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9077479787837218324, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_StoppingDistance
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalScale.x
@@ -19892,7 +19904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalPosition.z
