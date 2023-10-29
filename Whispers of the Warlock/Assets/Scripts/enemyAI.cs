@@ -14,7 +14,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Enemy Stats ------")]
     [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
-
+    
     Vector3 playerDir;
     void Start()
     {
@@ -23,14 +23,18 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Update()
     {
-        agent.SetDestination(gameManager.instance.player.transform.position);
-
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (gameManager.instance.player.transform.position.x <= 20)
         {
-            faceTarget();
-        }
+            agent.SetDestination(gameManager.instance.player.transform.position);
 
-        playerDir = gameManager.instance.player.transform.position - transform.position;
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                faceTarget();
+            }
+
+            playerDir = gameManager.instance.player.transform.position - transform.position;
+
+        }
     }
 
     public void takeDamage(int damage)
