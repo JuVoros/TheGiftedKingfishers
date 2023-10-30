@@ -26,10 +26,10 @@ public class enemyAI : MonoBehaviour, IDamage
         if (gameManager.instance.player.transform.position.x <= 20)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
-
+            
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                faceTarget();
+                faceTarget();      
             }
 
             playerDir = gameManager.instance.player.transform.position - transform.position;

@@ -4130,6 +4130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - Priest
       objectReference: {fileID: 0}
+    - target: {fileID: 9077479787837218324, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -4148,7 +4152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177228122663858660, guid: eba7044f2005e3a43af50122f2fef2f3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22391,6 +22395,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+--- !u!1001 &9013632090625012911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2058980561760850029, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_Name
+      value: Enemy - Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 219.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.60876286
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7933523
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339376540347298396, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
 --- !u!1001 &9070985446146664803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22511,6 +22572,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 7041580091651285067}
   - {fileID: 1803393944}
+  - {fileID: 9013632090625012911}
   - {fileID: 379570752}
   - {fileID: 1381629240}
   - {fileID: 1270626059999045258}

@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
 
     public GameObject player;
+    public GameObject enemy;
 
     public bool isPaused;
     float timeScaleOrig;
