@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3531954908045608719}
   - component: {fileID: 5042112656638116579}
   - component: {fileID: 2976181845586118215}
-  - component: {fileID: 3540053102242638551}
+  - component: {fileID: 8001080454142121041}
   m_Layer: 0
   m_Name: gravestone
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3540053102242638551
-CapsuleCollider:
+--- !u!65 &8001080454142121041
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1735352169676053089
 GameObject:
