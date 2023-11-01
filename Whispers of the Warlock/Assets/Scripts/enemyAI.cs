@@ -23,8 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (gameManager.instance.player.transform.position.x <= 20)
-        {
+       
             agent.SetDestination(gameManager.instance.player.transform.position);
             
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -34,7 +33,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
             playerDir = gameManager.instance.player.transform.position - transform.position;
 
-        }
+        
     }
 
     public void takeDamage(int damage)

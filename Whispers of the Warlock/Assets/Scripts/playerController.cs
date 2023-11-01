@@ -25,10 +25,12 @@ public class playerController : MonoBehaviour
     private bool isGrounded;
     private int jumpedTimes;
     bool isShooting;
+    int HPOrig;
 
     void Start()
     {
-        
+        HPOrig = HP;
+        spawnPlayer();
     }
 
     void Update()
@@ -85,9 +87,27 @@ public class playerController : MonoBehaviour
     public void takeDamage(int amount)
     {
         HP -= amount;
+        updatePlayerUI();
+        StartCoroutine(gameManager.instance.playerFlashDamage());
         if (HP <= 0)
         {
             gameManager.instance.Lose();
         }
+    }
+
+    public void spawnPlayer()
+    {
+
+        controller.enabled = false;  
+        HP = HPOrig;
+        updatePlayerUI();
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
+
+    }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 }

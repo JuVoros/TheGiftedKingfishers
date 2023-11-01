@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -11,9 +13,13 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] TMP_Text enemyCountText;
 
+    public Image playerHPBar;
+    public GameObject playerSpawnPos;
     public GameObject player;
-    public GameObject enemy;
+    public playerController playerScript;
 
     public bool isPaused;
     float timeScaleOrig;
@@ -24,6 +30,8 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
         instance = this;
         player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<playerController>(); 
+        playerSpawnPos = GameObject.FindWithTag("Respawn");
     }
 
     void Update()
@@ -56,6 +64,8 @@ public class gameManager : MonoBehaviour
     public void updateGoal(int amount)
     {
         enemiesRemaining += amount;
+        enemyCountText.text = enemiesRemaining.ToString("0");
+
         if (enemiesRemaining <= 0)
         {
             Winner();
@@ -76,6 +86,12 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public IEnumerator playerFlashDamage()
+    {
+        playerDamageScreen.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        playerDamageScreen.SetActive(false);
+    }
 
 
 }
