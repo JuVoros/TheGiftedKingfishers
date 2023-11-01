@@ -18,7 +18,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("----- Gun Stats -----")]
     [SerializeField] GameObject bullet;
-    [Range(1, 10)][SerializeField] float shootRate;
+    [Range(0, 10)][SerializeField] float shootRate;
 
     Vector3 playerDir;
     bool playerInRange;
@@ -37,7 +37,7 @@ public class enemyAI : MonoBehaviour, IDamage
             
             if(!isShooting)
             {
-                //StartCoroutine(Shoot());
+                StartCoroutine(Shoot());
             }
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
@@ -89,11 +89,12 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= damage;
         StartCoroutine(flashRed());
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
-            Destroy(gameObject);
             gameManager.instance.updateGoal(-1);
+            Destroy(gameObject);
         }
     }
     IEnumerator flashRed()

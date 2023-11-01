@@ -16,12 +16,23 @@ public class Bul : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb.velocity = transform.forward * speed;
+        Destroy(gameObject, destroyTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        //ignores other triggers
+        if (other.isTrigger)
+            return;
+
+        IDamage damageable = other.GetComponent<IDamage>();
+
+        if (damageable != null)
+        {
+            damageable.takeDamage(damage);
+        }
+
+        Destroy(gameObject);
     }
 }
