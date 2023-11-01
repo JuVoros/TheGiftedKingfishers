@@ -23,6 +23,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
+
     void Start()
     {
         gameManager.instance.updateGoal(1);
@@ -44,6 +45,7 @@ public class enemyAI : MonoBehaviour, IDamage
             }
 
             agent.SetDestination(gameManager.instance.player.transform.position);
+
         }
         
     }
@@ -53,6 +55,9 @@ public class enemyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            
+            
+            
         }
 
     }
@@ -61,6 +66,10 @@ public class enemyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.SetDestination(agent.transform.position);
+
+
+
         }
 
     }

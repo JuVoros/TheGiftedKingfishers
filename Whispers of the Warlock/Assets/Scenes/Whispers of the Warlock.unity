@@ -16688,6 +16688,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300222, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
+--- !u!1 &497605521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2058980561760850029, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+  m_PrefabInstance: {fileID: 9013632090625012911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &497605528
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497605521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+  m_Controller: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &497795012 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 672554360751620860, guid: ba685899843e3544592e6122be50c2d8, type: 3}
@@ -72614,7 +72640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6054495569529181527, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.5
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 6054495569529181527, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72658,7 +72684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: playerSpeed
-      value: 10
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: sprintSpeed
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: gravityValue
@@ -72732,7 +72762,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2058980561760850029, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 497605528}
   m_SourcePrefab: {fileID: 100100000, guid: d649bc2b2beed234ea6dc432a9619e2b, type: 3}
 --- !u!1001 &9070985446146664803
 PrefabInstance:

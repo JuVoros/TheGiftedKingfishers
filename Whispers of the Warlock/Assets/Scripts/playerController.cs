@@ -9,7 +9,8 @@ public class playerController : MonoBehaviour
 
     [Header("------Player Stats------")]
     [Range(1, 10)] [SerializeField] float jumpHeight;
-    [Range(1, 10)] [SerializeField] float playerSpeed;
+    [Range(1, 35)] [SerializeField] float playerSpeed;
+    [Range(10,35)][SerializeField] float sprintSpeed;
     [Range(-5, -20)] [SerializeField] float gravityValue;
     [Range(1, 10)] [SerializeField] int jumpsMax;
     [Range(1,10)] [SerializeField] int HP;
@@ -24,12 +25,14 @@ public class playerController : MonoBehaviour
     private Vector3 move;
     private bool isGrounded;
     private int jumpedTimes;
+    private float speedOrig;
     bool isShooting;
     int HPOrig;
 
     void Start()
     {
         HPOrig = HP;
+        speedOrig = playerSpeed;
         spawnPlayer();
     }
 
@@ -64,10 +67,19 @@ public class playerController : MonoBehaviour
             playerVelocity.y = jumpHeight;
             jumpedTimes++;
         }
+        if (Input.GetButtonDown("Sprint"))
+        {
+            playerSpeed = sprintSpeed;
+        }
+        else if (Input.GetButtonUp("Sprint"))
+        {
+            playerSpeed = speedOrig;
+        }
         //move again
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
+
 
     IEnumerator shoot()
     {
