@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 1265765460040748447}
   - component: {fileID: 8208067893123703030}
   - component: {fileID: 2584194854909561494}
+  - component: {fileID: 3797164985329468077}
   m_Layer: 0
   m_Name: Enemy - Goblin
   m_TagString: Untagged
@@ -941,6 +942,27 @@ CapsuleCollider:
   m_Height: 1.25
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!135 &3797164985329468077
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451159882649161890}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &483545107742616906
 GameObject:
   m_ObjectHideFlags: 0

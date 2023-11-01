@@ -35,8 +35,12 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
+       Move();
+    }
+    public void Move()
+    {
         //Ray tracing
-        Debug.DrawRay(Camera.main.transform.position, 
+        Debug.DrawRay(Camera.main.transform.position,
             Camera.main.transform.forward * shootDistance, Color.red);
 
         if (Input.GetButton("Shoot") && !isShooting)
@@ -44,7 +48,7 @@ public class playerController : MonoBehaviour
 
         //checks if player is on the ground
         isGrounded = controller.isGrounded;
-        if(isGrounded && playerVelocity.y < 0)
+        if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
             jumpedTimes = 0;
@@ -55,7 +59,7 @@ public class playerController : MonoBehaviour
         //moving the player
         controller.Move(move * Time.deltaTime * playerSpeed);
         //check for jumps
-        if(Input.GetButtonDown("Jump") && jumpedTimes < jumpsMax) 
+        if (Input.GetButtonDown("Jump") && jumpedTimes < jumpsMax)
         {
             playerVelocity.y = jumpHeight;
             jumpedTimes++;

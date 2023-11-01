@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,8 +15,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Enemy Stats ------")]
     [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
-    
+
+    [Header("----- Gun Stats -----")]
+    [SerializeField] GameObject bullet;
+    [Range(1, 10)][SerializeField] float shootRate;
+
     Vector3 playerDir;
+    bool playerInRange;
+    bool isShooting;
     void Start()
     {
         gameManager.instance.updateGoal(1);
@@ -23,17 +30,50 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Update()
     {
-       
-            agent.SetDestination(gameManager.instance.player.transform.position);
+        if (playerInRange)
+        {
+            playerDir = gameManager.instance.player.transform.position - transform.position;
             
+            if(!isShooting)
+            {
+                StartCoroutine(Shoot())
+            }
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                faceTarget();      
+                faceTarget();
             }
 
-            playerDir = gameManager.instance.player.transform.position - transform.position;
-
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
         
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+
+    }
+
+    IEnumerator Shoot()
+    {
+        isShooting = true;
+
+        Instantiate(bullet, shootPos.position, transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+
+
+        isShooting = false;
     }
 
     public void takeDamage(int damage)

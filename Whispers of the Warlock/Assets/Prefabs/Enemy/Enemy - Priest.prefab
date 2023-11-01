@@ -1956,6 +1956,7 @@ GameObject:
   - component: {fileID: 1231531460059812097}
   - component: {fileID: 9077479787837218324}
   - component: {fileID: 7698231279390868877}
+  - component: {fileID: 418398997824422293}
   m_Layer: 0
   m_Name: Enemy - Priest
   m_TagString: Untagged
@@ -2064,6 +2065,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!135 &418398997824422293
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576760188740533663}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 27
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7596781305087809031
 GameObject:
   m_ObjectHideFlags: 0
