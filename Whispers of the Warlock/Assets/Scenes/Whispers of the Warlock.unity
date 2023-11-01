@@ -46516,6 +46516,34 @@ PrefabInstance:
       propertyPath: HP
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1321815874690055883, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
+    - target: {fileID: 1321815874690055883, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: shootRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433727624414633851, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433727624414633851, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433727624414633851, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433727624414633851, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141740245062225830, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.753
+      objectReference: {fileID: 0}
     - target: {fileID: 6156260762958492700, guid: 99d4215c50a221644b228e8eb85c9f1e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -71792,7 +71820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3407875088789681252, guid: 26e856d536ace1c48bb20663e75b76e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.13
+      value: 134.3
       objectReference: {fileID: 0}
     - target: {fileID: 6876581539761872107, guid: 26e856d536ace1c48bb20663e75b76e5, type: 3}
       propertyPath: m_Name
@@ -71997,6 +72025,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3449869770876608911, guid: 6df625c5592f51141bf44a58bc6e1519, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 8677509504579278298, guid: 7e05ce9f368c00b4ba0121b23eee02c9, type: 3}
+    - target: {fileID: 3449869770876608911, guid: 6df625c5592f51141bf44a58bc6e1519, type: 3}
+      propertyPath: shootRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4783694369123622533, guid: 6df625c5592f51141bf44a58bc6e1519, type: 3}
       propertyPath: m_LocalPosition.x
       value: 140.25
