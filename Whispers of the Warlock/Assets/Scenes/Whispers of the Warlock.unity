@@ -15,16 +15,16 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.8113208, g: 0.79218584, b: 0.79218584, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 0.04
+  m_FogColor: {r: 0.25125483, g: 0.249199, b: 0.3018868, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_LinearFogEnd: 100
+  m_AmbientSkyColor: {r: 0.045167312, g: 0.045167312, b: 0.047169805, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 97637a2a763b7f24b8da4e139e4144ca, type: 2}
   m_HaloStrength: 0.5
@@ -46159,6 +46159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - imp altar
       objectReference: {fileID: 0}
+    - target: {fileID: 1260733898222286, guid: 59ccd1309cd2ac94a8700faf3ab6a78d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4306814131670520, guid: 59ccd1309cd2ac94a8700faf3ab6a78d, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -46305,7 +46309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1277070243}
-  model: {fileID: 13700000, guid: 279252e7473c10e4eab95fe64f974013, type: 3}
+  model: {fileID: 1921741142}
   shootPos: {fileID: 1277070245}
   headPos: {fileID: 1277070244}
   EnemyHP: 3
@@ -66579,8 +66583,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.45
+  m_Color: {r: 0.40179056, g: 0.38719293, b: 0.7264151, a: 1}
+  m_Intensity: 0.84
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -71369,6 +71373,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ce0826ab79fb5074586e05e9b752a340, type: 3}
+--- !u!137 &1921741142 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137785759847593018, guid: 59ccd1309cd2ac94a8700faf3ab6a78d, type: 3}
+  m_PrefabInstance: {fileID: 1277070241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1923014328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 239061844299199068, guid: 7604dad2c5330c74297f03ca93453cfb, type: 3}
