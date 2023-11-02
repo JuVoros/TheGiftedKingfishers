@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9158889016199873055}
-  model: {fileID: 3377218788254637322}
+  model: {fileID: 3583258777665115773}
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
   EnemyHP: 100
