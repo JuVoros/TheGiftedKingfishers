@@ -16,7 +16,10 @@ public class Bul : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.forward * speed;
+        Vector3 dir = gameManager.instance.player.transform.position - rb.position;
+        dir /= Time.deltaTime;
+        dir = Vector3.ClampMagnitude(dir, speed);
+        rb.velocity = dir; 
         Destroy(gameObject, destroyTime);
     }
 

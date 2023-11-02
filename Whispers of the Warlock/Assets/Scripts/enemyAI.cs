@@ -77,11 +77,9 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        
+        Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
         yield return new WaitForSeconds(shootRate);
-
-
         isShooting = false;
     }
 
