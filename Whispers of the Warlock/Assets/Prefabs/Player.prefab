@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6000931196559386769}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,9 +30,9 @@ Transform:
   m_GameObject: {fileID: 4623398284464428166}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268274, z: -0, w: 0.9238798}
-  m_LocalPosition: {x: 44.75, y: 1, z: -44.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 164, y: 2.25, z: -40.25}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4889608333955938261}
   m_Father: {fileID: 0}
@@ -50,14 +50,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 5483918385945358926}
-  jumpHeight: 0
-  playerSpeed: 0
-  gravityValue: 0
-  jumpsMax: 0
-  HP: 2
-  shootDamage: 0
-  shootDistance: 0
-  shootRate: 0
+  jumpHeight: 10
+  playerSpeed: 18
+  sprintSpeed: 26
+  gravityValue: -15
+  jumpsMax: 2
+  HP: 10
+  shootDamage: 1
+  shootDistance: 40
+  shootRate: 0.25
 --- !u!143 &5483918385945358926
 CharacterController:
   m_ObjectHideFlags: 0

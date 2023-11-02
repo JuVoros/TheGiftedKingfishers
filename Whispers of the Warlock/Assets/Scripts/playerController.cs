@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour, IDamage
   
 
     [Header("------Gun Stats------")]
-    [Range(1, 100)][SerializeField] int shootDamage;
+    [Range(1, 10)][SerializeField] int shootDamage;
     [Range(1, 100)][SerializeField] int shootDistance;
     [Range(0, 2)][SerializeField] float shootRate;
 

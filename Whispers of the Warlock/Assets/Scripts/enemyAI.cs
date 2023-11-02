@@ -13,7 +13,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
 
     [Header("----- Enemy Stats ------")]
-    [Range(1, 10)][SerializeField] int HP;
+    [Range(1, 100)][SerializeField] int EnemyHP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
 
     [Header("----- Gun Stats -----")]
@@ -85,11 +85,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int damage)
     {
-        HP -= damage;
+        EnemyHP -= damage;
         StartCoroutine(flashRed());
-        agent.SetDestination(gameManager.instance.player.transform.position);
+        
 
-        if (HP <= 0)
+        if (EnemyHP <= 0)
         {
             gameManager.instance.updateGoal(-1);
             Destroy(gameObject);
