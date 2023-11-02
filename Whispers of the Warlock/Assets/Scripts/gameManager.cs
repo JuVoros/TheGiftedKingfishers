@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Diagnostics;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class gameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text enemyCountText;
 
     public Image playerHPBar;
+    public Image enemyHPBar;
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
@@ -93,5 +95,6 @@ public class gameManager : MonoBehaviour
         playerDamageScreen.SetActive(false);
     }
 
+   
    
 }

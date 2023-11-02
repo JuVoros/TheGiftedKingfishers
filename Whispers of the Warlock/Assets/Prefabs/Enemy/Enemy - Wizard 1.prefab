@@ -10200,7 +10200,7 @@ MonoBehaviour:
   model: {fileID: 1366475028871010091}
   shootPos: {fileID: 8359372455066446669}
   headPos: {fileID: 1088162701596141694}
-  EnemyHP: 0
+  EnemyHP: 10
   playerFaceSpeed: 5
   bullet: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
   shootRate: 2

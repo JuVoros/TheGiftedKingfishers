@@ -28,6 +28,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (agent.CompareTag("Enemy"))
             gameManager.instance.updateGoal(1);
+        
     }
 
     void Update()
@@ -102,8 +103,9 @@ public class enemyAI : MonoBehaviour, IDamage
     }
     IEnumerator flashRed()
     {
+       
         model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         model.material.color = Color.white;
     }
 

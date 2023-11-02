@@ -350,10 +350,10 @@ MonoBehaviour:
   model: {fileID: 3583258777665115773}
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
-  EnemyHP: 100
+  EnemyHP: 15
   playerFaceSpeed: 4
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
-  shootRate: 10
+  shootRate: 1
 --- !u!95 &1032688908546901596
 Animator:
   serializedVersion: 5
