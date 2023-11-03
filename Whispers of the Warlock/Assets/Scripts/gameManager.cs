@@ -24,7 +24,6 @@ public class gameManager : MonoBehaviour
 
 
     public Image playerHPBar;
-    public Image enemyHPBar;
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;

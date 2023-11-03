@@ -27,11 +27,12 @@ public class playerController : MonoBehaviour, IDamage
     private int jumpedTimes;
     private float speedOrig;
     bool isShooting;
-    int HPOrig;
+    int PlayerHPOrig;
+
 
     void Start()
     {
-        HPOrig = HP;
+        PlayerHPOrig = HP;
         speedOrig = playerSpeed;
         spawnPlayer();
     }
@@ -115,7 +116,7 @@ public class playerController : MonoBehaviour, IDamage
     {
 
         controller.enabled = false;  
-        HP = HPOrig;
+        HP = PlayerHPOrig;
         updatePlayerUI();
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
@@ -124,6 +125,6 @@ public class playerController : MonoBehaviour, IDamage
 
     public void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / PlayerHPOrig;
     }
 }

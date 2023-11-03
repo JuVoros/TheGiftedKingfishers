@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class enemyAI : MonoBehaviour, IDamage
@@ -17,6 +18,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
+    public Image enemyHpBar;
 
     [Header("----- Gun Stats -----")]
     [SerializeField] GameObject bullet;
@@ -25,12 +27,13 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
-    Color collideColor = Color.red;
-    Color normalColor = Color.white;
+    int EnemyHPOrig;
+   
     void Start()
     {
-        model.GetComponent<Renderer>().sharedMaterial.color = normalColor;
+        EnemyHPOrig = EnemyHP;
         if (agent.CompareTag("Enemy"))
+
             gameManager.instance.updateGoal(1);
         
     }
@@ -92,6 +95,9 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int damage)
     {
         EnemyHP -= damage;
+        
+        if(agent.CompareTag("Enemy"))
+            updateHpBar();
         StartCoroutine(flashRed());
 
 
@@ -110,7 +116,7 @@ public class enemyAI : MonoBehaviour, IDamage
        
         model.GetComponent<Renderer>().sharedMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.GetComponent<Renderer>().sharedMaterial.color = normalColor;
+        model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
 
 
         //model.material.color = Color.red;
@@ -123,5 +129,11 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+    }
+
+    void updateHpBar()
+    {
+        enemyHpBar.fillAmount = (float)EnemyHP / EnemyHPOrig;
+
     }
 }
