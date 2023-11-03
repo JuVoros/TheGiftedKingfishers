@@ -75,7 +75,7 @@ public class gameManager : MonoBehaviour
         enemyCountText.text = enemiesRemaining.ToString("0");
         if (amount < 0)
         {
-            StartCoroutine(gameManager.instance.BossDeathFlash());
+            StartCoroutine(instance.BossDeathFlash());
         }
         if (enemiesRemaining <= 0)
         {
