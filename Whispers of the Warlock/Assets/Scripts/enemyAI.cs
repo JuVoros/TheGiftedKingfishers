@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -11,6 +12,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    
 
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
@@ -23,9 +25,11 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
-
+    Color collideColor = Color.red;
+    Color normalColor = Color.white;
     void Start()
     {
+        model.GetComponent<Renderer>().sharedMaterial.color = normalColor;
         if (agent.CompareTag("Enemy"))
             gameManager.instance.updateGoal(1);
         
@@ -104,9 +108,14 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator flashRed()
     {
        
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        model.material.color = Color.white;
+        model.GetComponent<Renderer>().sharedMaterial.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.GetComponent<Renderer>().sharedMaterial.color = normalColor;
+
+
+        //model.material.color = Color.red;
+        //yield return new WaitForSeconds(0.2f);
+        //model.material.color = Color.white;
     }
 
 
