@@ -17,9 +17,9 @@ public class playerController : MonoBehaviour, IDamage
   
 
     [Header("------Gun Stats------")]
-    [Range(1, 10)][SerializeField] int shootDamage;
+    //[Range(1, 10)][SerializeField] int shootDamage;
     [Range(1, 100)][SerializeField] int shootDistance;
-    [Range(0, 2)][SerializeField] float shootRate;
+    //[Range(0, 2)][SerializeField] float shootRate;
 
     private Vector3 playerVelocity;
     private Vector3 move;
@@ -46,8 +46,8 @@ public class playerController : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position,
             Camera.main.transform.forward * shootDistance, Color.red);
 
-        if (Input.GetButton("Shoot") && !isShooting)
-            StartCoroutine(shoot());
+        //if (Input.GetButton("Shoot") && !isShooting)
+        //    StartCoroutine(shoot());
 
         //checks if player is on the ground
         isGrounded = controller.isGrounded;
@@ -81,25 +81,25 @@ public class playerController : MonoBehaviour, IDamage
     }
 
 
-    IEnumerator shoot()
-    {
-        isShooting = true;
+    //IEnumerator shoot()
+    //{
+    //    isShooting = true;
 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-        {
-            IDamage damageable = hit.collider.GetComponent<IDamage>();
-            if (hit.transform != transform && damageable != null)
-            {
-                damageable.takeDamage(shootDamage);
-            }
-        }
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+    //    {
+    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
+    //        if (hit.transform != transform && damageable != null)
+    //        {
+    //            damageable.takeDamage(shootDamage);
+    //        }
+    //    }
 
 
 
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
-    }
+    //    yield return new WaitForSeconds(shootRate);
+    //    isShooting = false;
+    //}
     public void takeDamage(int amount)
     {
         HP -= amount;
