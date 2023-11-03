@@ -93,11 +93,11 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         EnemyHP -= damage;
         StartCoroutine(flashRed());
-        
+
+
 
         if (EnemyHP <= 0)
         {
-            
             if (agent.CompareTag("Enemy"))
             {
                 gameManager.instance.updateGoal(-1);

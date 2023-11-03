@@ -14,8 +14,14 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+
     [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] GameObject bossDeathScreen;
+
     [SerializeField] TMP_Text enemyCountText;
+   [Range(0,1)][SerializeField] float playerFlashTime;
+    [Range(0,1)][SerializeField] float bossFlashTime;
+
 
     public Image playerHPBar;
     public Image enemyHPBar;
@@ -67,7 +73,10 @@ public class gameManager : MonoBehaviour
     {
         enemiesRemaining += amount;
         enemyCountText.text = enemiesRemaining.ToString("0");
-
+        if (amount < 0)
+        {
+            StartCoroutine(gameManager.instance.BossDeathFlash());
+        }
         if (enemiesRemaining <= 0)
         {
             Winner();
@@ -91,10 +100,15 @@ public class gameManager : MonoBehaviour
     public IEnumerator playerFlashDamage()
     {
         playerDamageScreen.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(playerFlashTime);
         playerDamageScreen.SetActive(false);
     }
 
-   
-   
+    public IEnumerator BossDeathFlash()
+    {
+        bossDeathScreen.SetActive(true);
+        yield return new WaitForSeconds(bossFlashTime);
+        bossDeathScreen.SetActive(false);
+    }
+
 }
