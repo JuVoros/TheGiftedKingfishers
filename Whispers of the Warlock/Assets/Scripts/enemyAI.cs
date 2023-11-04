@@ -43,15 +43,15 @@ public class enemyAI : MonoBehaviour, IDamage
         if (playerInRange)
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
-            
-            if(!isShooting)
-            {
+
+             if (!isShooting)
+             {
                 StartCoroutine(Shoot());
-            }
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
+             }
+             if (agent.remainingDistance <= agent.stoppingDistance)
+             {
+                 faceTarget();
+             }
 
             agent.SetDestination(gameManager.instance.player.transform.position);
 
