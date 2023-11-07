@@ -14,7 +14,6 @@ public class playerController : MonoBehaviour, IDamage
     [Range(-5, -20)] [SerializeField] float gravityValue;
     [Range(1, 10)] [SerializeField] int jumpsMax;
     [Range(1,20)] [SerializeField] int HP;
-  
 
     [Header("------Gun Stats------")]
     //[Range(1, 10)][SerializeField] int shootDamage;

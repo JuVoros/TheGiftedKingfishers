@@ -19,7 +19,7 @@ public class gunSystem : MonoBehaviour
     public bool allowButtonHold;
     int bulletsLeft;
     int bulletsShot;
-
+    playerController player;
     bool shooting;
     bool readyToShoot;
     bool reloading;
@@ -43,8 +43,7 @@ public class gunSystem : MonoBehaviour
     {
         MyInput();
 
-        //set Text
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        //set Text        text.SetText(bulletsLeft + " / " + magazineSize);
     }
 
     private void MyInput()
@@ -91,6 +90,7 @@ public class gunSystem : MonoBehaviour
 
         bulletsLeft--;
         bulletsShot--;
+        gameManager.instance.playerManaBar.fillAmount = (float)bulletsLeft / magazineSize;
 
         Invoke("ResetShot", timeBetweenShooting);
 
