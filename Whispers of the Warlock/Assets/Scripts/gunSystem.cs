@@ -19,7 +19,7 @@ public class gunSystem : MonoBehaviour
     public bool allowButtonHold;
     int bulletsLeft;
     int bulletsShot;
-    playerController player;
+    
     bool shooting;
     bool readyToShoot;
     bool reloading;
@@ -31,7 +31,6 @@ public class gunSystem : MonoBehaviour
     //Graphics
     public GameObject bulletGraphic; 
     //muzzle flash?
-    public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -42,8 +41,10 @@ public class gunSystem : MonoBehaviour
     private void Update()
     {
         MyInput();
-
-        //set Text        text.SetText(bulletsLeft + " / " + magazineSize);
+        if (bulletsLeft <= 0) 
+        { 
+            gameManager.instance.ReloadText(true);
+        }
     }
 
     private void MyInput()
@@ -114,6 +115,8 @@ public class gunSystem : MonoBehaviour
     private void reloadFinished()
     {
         bulletsLeft = magazineSize;
+        gameManager.instance.playerManaBar.fillAmount = (float)bulletsLeft / magazineSize;
+        gameManager.instance.ReloadText(false);
         reloading = false;
     }
     

@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject reloadPromp;
 
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject bossDeathScreen;
@@ -110,5 +111,10 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(bossFlashTime);
         bossDeathScreen.SetActive(false);
     }
+    public void ReloadText(bool set)
+    {
 
+       reloadPromp.SetActive(set);
+
+    }
 }
