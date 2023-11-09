@@ -80,11 +80,12 @@ public class gameManager : MonoBehaviour
         }
         if (enemiesRemaining <= 0)
         {
-            Winner();
+            StartCoroutine(Winner());
         }
     }
-    public void Winner()
+    public IEnumerator Winner()
     {
+        yield return new WaitForSeconds(3);
         StatePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
