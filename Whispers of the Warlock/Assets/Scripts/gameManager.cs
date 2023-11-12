@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject reloadPromp;
 
     [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] GameObject playerHealthScreen;
     [SerializeField] GameObject bossDeathScreen;
     [SerializeField] Animator gate1;
     [SerializeField] Animator gate2;
@@ -107,6 +108,13 @@ public class gameManager : MonoBehaviour
         playerDamageScreen.SetActive(true);
         yield return new WaitForSeconds(playerFlashTime);
         playerDamageScreen.SetActive(false);
+    }
+
+    public IEnumerator playerFlashHeals()
+    {
+        playerHealthScreen.SetActive(true);
+        yield return new WaitForSeconds(playerFlashTime);
+        playerHealthScreen.SetActive(false);
     }
 
     public IEnumerator BossDeathFlash()

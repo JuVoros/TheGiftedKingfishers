@@ -119,7 +119,14 @@ public class playerController : MonoBehaviour, IDamage
     {
         HP -= amount;
         updatePlayerUI();
-        StartCoroutine(gameManager.instance.playerFlashDamage());
+        if (amount > 0)
+        {
+            StartCoroutine(gameManager.instance.playerFlashDamage());
+        }
+        else if(amount <= 0)
+        {
+            StartCoroutine(gameManager.instance.playerFlashHeals());
+        }
         if (HP <= 0)
         {
             gameManager.instance.Lose();

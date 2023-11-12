@@ -1721,11 +1721,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300596, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
---- !u!1 &43299597 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3331209717134350134, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-  m_PrefabInstance: {fileID: 1879924458371410883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &43428142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84072,6 +84067,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7083983497587142445, guid: 9d26f7ca59a13744ababa36014f82d82, type: 3}
   m_PrefabInstance: {fileID: 2022104337}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2022488403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9083118665619197743, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+  m_PrefabInstance: {fileID: 1879924458371410883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2024406312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4291721509516597346, guid: ba685899843e3544592e6122be50c2d8, type: 3}
@@ -88687,30 +88687,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.06659267
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.4245283
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4279304300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2049668691198262395, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2779596814061432433, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -88791,14 +88767,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3454109306822376998, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4332389683310863822, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     - target: {fileID: 6876581539761872107, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_Name
       value: UI
@@ -88816,17 +88784,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1352267480}
     - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: isPaused
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: reloadPromp
+      propertyPath: playerHealthScreen
       value: 
-      objectReference: {fileID: 43299597}
-    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: bossFlashTime
-      value: 0.005
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2022488403}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
