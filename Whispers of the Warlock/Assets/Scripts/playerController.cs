@@ -6,27 +6,42 @@ public class playerController : MonoBehaviour, IDamage
 {
     [Header("-----Components------")]
     [SerializeField] CharacterController controller;
+    [SerializeField] AudioSource audi;
+
+    [Header("------Audio------")]
+    [SerializeField] AudioClip[] audioDamage;
+    [SerializeField] float audioDamageVol;
+    [SerializeField] AudioClip[] audioJump;
+    [SerializeField] float audioJumpVol;
+    [SerializeField] AudioClip[] audioSteps;
+    [SerializeField] float audioStepsVol;
 
     [Header("------Player Stats------")]
-    [Range(1, 10)] [SerializeField] float jumpHeight;
-    [Range(1, 35)] [SerializeField] float playerSpeed;
-    [Range(10,35)][SerializeField] float sprintSpeed;
-    [Range(-5, -20)] [SerializeField] float gravityValue;
-    [Range(1, 10)] [SerializeField] int jumpsMax;
-    [Range(1,20)] [SerializeField] int HP;
+    [Range(1, 10)][SerializeField] float jumpHeight;
+    [Range(1, 35)][SerializeField] float playerSpeed;
+    [Range(10, 35)][SerializeField] float sprintSpeed;
+    [Range(-5, -20)][SerializeField] float gravityValue;
+    [Range(1, 10)][SerializeField] int jumpsMax;
+    [Range(1, 20)][SerializeField] int HP;
 
-    [Header("------Gun Stats------")]
-    //[Range(1, 10)][SerializeField] int shootDamage;
-    [Range(1, 100)][SerializeField] int shootDistance;
-    //[Range(0, 2)][SerializeField] float shootRate;
+    [Header("------Staff Stats------")]
+    [SerializeField] List<GunStats> staffList = new List<GunStats>();
+    [SerializeField] GameObject staffModel;
+    [SerializeField] int shootDamage;
+    [SerializeField] int shootDistance;
+    [SerializeField] float shootRate;
+
+    int staffSelected;
+    int PlayerHPOrig;
+    private int jumpedTimes;
+
+    private float speedOrig;
 
     private Vector3 playerVelocity;
     private Vector3 move;
+
     private bool isGrounded;
-    private int jumpedTimes;
-    private float speedOrig;
     bool isShooting;
-    int PlayerHPOrig;
 
 
     void Start()
@@ -38,7 +53,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void Update()
     {
-       Move();
+        Move();
     }
     public void Move()
     {
@@ -114,7 +129,7 @@ public class playerController : MonoBehaviour, IDamage
     public void spawnPlayer()
     {
 
-        controller.enabled = false;  
+        controller.enabled = false;
         HP = PlayerHPOrig;
         updatePlayerUI();
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
@@ -125,5 +140,21 @@ public class playerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / PlayerHPOrig;
+    }
+
+    public void getGunStats(GunStats gun)
+    {
+        staffList.Add(gun);
+
+        shootDamage = gun.shootDamage;
+        shootDistance = gun.shootDistance;
+        shootRate = gun.shootRate;
+
+        staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
+        staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+
+
+        staffSelected = staffList.Count - 1;
+
     }
 }
