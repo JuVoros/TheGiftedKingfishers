@@ -17,7 +17,7 @@ MonoBehaviour:
   shootRate: 0
   ammoCur: 0
   ammoMax: 0
-  model: {fileID: 0}
+  model: {fileID: 2083943641721818151, guid: b9e9b9817b565da4c87dd7d4d36b234b, type: 3}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
   shootSoundVol: 0.5
