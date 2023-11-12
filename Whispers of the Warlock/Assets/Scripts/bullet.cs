@@ -6,6 +6,7 @@ public class Bul : MonoBehaviour
 {
     [Header("---- Components ----")]
     [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject explosion;
 
     [Header("---- Stats ----")]
     [SerializeField] int damage;
@@ -30,6 +31,11 @@ public class Bul : MonoBehaviour
             return;
 
         IDamage damageable = other.GetComponent<IDamage>();
+
+        if(explosion != null)
+        {
+            Instantiate(explosion, transform.position, rb.transform.rotation);
+        }
 
         if (damageable != null)
         {
