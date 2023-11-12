@@ -172,6 +172,15 @@ public class enemyAI : MonoBehaviour, IDamage
             if (agent.CompareTag("Enemy"))
             {
                 gameManager.instance.updateGoal(-1);
+                if (gameManager.instance.enemiesRemaining == 2)
+                {
+                    gameManager.instance.openGate1(); 
+                }
+                else if (gameManager.instance.enemiesRemaining == 1)
+                {
+                    gameManager.instance.openGate2();
+                }
+
             }
             Destroy(gameObject);
         }

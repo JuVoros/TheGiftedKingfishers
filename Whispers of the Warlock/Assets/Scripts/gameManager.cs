@@ -18,11 +18,11 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject bossDeathScreen;
+    [SerializeField] Animator gate1;
+    [SerializeField] Animator gate2;
 
     [SerializeField] TMP_Text enemyCountText;
    [Range(0,1)][SerializeField] float playerFlashTime;
-    [Range(0,1)][SerializeField] float bossFlashTime;
-
 
     public Image playerHPBar;
     public Image playerManaBar;
@@ -32,9 +32,12 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
     float timeScaleOrig;
-    int enemiesRemaining;
+    public int enemiesRemaining;
 
-    private void Awake()
+    bool gate1Open;
+    bool gate2Open;
+
+    void Awake()
     {
         timeScaleOrig = Time.timeScale;
         instance = this;
@@ -73,11 +76,11 @@ public class gameManager : MonoBehaviour
     public void updateGoal(int amount)
     {
         enemiesRemaining += amount;
+
+        StartCoroutine(BossDeathFlash());
         enemyCountText.text = enemiesRemaining.ToString("0");
-        if (amount < 0)
-        {
-            StartCoroutine(instance.BossDeathFlash());
-        }
+
+            
         if (enemiesRemaining <= 0)
         {
             StartCoroutine(Winner());
@@ -108,8 +111,9 @@ public class gameManager : MonoBehaviour
 
     public IEnumerator BossDeathFlash()
     {
+        
         bossDeathScreen.SetActive(true);
-        yield return new WaitForSeconds(bossFlashTime);
+        yield return new WaitForSeconds(0.1f);
         bossDeathScreen.SetActive(false);
     }
     public void ReloadText(bool set)
@@ -118,4 +122,28 @@ public class gameManager : MonoBehaviour
        reloadPromp.SetActive(set);
 
     }
+    public void openGate1()
+    {
+
+        if (!gate1Open)
+        {
+            gate1Open = true;
+            gate1.SetBool("Open", true);
+        }
+
+
+    }
+    public void openGate2()
+    {
+
+        if (!gate2Open)
+        {
+            gate2Open = true;
+            gate2.SetBool("Open", true);
+        }
+
+
+    }
+
+
 }
