@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 
-public class GunStats : ScriptableObject
+public class gunStats : ScriptableObject
 {
 
 

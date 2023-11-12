@@ -25,7 +25,7 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 20)][SerializeField] int HP;
 
     [Header("------Staff Stats------")]
-    [SerializeField] List<GunStats> staffList = new List<GunStats>();
+    [SerializeField] List<gunStats> staffList = new List<gunStats>();
     [SerializeField] GameObject staffModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
@@ -42,6 +42,9 @@ public class playerController : MonoBehaviour, IDamage
 
     private bool isGrounded;
     bool isShooting;
+    bool isPlayingSteps;
+    bool isSprinting;
+
 
 
     void Start()
@@ -53,7 +56,17 @@ public class playerController : MonoBehaviour, IDamage
 
     void Update()
     {
-        Move();
+
+        if (!gameManager.instance.isPaused)
+            Move();
+
+        if (staffList.Count > 0)
+        {
+            selectStaff();
+
+            if (Input.GetButton("Shoot") && !isShooting)
+                StartCoroutine(shoot());
+        }
     }
     public void Move()
     {
@@ -61,11 +74,12 @@ public class playerController : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position,
             Camera.main.transform.forward * shootDistance, Color.red);
 
-        //if (Input.GetButton("Shoot") && !isShooting)
-        //    StartCoroutine(shoot());
+        isGrounded = controller.isGrounded;
+
+        if (isGrounded && move.normalized.magnitude > 0.3f && !isPlayingSteps)
+            StartCoroutine(playSteps());
 
         //checks if player is on the ground
-        isGrounded = controller.isGrounded;
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
@@ -76,18 +90,22 @@ public class playerController : MonoBehaviour, IDamage
             Input.GetAxis("Vertical") * transform.forward;
         //moving the player
         controller.Move(move * Time.deltaTime * playerSpeed);
+
         //check for jumps
         if (Input.GetButtonDown("Jump") && jumpedTimes < jumpsMax)
         {
+            audi.PlayOneShot(audioJump[Random.Range(0, audioJump.Length)], audioJumpVol);
             playerVelocity.y = jumpHeight;
             jumpedTimes++;
         }
         if (Input.GetButtonDown("Sprint"))
         {
+            isSprinting = true;
             playerSpeed = sprintSpeed;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
+            isSprinting = false;
             playerSpeed = speedOrig;
         }
         //move again
@@ -95,30 +113,49 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-
-    //IEnumerator shoot()
-    //{
-    //    isShooting = true;
-
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-    //    {
-    //        IDamage damageable = hit.collider.GetComponent<IDamage>();
-    //        if (hit.transform != transform && damageable != null)
-    //        {
-    //            damageable.takeDamage(shootDamage);
-    //        }
-    //    }
+    IEnumerator playSteps()
+    {
+        isPlayingSteps = true;
+        audi.PlayOneShot(audioSteps[Random.Range(0, audioSteps.Length)], audioStepsVol);
+        if (!isSprinting)
+            yield return new WaitForSeconds(0.5f);
+        else
+            yield return new WaitForSeconds(0.3f);
+        isPlayingSteps = false;
+    }
 
 
+    IEnumerator shoot()
+    {
+        if (staffList[staffSelected].ammoCur > 0)
+        {
+            isShooting = true;
+            staffList[staffSelected].ammoCur--;
 
-    //    yield return new WaitForSeconds(shootRate);
-    //    isShooting = false;
-    //}
+            audi.PlayOneShot(staffList[staffSelected].shootSound, staffList[staffSelected].shootSoundVol);
+
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            {
+                Instantiate(staffList[staffSelected].hitEffect, hit.point, staffList[staffSelected].hitEffect.transform.rotation);
+                IDamage damageable = hit.collider.GetComponent<IDamage>();
+
+
+                if (hit.transform != transform && damageable != null)
+                {
+                    damageable.takeDamage(shootDamage);
+                }
+            }
+            yield return new WaitForSeconds(shootRate);
+            isShooting = false;
+        }
+    }
+
     public void takeDamage(int amount)
     {
         HP -= amount;
         updatePlayerUI();
+        audi.PlayOneShot(audioDamage[Random.Range(0, audioDamage.Length)], audioDamageVol);
         StartCoroutine(gameManager.instance.playerFlashDamage());
         if (HP <= 0)
         {
@@ -137,12 +174,39 @@ public class playerController : MonoBehaviour, IDamage
 
     }
 
+
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / PlayerHPOrig;
     }
 
-    public void getGunStats(GunStats gun)
+    void selectStaff()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && staffSelected < staffList.Count - 1)
+        {
+            staffSelected++;
+            changeStaff();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && staffSelected > 0)
+        {
+            staffSelected--;
+            changeStaff();
+        }
+    }
+
+    void changeStaff()
+    {
+        shootDamage = staffList[staffSelected].shootDamage;
+        shootDistance = staffList[staffSelected].shootDistance;
+        shootRate = staffList[staffSelected].shootRate;
+
+        staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[staffSelected].model.GetComponent<MeshFilter>().sharedMesh;
+        staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[staffSelected].model.GetComponent<MeshRenderer>().sharedMaterial;
+
+        isShooting = false;
+    }
+
+    public void getGunStats(gunStats gun)
     {
         staffList.Add(gun);
 
