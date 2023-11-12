@@ -80124,11 +80124,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300354, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
---- !u!1 &1899857073 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7745961621296888105, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
-  m_PrefabInstance: {fileID: 7041580091651285067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1900059578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89718,7 +89713,7 @@ PrefabInstance:
     - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: staffModel
       value: 
-      objectReference: {fileID: 1899857073}
+      objectReference: {fileID: 0}
     - target: {fileID: 8106430393342367996, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
