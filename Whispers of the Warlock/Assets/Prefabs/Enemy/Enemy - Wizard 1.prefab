@@ -10252,17 +10252,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3774061873228980479}
-  anim: {fileID: 0}
+  anim: {fileID: 5738350337081564231}
   model: {fileID: 1366475028871010091}
   shootPos: {fileID: 8359372455066446669}
   headPos: {fileID: 1088162701596141694}
-  damageColli: {fileID: 0}
+  damageColli: {fileID: 1714478904816920612}
   EnemyHP: 10
   playerFaceSpeed: 5
-  viewCone: 0
-  shootCone: 0
-  roamDist: 0
-  roamPauseTime: 0
+  viewCone: 90
+  shootCone: 8
+  roamDist: 20
+  roamPauseTime: 4
   enemyHpBar: {fileID: 4357128449283054081}
   bullet: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
   shootRate: 2

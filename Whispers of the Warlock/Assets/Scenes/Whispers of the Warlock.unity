@@ -29814,6 +29814,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300348, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
+--- !u!95 &718882043 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5738350337081564231, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
+  m_PrefabInstance: {fileID: 8402628789539974667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &719799446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53958,6 +53963,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300432, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
+--- !u!95 &1300091954 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1032688908546901596, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+  m_PrefabInstance: {fileID: 6278862578878887906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1301348475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82460,6 +82470,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2127641259819765075, guid: 121c0725c8cc59040abe2f36c2b6f430, type: 3}
   m_PrefabInstance: {fileID: 994759556}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &1966496343 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 615768583056253555, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+  m_PrefabInstance: {fileID: 5189306041940012591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1966496346 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7482566003874823673, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+  m_PrefabInstance: {fileID: 5189306041940012591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1967142114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2777964250116984039, guid: c584c32bf66f332489764f3cbe01cb18, type: 3}
@@ -89836,6 +89856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - DemonTree
       objectReference: {fileID: 0}
+    - target: {fileID: 7482566003874823673, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: a9ad445cb02a11d428f39b0995d05478, type: 3}
     - target: {fileID: 7978017303205673368, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
       propertyPath: m_LocalPosition.x
       value: 140.25
@@ -89876,6 +89900,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8018374628228661552, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07694017
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018374628228661552, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5313079
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018374628228661552, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102354807990062283, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1966496346}
+    - target: {fileID: 9102354807990062283, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: viewCone
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102354807990062283, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: shootCone
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102354807990062283, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: damageColli
+      value: 
+      objectReference: {fileID: 1966496343}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -90250,8 +90302,12 @@ PrefabInstance:
       value: 0.24250926
       objectReference: {fileID: 0}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1300091954}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: roamDist
-      value: 8
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: viewCone
@@ -90259,7 +90315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: shootCone
-      value: 60
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: damageColli
@@ -90267,7 +90323,11 @@ PrefabInstance:
       objectReference: {fileID: 755156859}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: roamPauseTime
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: playerFaceSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3661749965957295109, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91452,8 +91512,12 @@ PrefabInstance:
       value: HP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 718882043}
+    - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: roamDist
-      value: 8
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: viewCone
@@ -91461,11 +91525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: shootCone
-      value: 80
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: roamPauseTime
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

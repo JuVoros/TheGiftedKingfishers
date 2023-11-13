@@ -424,17 +424,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9158889016199873055}
-  anim: {fileID: 0}
+  anim: {fileID: 1032688908546901596}
   model: {fileID: 3583258777665115773}
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
-  damageColli: {fileID: 0}
+  damageColli: {fileID: 7666007994843923470}
   EnemyHP: 15
   playerFaceSpeed: 4
-  viewCone: 0
-  shootCone: 0
-  roamDist: 0
-  roamPauseTime: 0
+  viewCone: 90
+  shootCone: 5
+  roamDist: 35
+  roamPauseTime: 3
   enemyHpBar: {fileID: 5448186281749231596}
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
   shootRate: 1

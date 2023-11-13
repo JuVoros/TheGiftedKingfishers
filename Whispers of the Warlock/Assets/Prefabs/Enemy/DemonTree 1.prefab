@@ -3595,15 +3595,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3717863213666297097}
-  anim: {fileID: 0}
+  anim: {fileID: 7482566003874823673}
   model: {fileID: 6771957101530277762}
   shootPos: {fileID: 3112945104109607978}
   headPos: {fileID: 5603373796524071596}
-  damageColli: {fileID: 0}
-  EnemyHP: 12
+  damageColli: {fileID: 5965185465532192646}
+  EnemyHP: 15
   playerFaceSpeed: 4
-  viewCone: 0
-  shootCone: 0
+  viewCone: 90
+  shootCone: 4
   roamDist: 0
   roamPauseTime: 0
   enemyHpBar: {fileID: 9054302891850310792}

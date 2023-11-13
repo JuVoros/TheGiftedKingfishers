@@ -212,9 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4664120590999084102}
+  anim: {fileID: 5474748379052162835}
   model: {fileID: 13700000, guid: 279252e7473c10e4eab95fe64f974013, type: 3}
   shootPos: {fileID: 2041217888698648677}
   headPos: {fileID: 2956669944668281993}
+  damageColli: {fileID: 7125728241707559907}
   EnemyHP: 4
   playerFaceSpeed: 4
   viewCone: 90
