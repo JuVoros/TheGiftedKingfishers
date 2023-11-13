@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54efa61e1d8d10409185ddc2c5e064a, type: 3}
   m_Name: Lightning Staff
   m_EditorClassIdentifier: 
-  shootDamage: 5
-  shootDistance: 40
-  shootRate: 1
-  ammoCur: 20
-  ammoMax: 20
+  shootDamage: 1
+  shootDistance: 30
+  shootRate: 0.2
+  ammoCur: 30
+  ammoMax: 50
   model: {fileID: 4997516850854380813, guid: 440557fb6745c694b9ae28db0159d320, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: aaffe973d96f87e4c82c1dd01b77c03a, type: 3}
   shootSound: {fileID: 8300000, guid: 81dbc2b345d4a4d8aa98f60aa04e5145, type: 3}

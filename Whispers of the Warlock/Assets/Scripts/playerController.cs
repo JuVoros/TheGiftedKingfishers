@@ -64,6 +64,8 @@ public class playerController : MonoBehaviour, IDamage
         {
             selectStaff();
 
+            Reload();
+
             if (Input.GetButton("Shoot") && !isShooting)
                 StartCoroutine(shoot());
         }
@@ -131,6 +133,7 @@ public class playerController : MonoBehaviour, IDamage
         {
             isShooting = true;
             staffList[staffSelected].ammoCur--;
+            gameManager.instance.playerManaBar.fillAmount = (float)staffList[staffSelected].ammoCur / staffList[staffSelected].ammoMax;
 
             audi.PlayOneShot(staffList[staffSelected].shootSound, staffList[staffSelected].shootSoundVol);
 
@@ -231,6 +234,18 @@ public class playerController : MonoBehaviour, IDamage
 
 
         staffSelected = staffList.Count - 1;
+
+    }
+    void Reload()
+    {
+
+        if (Input.GetButtonDown("Reload"))
+        {
+            staffList[staffSelected].ammoCur = staffList[staffSelected].ammoMax;
+            gameManager.instance.playerManaBar.fillAmount = (float)staffList[staffSelected].ammoCur / staffList[staffSelected].ammoMax;
+
+        }
+        updatePlayerUI();
 
     }
 }

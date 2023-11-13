@@ -424,11 +424,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9158889016199873055}
+  anim: {fileID: 0}
   model: {fileID: 3583258777665115773}
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
+  damageColli: {fileID: 0}
   EnemyHP: 15
   playerFaceSpeed: 4
+  viewCone: 0
+  shootCone: 0
+  roamDist: 0
+  roamPauseTime: 0
   enemyHpBar: {fileID: 5448186281749231596}
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
   shootRate: 1
@@ -442,7 +448,7 @@ Animator:
   m_GameObject: {fileID: 919661377054246867}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 410bf1fe2c38e9343928c7a73adca007, type: 3}
-  m_Controller: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 27d36d475d367514bb1a94d351bd4f29, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

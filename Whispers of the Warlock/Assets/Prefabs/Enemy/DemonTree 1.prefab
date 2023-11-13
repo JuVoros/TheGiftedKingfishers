@@ -3595,9 +3595,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3717863213666297097}
+  anim: {fileID: 0}
   model: {fileID: 6771957101530277762}
   shootPos: {fileID: 3112945104109607978}
   headPos: {fileID: 5603373796524071596}
+  damageColli: {fileID: 0}
   EnemyHP: 12
   playerFaceSpeed: 4
   viewCone: 0
@@ -3617,7 +3619,7 @@ Animator:
   m_GameObject: {fileID: 7420291970211884093}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9dfa0e608360e6540b04d669327a6c14, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4d0b49876f9d3274397bf128ff83dd42, type: 2}
+  m_Controller: {fileID: 9100000, guid: b4b31fd50ca42244eae72c43a98d0342, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

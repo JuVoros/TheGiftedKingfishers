@@ -19,9 +19,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
     [SerializeField] GameObject bossDeathScreen;
-    [SerializeField] Animator gate1;
-    [SerializeField] Animator gate2;
-
+    
     [SerializeField] TMP_Text enemyCountText;
    [Range(0,1)][SerializeField] float playerFlashTime;
 
@@ -34,10 +32,6 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     float timeScaleOrig;
     public int enemiesRemaining;
-
-    bool gate1Open;
-    bool gate2Open;
-
     void Awake()
     {
         timeScaleOrig = Time.timeScale;
@@ -54,7 +48,7 @@ public class gameManager : MonoBehaviour
             StatePause();
             menuActive = menuPause;
             menuActive.SetActive(isPaused);
-        }   
+        }
     }
 
     public void StatePause()
@@ -130,28 +124,5 @@ public class gameManager : MonoBehaviour
        reloadPromp.SetActive(set);
 
     }
-    public void openGate1()
-    {
-
-        if (!gate1Open)
-        {
-            gate1Open = true;
-            gate1.SetBool("Open", true);
-        }
-
-
-    }
-    public void openGate2()
-    {
-
-        if (!gate2Open)
-        {
-            gate2Open = true;
-            gate2.SetBool("Open", true);
-        }
-
-
-    }
-
-
+   
 }

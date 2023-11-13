@@ -10,10 +10,13 @@ public class enemyAI : MonoBehaviour, IDamage
 {
     [Header("----- Componets ------")]
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
-    
+    [SerializeField] Collider damageColli;
+
+
 
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
@@ -36,6 +39,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
     bool destinationChosen;
     Vector3 startingPos;
+    Gates gate;
 
     void Start()
     {
@@ -53,7 +57,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (agent.isActiveAndEnabled)
         {
-          
+            anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
+
             if (playerInRange && !canSeePlayer())
             {
                 StartCoroutine(roam());
@@ -151,7 +156,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator Shoot()
     {
         isShooting = true;
-        
+        anim.SetTrigger("Shoot");
         Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -163,26 +168,33 @@ public class enemyAI : MonoBehaviour, IDamage
         
         if(agent.CompareTag("Enemy"))
             updateHpBar();
-        StartCoroutine(flashRed());
-
-
-
+  
         if (EnemyHP <= 0)
         {
+            damageColli.enabled = false;
+            gameManager.instance.updateGoal(-1);
+            anim.SetBool("Death", true);
+            agent.enabled = false;
+
+
             if (agent.CompareTag("Enemy"))
             {
                 gameManager.instance.updateGoal(-1);
                 if (gameManager.instance.enemiesRemaining == 2)
                 {
-                    gameManager.instance.openGate1(); 
+                    gate.openGate();
                 }
-                else if (gameManager.instance.enemiesRemaining == 1)
+                else if (gameManager.instance.enemiesRemaining < 2)
                 {
-                    gameManager.instance.openGate2();
+                    gate.openGate();
                 }
-
             }
-            Destroy(gameObject);
+        }
+        else
+        {
+            anim.SetTrigger("Damage");
+            StartCoroutine(flashRed());
+            agent.SetDestination(gameManager.instance.player.transform.position);
         }
     }
     IEnumerator flashRed()
