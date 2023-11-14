@@ -226,14 +226,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313429615066613908}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.004561912, z: 0.005983556}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 234421383169222351}
   m_Father: {fileID: 272368439051505741}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -429,6 +429,7 @@ MonoBehaviour:
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
   damageColli: {fileID: 7666007994843923470}
+  drop: {fileID: 1516956986370335439, guid: 844586d89bc3e284987c6fe57b0c6d1d, type: 3}
   EnemyHP: 15
   playerFaceSpeed: 4
   viewCone: 90
@@ -2029,6 +2030,7 @@ GameObject:
   - component: {fileID: 5309234759749099125}
   - component: {fileID: 5968444635651255785}
   - component: {fileID: 1838911316595058346}
+  - component: {fileID: 6799609544400618501}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -2119,6 +2121,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6799609544400618501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6660146865019395150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299ab4ba9fd6bbf4b9def758eda71558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6691453316889035547
 GameObject:
   m_ObjectHideFlags: 0

@@ -3353,6 +3353,7 @@ GameObject:
   - component: {fileID: 5017894651836111572}
   - component: {fileID: 4564285621369216047}
   - component: {fileID: 6339368700751812271}
+  - component: {fileID: 2555419064934081217}
   m_Layer: 0
   m_Name: HP Bar
   m_TagString: Untagged
@@ -3443,6 +3444,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2555419064934081217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857862097017939388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299ab4ba9fd6bbf4b9def758eda71558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6981182706987585517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,7 +3612,8 @@ MonoBehaviour:
   model: {fileID: 6771957101530277762}
   shootPos: {fileID: 3112945104109607978}
   headPos: {fileID: 5603373796524071596}
-  damageColli: {fileID: 5965185465532192646}
+  damageColli: {fileID: 615768583056253555}
+  drop: {fileID: 4172133062824375780, guid: 2abbfc2b0a880a142a191444a2cae06b, type: 3}
   EnemyHP: 15
   playerFaceSpeed: 4
   viewCone: 90
@@ -3618,7 +3632,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7420291970211884093}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9dfa0e608360e6540b04d669327a6c14, type: 3}
+  m_Avatar: {fileID: 9000000, guid: a9ad445cb02a11d428f39b0995d05478, type: 3}
   m_Controller: {fileID: 9100000, guid: b4b31fd50ca42244eae72c43a98d0342, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -3707,7 +3721,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
+  m_Color: {r: 0.8584906, g: 0.5313079, b: 0.07694017, a: 1}
   m_Intensity: 15
   m_Range: 30
   m_SpotAngle: 30
@@ -4862,14 +4876,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8616004598560070577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.004561912, z: 0.005983556}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 856276071801500581}
   m_Father: {fileID: 6079600355704425233}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
