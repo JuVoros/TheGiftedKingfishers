@@ -18,7 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] Animator gateOne;
     [SerializeField] Animator gateTwo;
 
-
+    [SerializeField] List<GameObject> weaponDrops;
 
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
@@ -142,5 +142,10 @@ public class gameManager : MonoBehaviour
         gateOne.SetBool("Open", false);
         gateTwo.SetBool("Open", false);
 
+    }
+
+    public List<GameObject> getWeaponDrops()
+    {
+        return weaponDrops;
     }
 }

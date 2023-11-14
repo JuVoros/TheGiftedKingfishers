@@ -15,7 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
     [SerializeField] Collider damageColli;
-    [SerializeField] GameObject drop;
+
 
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
@@ -60,7 +60,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (agent.isActiveAndEnabled)
         {
-            anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
+            anim.SetFloat("speed", agent.velocity.normalized.magnitude);
 
             if (playerInRange && !canSeePlayer())
             {
@@ -177,11 +177,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
             if (agent.CompareTag("Enemy"))
             {
-
-                dropLoca = transform.position + placeHolder;
                 gameManager.instance.updateGoal(-1);
-                Instantiate(drop, dropLoca, transform.rotation);
                 gameManager.instance.openGate();
+                DropItem(gameManager.instance.getWeaponDrops());
             }
         }
         else
@@ -191,6 +189,21 @@ public class enemyAI : MonoBehaviour, IDamage
             agent.SetDestination(gameManager.instance.player.transform.position);
         }
     }
+
+    void DropItem(List<GameObject> drops)
+    {
+        if (drops.Count == 0)
+        {
+            return;
+        }
+
+        dropLoca = transform.position + placeHolder;
+
+        int drop = Random.Range(0, drops.Count - 1);
+        Instantiate(drops[drop], dropLoca, transform.rotation);
+        drops.RemoveAt(drop);
+    }
+
     IEnumerator flashRed()
     {
        
