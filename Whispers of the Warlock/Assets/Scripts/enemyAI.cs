@@ -15,8 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
     [SerializeField] Collider damageColli;
-
-
+    [SerializeField] GameObject drop;
 
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
@@ -25,6 +24,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int shootCone;
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTime;
+
+
     public Image enemyHpBar;
 
     [Header("----- Gun Stats -----")]
@@ -34,12 +35,14 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
+    bool isDead;
     float angleToPlayer;
     int EnemyHPOrig;
     float stoppingDistOrig;
     bool destinationChosen;
     Vector3 startingPos;
-    Gates gate;
+    Vector3 dropLoca;
+    Vector3 placeHolder = new Vector3(1, 2, 1);
 
     void Start()
     {
@@ -76,7 +79,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator roam()
     {
 
-        if (agent.remainingDistance < 0.05f && !destinationChosen)
+        if (agent.remainingDistance < 0.1f && !destinationChosen && isDead)
         {
             destinationChosen = true;
             agent.stoppingDistance = 0;
@@ -135,8 +138,6 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = true;
             
-            
-            
         }
 
     }
@@ -146,8 +147,6 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
             agent.stoppingDistance = 0;
-
-
 
         }
 
@@ -172,22 +171,17 @@ public class enemyAI : MonoBehaviour, IDamage
         if (EnemyHP <= 0)
         {
             damageColli.enabled = false;
-            gameManager.instance.updateGoal(-1);
             anim.SetBool("Death", true);
             agent.enabled = false;
-
+            isDead = true;
 
             if (agent.CompareTag("Enemy"))
             {
+
+                dropLoca = transform.position + placeHolder;
                 gameManager.instance.updateGoal(-1);
-                if (gameManager.instance.enemiesRemaining == 2)
-                {
-                    gate.openGate();
-                }
-                else if (gameManager.instance.enemiesRemaining < 2)
-                {
-                    gate.openGate();
-                }
+                Instantiate(drop, dropLoca, transform.rotation);
+                gameManager.instance.openGate();
             }
         }
         else

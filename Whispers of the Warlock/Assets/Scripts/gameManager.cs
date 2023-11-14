@@ -15,6 +15,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject reloadPromp;
+    [SerializeField] Animator gateOne;
+    [SerializeField] Animator gateTwo;
+
+
 
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
@@ -124,5 +128,19 @@ public class gameManager : MonoBehaviour
        reloadPromp.SetActive(set);
 
     }
-   
+    public void openGate()
+    {
+        if (enemiesRemaining == 2)
+            gateOne.SetBool("Open", true);
+        if (enemiesRemaining == 1)
+            gateTwo.SetBool("Open", true);
+    }
+
+    public void closeGate()
+    {
+
+        gateOne.SetBool("Open", false);
+        gateTwo.SetBool("Open", false);
+
+    }
 }

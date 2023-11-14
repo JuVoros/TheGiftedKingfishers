@@ -4,27 +4,17 @@ using UnityEngine;
 
 public class Gates : MonoBehaviour
 {
-    [SerializeField] Animator gate;
-    [SerializeField] Collider gateClose;
+    
 
-    bool gateOpen;
 
-    public void openGate()
+
+    void OnTriggerEnter(Collider other)
     {
-        if (!gateOpen)
-        {
-            gateOpen = true;
-            gate.SetBool("Open", true);
 
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
         if (other.CompareTag("Player"))
         {
-           
-            gate.SetBool("Open", false);
+
+            gameManager.instance.closeGate();
 
         }
     }
