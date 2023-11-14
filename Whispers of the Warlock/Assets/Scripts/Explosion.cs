@@ -17,6 +17,8 @@ public class Explosion : MonoBehaviour
         Destroy(gameObject, lingerTime);
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger)

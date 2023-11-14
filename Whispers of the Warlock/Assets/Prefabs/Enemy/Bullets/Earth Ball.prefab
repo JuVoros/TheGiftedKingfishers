@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5835394472452040972}
-  bulletEffect: {fileID: 0}
+  explosion: {fileID: 9089678457477803695, guid: 74766933814133d4c87f744726a03622, type: 3}
   damage: 5
   speed: 25
   destroyTime: 4
