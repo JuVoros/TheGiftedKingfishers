@@ -90415,6 +90415,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9102354807990062283, guid: 0a5822727b75ac44d85509a3c76da025, type: 3}
+      propertyPath: EnemyHP
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -90471,6 +90475,14 @@ PrefabInstance:
     - target: {fileID: 1376648527414709676, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: EnemyHP
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: shootRate
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7198694024794460757, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: m_Height
@@ -90969,6 +90981,10 @@ PrefabInstance:
     - target: {fileID: 3101261958201800269, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
+      propertyPath: EnemyHP
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

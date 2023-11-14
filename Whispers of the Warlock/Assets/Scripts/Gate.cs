@@ -13,9 +13,8 @@ public class Gates : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-
-            text.SetActive(true);
-
+                text.SetActive(true);         
+            
         }
     }
 
