@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lingerTime: 0.1
+  lingerTime: 3.02
   explosionEffect: {fileID: 1552151544571050351, guid: 05a1ea49d8cb0024eb9141aaf36a4bed, type: 3}
 --- !u!135 &8014764703175160805
 SphereCollider:

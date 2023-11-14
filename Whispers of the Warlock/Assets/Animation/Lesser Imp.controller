@@ -177,12 +177,12 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Shoot
     m_StateMachine: {fileID: 7006358234137528876}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: ae1b022fa6e4cf745adfdc419924d551, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
-    m_DefaultWeight: 0
+    m_DefaultWeight: 0.62
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
@@ -310,9 +310,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.53717923
   m_TransitionOffset: 0
-  m_ExitTime: 0.7321429
+  m_ExitTime: 0.4244511
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
