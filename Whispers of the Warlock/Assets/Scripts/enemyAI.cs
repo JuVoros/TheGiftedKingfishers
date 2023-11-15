@@ -60,7 +60,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (agent.isActiveAndEnabled)
         {
-            anim.SetFloat("speed", agent.velocity.normalized.magnitude);
+            anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
 
             if (playerInRange && !canSeePlayer())
             {
@@ -79,7 +79,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator roam()
     {
 
-        if (agent.remainingDistance < 0.1f && !destinationChosen && isDead)
+        if (agent.remainingDistance < 0.1f && !destinationChosen && !isDead)
         {
             destinationChosen = true;
             agent.stoppingDistance = 0;
