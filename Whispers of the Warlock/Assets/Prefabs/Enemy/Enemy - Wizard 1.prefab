@@ -10256,8 +10256,7 @@ MonoBehaviour:
   model: {fileID: 1366475028871010091}
   shootPos: {fileID: 8359372455066446669}
   headPos: {fileID: 1088162701596141694}
-  damageColli: {fileID: 1714478904816920612}
-  drop: {fileID: 4172133062824375780, guid: 2abbfc2b0a880a142a191444a2cae06b, type: 3}
+  damageColli: {fileID: 7678964665381298806}
   EnemyHP: 10
   playerFaceSpeed: 5
   viewCone: 90
