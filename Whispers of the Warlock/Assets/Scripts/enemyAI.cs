@@ -181,6 +181,10 @@ public class enemyAI : MonoBehaviour, IDamage
                 gameManager.instance.openGate();
                 DropItem(gameManager.instance.getWeaponDrops());
             }
+            else
+            {
+                    DropItem(gameManager.instance.getPotionDrops());
+            }
         }
         else
         {
@@ -201,7 +205,6 @@ public class enemyAI : MonoBehaviour, IDamage
 
         int drop = Random.Range(0, drops.Count - 1);
         Instantiate(drops[drop], dropLoca, transform.rotation);
-        drops.RemoveAt(drop);
     }
 
     IEnumerator flashRed()

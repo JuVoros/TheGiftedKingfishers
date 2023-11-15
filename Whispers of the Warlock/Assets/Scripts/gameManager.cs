@@ -19,6 +19,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] Animator gateTwo;
 
     [SerializeField] List<GameObject> weaponDrops;
+    [SerializeField] List<GameObject> potionDrops;
 
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
@@ -147,5 +148,9 @@ public class gameManager : MonoBehaviour
     public List<GameObject> getWeaponDrops()
     {
         return weaponDrops;
+    }
+    public List<GameObject> getPotionDrops()
+    {
+        return potionDrops;
     }
 }
