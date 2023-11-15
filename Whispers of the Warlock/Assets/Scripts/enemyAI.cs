@@ -213,13 +213,7 @@ public class enemyAI : MonoBehaviour, IDamage
         model.GetComponent<Renderer>().sharedMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
-
-
-        //model.material.color = Color.red;
-        //yield return new WaitForSeconds(0.2f);
-        //model.material.color = Color.white;
     }
-
 
     void faceTarget()
     {
