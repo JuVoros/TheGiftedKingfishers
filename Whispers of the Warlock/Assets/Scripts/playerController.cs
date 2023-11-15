@@ -281,4 +281,14 @@ public class playerController : MonoBehaviour, IDamage
         isRegenMana = false;
     }
 
+    public void addMana(int amount)
+    {
+        manaCur += amount;
+        if(manaCur >= manaMax)
+        {
+            manaCur = manaMax;
+        }
+        updatePlayerUI() ;
+    }
+
 }
