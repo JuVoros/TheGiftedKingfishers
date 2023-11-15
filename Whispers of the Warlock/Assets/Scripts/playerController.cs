@@ -24,16 +24,21 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 10)][SerializeField] int jumpsMax;
     [Range(1, 20)][SerializeField] int HP;
 
+    [Range(1, 20)][SerializeField] int manaMax;
+    [Range(1, 5)][SerializeField] int manaPerRegen;
+
     [Header("------Staff Stats------")]
     [SerializeField] List<gunStats> staffList = new List<gunStats>();
     [SerializeField] GameObject staffModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
+    [SerializeField] float rechargeRate;
 
     int staffSelected;
     int PlayerHPOrig;
     private int jumpedTimes;
+    private int manaCur;
 
     private float speedOrig;
 
@@ -44,12 +49,14 @@ public class playerController : MonoBehaviour, IDamage
     bool isShooting;
     bool isPlayingSteps;
     bool isSprinting;
+    bool isRegenMana;
 
 
 
     void Start()
     {
         PlayerHPOrig = HP;
+        manaCur = manaMax;
         speedOrig = playerSpeed;
         spawnPlayer();
     }
@@ -64,7 +71,12 @@ public class playerController : MonoBehaviour, IDamage
         {
             selectStaff();
 
-            Reload();
+            // Reload();
+            if (!isRegenMana)
+            {
+                StartCoroutine(manaRegen());
+            }
+
 
             if (Input.GetButton("Shoot") && !isShooting)
                 StartCoroutine(shoot());
@@ -129,12 +141,12 @@ public class playerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (staffList[staffSelected].ammoCur > 0)
+        if (manaCur > 0)
         {
             isShooting = true;
-            staffList[staffSelected].ammoCur--;
-            gameManager.instance.playerManaBar.fillAmount = (float)staffList[staffSelected].ammoCur / staffList[staffSelected].ammoMax;
+            manaCur--;
 
+            updatePlayerUI();
             audi.PlayOneShot(staffList[staffSelected].shootSound, staffList[staffSelected].shootSoundVol);
 
             RaycastHit hit;
@@ -193,6 +205,7 @@ public class playerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / PlayerHPOrig;
+        gameManager.instance.playerManaBar.fillAmount = (float)manaCur / manaMax;
     }
 
     void selectStaff()
@@ -214,6 +227,7 @@ public class playerController : MonoBehaviour, IDamage
         shootDamage = staffList[staffSelected].shootDamage;
         shootDistance = staffList[staffSelected].shootDistance;
         shootRate = staffList[staffSelected].shootRate;
+        rechargeRate = staffList[staffSelected].rechargeRate;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[staffSelected].model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[staffSelected].model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -228,6 +242,7 @@ public class playerController : MonoBehaviour, IDamage
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDistance;
         shootRate = gun.shootRate;
+        rechargeRate = gun.rechargeRate;
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -236,7 +251,7 @@ public class playerController : MonoBehaviour, IDamage
         staffSelected = staffList.Count - 1;
 
     }
-    void Reload()
+   /* void Reload()
     {
 
         if (Input.GetButtonDown("Reload"))
@@ -247,5 +262,23 @@ public class playerController : MonoBehaviour, IDamage
         }
         updatePlayerUI();
 
+    }*/
+
+    IEnumerator manaRegen()
+    {
+        isRegenMana = true;
+
+        yield return new WaitForSeconds(rechargeRate);
+        if (manaCur >= manaMax)
+        {
+            manaCur = manaMax;
+        }
+        else
+        {
+            manaCur += manaPerRegen;
+        }
+        updatePlayerUI();
+        isRegenMana = false;
     }
+
 }
