@@ -50,7 +50,7 @@ MonoBehaviour:
   rb: {fileID: 5835394472452040972}
   explosion: {fileID: 5404203467303078592, guid: 1767a887dec01724c81a33aa12bbdff9, type: 3}
   damage: 3
-  speed: 100
+  speed: 45
   destroyTime: 10
 --- !u!135 &8950277354476182625
 SphereCollider:

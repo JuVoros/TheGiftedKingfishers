@@ -89023,9 +89023,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6992164245330047204, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -537.972
+      objectReference: {fileID: 0}
     - target: {fileID: 7630770923154868530, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_LocalPosition.y
       value: -538.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700361854609206913, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -538.122
       objectReference: {fileID: 0}
     - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: gateOne
@@ -89035,6 +89043,10 @@ PrefabInstance:
       propertyPath: gateTwo
       value: 
       objectReference: {fileID: 733015548}
+    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: weaponDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 5136195102893214346, guid: c92e21fe185fb5c4c9d43d9163635b86, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
