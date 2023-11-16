@@ -199,11 +199,11 @@ public class enemyAI : MonoBehaviour, IDamage
             else
             {
                 DropPotion(gameManager.instance.getPotionDrops());
-                //if (rando >= 50 && rando <= 75)
-                //{
+
+                if (rando >= 50 && rando <= 60)
+                {
                     gameManager.instance.ScareJump();
-                    // for testing purposes
-                //}
+                }
 
             }
 
