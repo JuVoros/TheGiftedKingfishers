@@ -10257,7 +10257,7 @@ MonoBehaviour:
   shootPos: {fileID: 8359372455066446669}
   headPos: {fileID: 1088162701596141694}
   damageColli: {fileID: 7678964665381298806}
-  EnemyHP: 10
+  EnemyHP: 20
   playerFaceSpeed: 5
   viewCone: 90
   shootCone: 8

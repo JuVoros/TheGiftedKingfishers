@@ -12,7 +12,7 @@ public class gunStats : ScriptableObject
     public int shootDistance;
     public float shootRate;
     public float rechargeRate;
-
+    public Light staffLght;
 
 
     public GameObject model;

@@ -429,7 +429,7 @@ MonoBehaviour:
   shootPos: {fileID: 2534836594001102273}
   headPos: {fileID: 2188466893752070791}
   damageColli: {fileID: 7198694024794460757}
-  EnemyHP: 15
+  EnemyHP: 20
   playerFaceSpeed: 4
   viewCone: 90
   shootCone: 5
@@ -437,7 +437,7 @@ MonoBehaviour:
   roamPauseTime: 3
   enemyHpBar: {fileID: 5448186281749231596}
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
-  shootRate: 1
+  shootRate: 1.25
 --- !u!95 &1032688908546901596
 Animator:
   serializedVersion: 5
@@ -500,8 +500,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.1
+  m_Radius: 0.33
+  m_Height: 2.03
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!135 &7666007994843923470

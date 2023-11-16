@@ -19,6 +19,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] Animator gateTwo;
 
     [SerializeField] List<GameObject> weaponDrops;
+    List<GameObject> tempWeaponDrops;    
+    [SerializeField] Transform[] weaponSpawmPos;
+
+
     [SerializeField] List<GameObject> potionDrops;
 
     [SerializeField] GameObject playerDamageScreen;
@@ -39,11 +43,13 @@ public class gameManager : MonoBehaviour
     public int enemiesRemaining;
     void Awake()
     {
+        tempWeaponDrops = weaponDrops;
         timeScaleOrig = Time.timeScale;
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>(); 
         playerSpawnPos = GameObject.FindWithTag("Respawn");
+        spawnItem();
     }
 
     void Update()
@@ -147,10 +153,22 @@ public class gameManager : MonoBehaviour
 
     public List<GameObject> getWeaponDrops()
     {
-        return weaponDrops;
+        return tempWeaponDrops;
+        
     }
     public List<GameObject> getPotionDrops()
     {
         return potionDrops;
+    }
+    
+    public void spawnItem()
+    {
+        for (int i = 0; i < weaponSpawmPos.Length; i++)
+        {            
+            int weaponToSpawn = Random.Range(0, tempWeaponDrops.Count - 1);
+            Instantiate(tempWeaponDrops[weaponToSpawn], weaponSpawmPos[i].position, weaponSpawmPos[i].rotation);
+            tempWeaponDrops.RemoveAt(weaponToSpawn);
+        }
+
     }
 }

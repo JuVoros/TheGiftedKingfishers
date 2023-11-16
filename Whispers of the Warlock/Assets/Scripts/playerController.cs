@@ -34,12 +34,12 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     [SerializeField] float rechargeRate;
-
+    public Light staffLight;
     int staffSelected;
     int PlayerHPOrig;
     private int jumpedTimes;
     private int manaCur;
-
+   
     private float speedOrig;
 
     private Vector3 playerVelocity;
@@ -176,14 +176,7 @@ public class playerController : MonoBehaviour, IDamage
             StartCoroutine(gameManager.instance.playerFlashDamage());
             audi.PlayOneShot(audioDamage[Random.Range(0, audioDamage.Length)], audioDamageVol);
         }
-        else if(amount <= 0)
-        {
-            StartCoroutine(gameManager.instance.playerFlashHeals());
-        }
-
-
-
-
+        
         if (HP <= 0)
         {
             gameManager.instance.Lose();
@@ -228,7 +221,6 @@ public class playerController : MonoBehaviour, IDamage
         shootDistance = staffList[staffSelected].shootDistance;
         shootRate = staffList[staffSelected].shootRate;
         rechargeRate = staffList[staffSelected].rechargeRate;
-
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[staffSelected].model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[staffSelected].model.GetComponent<MeshRenderer>().sharedMaterial;
 
@@ -238,7 +230,7 @@ public class playerController : MonoBehaviour, IDamage
     public void getGunStats(gunStats gun)
     {
         staffList.Add(gun);
-
+       
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDistance;
         shootRate = gun.shootRate;
@@ -287,6 +279,16 @@ public class playerController : MonoBehaviour, IDamage
         if(manaCur >= manaMax)
         {
             manaCur = manaMax;
+        }
+        updatePlayerUI() ;
+    }
+    public void addHealth(int amount)
+    {
+        StartCoroutine(gameManager.instance.playerFlashHeals());
+        HP += amount;
+        if(HP >= PlayerHPOrig)
+        {
+            HP = PlayerHPOrig;
         }
         updatePlayerUI() ;
     }

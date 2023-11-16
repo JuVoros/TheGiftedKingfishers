@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,7 +43,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool destinationChosen;
     Vector3 startingPos;
     Vector3 dropLoca;
-    Vector3 placeHolder = new Vector3(1, 2, 1);
+    Vector3 placeHolder = new Vector3(1, 2, 3);
 
     void Start()
     {
@@ -50,9 +51,10 @@ public class enemyAI : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         if (agent.CompareTag("Enemy"))
-
+        {
+            enemyHpBar.enabled = false;
             gameManager.instance.updateGoal(1);
-        
+        }
     }
 
     void Update()
@@ -137,6 +139,8 @@ public class enemyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            if (agent.CompareTag("Enemy"))
+                enemyHpBar.enabled = true;
             
         }
 
@@ -147,6 +151,8 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
             agent.stoppingDistance = 0;
+            if (agent.CompareTag("Enemy"))
+                enemyHpBar.enabled = false;
 
         }
 
@@ -174,17 +180,26 @@ public class enemyAI : MonoBehaviour, IDamage
             anim.SetBool("Death", true);
             agent.enabled = false;
             isDead = true;
+            int rando = Random.Range(0, 100);
 
             if (agent.CompareTag("Enemy"))
             {
                 gameManager.instance.updateGoal(-1);
                 gameManager.instance.openGate();
                 DropItem(gameManager.instance.getWeaponDrops());
+
+            }
+            else if(rando == 99 )
+            {
+               
+                    DropItem(gameManager.instance.getWeaponDrops());
             }
             else
             {
-                    DropItem(gameManager.instance.getPotionDrops());
+                DropPotion(gameManager.instance.getPotionDrops());
+
             }
+
         }
         else
         {
@@ -205,6 +220,21 @@ public class enemyAI : MonoBehaviour, IDamage
 
         int drop = Random.Range(0, drops.Count - 1);
         Instantiate(drops[drop], dropLoca, transform.rotation);
+        drops.RemoveAt(drop);
+    }
+
+    void DropPotion(List<GameObject> drops)
+    {
+        if (drops.Count == 0)
+        {
+            return;
+        }
+
+        dropLoca = transform.position + placeHolder;
+
+        int drop = Random.Range(0, drops.Count - 1);
+        Instantiate(drops[drop], dropLoca, transform.rotation);
+        
     }
 
     IEnumerator flashRed()

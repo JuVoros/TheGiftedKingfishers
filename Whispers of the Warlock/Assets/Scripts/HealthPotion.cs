@@ -5,20 +5,18 @@ using UnityEngine;
 public class HealthPotion : MonoBehaviour
 {
     [SerializeField] Collider potion;
-    [Range(-10,-1)][SerializeField] int HPOnPickup;
+    [Range(1, 10)][SerializeField] int HPOnPickup;
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger)
             return;
 
-        IDamage damageable = other.GetComponent<IDamage>();
-
-        if (other.CompareTag("Player")&&damageable!=null)
+        if (other.CompareTag("Player"))
         {
-            damageable.takeDamage(HPOnPickup);
-            
+            gameManager.instance.playerScript.addHealth(HPOnPickup);
+
         }
-        
+
         Destroy(gameObject);
     }
 

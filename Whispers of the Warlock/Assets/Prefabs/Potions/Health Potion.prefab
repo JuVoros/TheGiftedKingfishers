@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potion: {fileID: 3274517015300405991}
-  HPOnPickup: -4
+  HPOnPickup: 5
 --- !u!135 &3274517015300405991
 SphereCollider:
   m_ObjectHideFlags: 0
