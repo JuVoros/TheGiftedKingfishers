@@ -432,7 +432,7 @@ MonoBehaviour:
   EnemyHP: 20
   playerFaceSpeed: 4
   viewCone: 90
-  shootCone: 5
+  shootCone: 10
   roamDist: 35
   roamPauseTime: 3
   enemyHpBar: {fileID: 5448186281749231596}

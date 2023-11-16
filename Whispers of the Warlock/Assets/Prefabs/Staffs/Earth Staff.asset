@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54efa61e1d8d10409185ddc2c5e064a, type: 3}
   m_Name: Earth Staff
   m_EditorClassIdentifier: 
-  shootDamage: 2
-  shootDistance: 40
-  shootRate: 0.75
-  rechargeRate: 1
+  shootDamage: 3
+  shootDistance: 80
+  shootRate: 1
+  rechargeRate: 1.5
   staffLght: {fileID: 0}
   model: {fileID: 6759754029706040241, guid: 0b70de5d1249322499864e428576c58a, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: a33a5949498011e419e0131c1b892b78, type: 3}

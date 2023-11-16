@@ -107,7 +107,7 @@ public class enemyAI : MonoBehaviour, IDamage
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
-        Debug.Log(angleToPlayer);
+        
 
         RaycastHit hit;
 
@@ -176,10 +176,12 @@ public class enemyAI : MonoBehaviour, IDamage
   
         if (EnemyHP <= 0)
         {
+            isDead = true;
             damageColli.enabled = false;
             anim.SetBool("Death", true);
             agent.enabled = false;
-            isDead = true;
+            
+            
             int rando = Random.Range(0, 100);
 
             if (agent.CompareTag("Enemy"))
@@ -197,6 +199,11 @@ public class enemyAI : MonoBehaviour, IDamage
             else
             {
                 DropPotion(gameManager.instance.getPotionDrops());
+                //if (rando >= 50 && rando <= 75)
+                //{
+                    StartCoroutine(gameManager.instance.jumpScare());
+                    // for testing purposes
+                //}
 
             }
 

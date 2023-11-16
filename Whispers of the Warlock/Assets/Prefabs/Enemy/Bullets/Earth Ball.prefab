@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4822107489506186025}
-  - component: {fileID: 1230157484380494475}
+  - component: {fileID: 5283055664325038410}
   - component: {fileID: 8950277354476182625}
   - component: {fileID: 5835394472452040972}
   - component: {fileID: 3206915249961886728}
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1230157484380494475
+--- !u!114 &5283055664325038410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,14 +44,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8677509504579278298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecb33bd2c0288c4d827098f4e39ff32, type: 3}
+  m_Script: {fileID: 11500000, guid: e804730c44d84cc41a11c03fdb39e83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5835394472452040972}
   explosion: {fileID: 9089678457477803695, guid: 74766933814133d4c87f744726a03622, type: 3}
-  damage: 5
-  speed: 30
-  destroyTime: 4
+  speed: 15
+  destroyTime: 3
+  velUp: 3
 --- !u!135 &8950277354476182625
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -14,6 +14,13 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject controlMenu;
+    [SerializeField] GameObject jumpScareScreen;
+    [SerializeField] AudioSource audi;
+    [SerializeField] AudioClip jumpScareSound;
+    [SerializeField] float jumpScareVol;
+
+
     [SerializeField] GameObject reloadPromp;
     [SerializeField] Animator gateOne;
     [SerializeField] Animator gateTwo;
@@ -107,7 +114,18 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
 
     }
-
+    public void Controls()
+    {
+        menuActive.SetActive(false);
+        menuActive = controlMenu;
+        menuActive.SetActive(true);
+    }
+    public void backButton()
+    {
+        menuActive.SetActive(false);
+        menuActive = menuPause;
+        menuActive.SetActive(true);
+    }
     public IEnumerator playerFlashDamage()
     {
         playerDamageScreen.SetActive(true);
@@ -129,6 +147,14 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         bossDeathScreen.SetActive(false);
     }
+
+    public IEnumerator jumpScare()
+    {
+        jumpScareScreen.SetActive(true);
+        audi.PlayOneShot(jumpScareSound, jumpScareVol);
+        yield return new WaitForSeconds(1f);
+        jumpScareScreen.SetActive(false);
+    }
     public void ReloadText(bool set)
     {
 
@@ -145,10 +171,9 @@ public class gameManager : MonoBehaviour
 
     public void closeGate()
     {
-
-        gateOne.SetBool("Open", false);
-        gateTwo.SetBool("Open", false);
-
+  
+            gateOne.SetBool("Open", false);      
+            gateTwo.SetBool("Open", false);
     }
 
     public List<GameObject> getWeaponDrops()

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GateClose : MonoBehaviour
 {
-    
+    [SerializeField]Animator anim;
 
 
 
@@ -15,7 +16,7 @@ public class GateClose : MonoBehaviour
         {
 
             gameManager.instance.closeGate();
-
+            anim.SetTrigger("Close");
         }
     }
 }

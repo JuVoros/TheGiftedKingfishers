@@ -23,25 +23,13 @@ public class Bul : MonoBehaviour
         rb.velocity = dir; 
         Destroy(gameObject, destroyTime);
     }
-
-    private void OnTriggerEnter(Collider other)
+    public IEnumerator takeDamage()
     {
-        //ignores other triggers
-        if (other.isTrigger)
-            return;
+        yield return new WaitForSeconds(destroyTime);
 
-        IDamage damageable = other.GetComponent<IDamage>();
-
-        if(explosion != null)
-        {
-            Instantiate(explosion, transform.position, rb.transform.rotation);
-        }
-
-        if (damageable != null)
-        {
-            damageable.takeDamage(damage);
-        }
-
+        if (explosion != null)
+            Instantiate(explosion, transform.position, explosion.transform.rotation);
         Destroy(gameObject);
     }
-}                                                               
+
+}                                                           

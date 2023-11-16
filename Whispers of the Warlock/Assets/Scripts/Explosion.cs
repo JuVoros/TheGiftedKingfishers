@@ -1,38 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
     [SerializeField] int damage;
-    [SerializeField] float lingerTime;
-    [SerializeField] ParticleSystem explosionEffect;
-    // Start is called before the first frame update
+    [SerializeField] int destroyTime;
+    [SerializeField] ParticleSystem exploEffect;
     void Start()
     {
-        if (explosionEffect != null)
-        {
-            Instantiate(explosionEffect, transform.position, explosionEffect.transform.rotation);
-        }
-        Destroy(gameObject, lingerTime);
+        if (exploEffect != null)
+            Instantiate(exploEffect, transform.position, exploEffect.transform.rotation);
+        
+        Destroy(gameObject, destroyTime);
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger)
-        {
             return;
-        }
-
-
 
         IDamage damageable = other.GetComponent<IDamage>();
+        StartCoroutine(damagePlayer());
 
-        if (damageable != null)
+        
+        IEnumerator damagePlayer() 
         {
-            damageable.takeDamage(damage);
+            int interval = 100;
+
+            for (int i = 0; i < interval; i++)
+            {
+                if(interval % 10 == 0)
+                    damageable.takeDamage(damage);
+                Debug.Log(i);
+                Debug.Log(damagePlayer());
+                interval -= 1;
+            }
+
+
+            yield return new WaitForSeconds(destroyTime);
+
         }
+
     }
 }

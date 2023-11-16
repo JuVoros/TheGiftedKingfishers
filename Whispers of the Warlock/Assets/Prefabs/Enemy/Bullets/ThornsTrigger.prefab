@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lingerTime: 10
-  explosionEffect: {fileID: 1797975770900342751, guid: f3b76a0e8f8417d4cbbe4e844db510dc, type: 3}
+  destroyTime: 10
+  exploEffect: {fileID: 1797975770900342751, guid: f3b76a0e8f8417d4cbbe4e844db510dc, type: 3}
 --- !u!65 &4316108678962113148
 BoxCollider:
   m_ObjectHideFlags: 0

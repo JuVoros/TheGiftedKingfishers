@@ -3614,14 +3614,14 @@ MonoBehaviour:
   headPos: {fileID: 5603373796524071596}
   damageColli: {fileID: 615768583056253555}
   EnemyHP: 25
-  playerFaceSpeed: 4
+  playerFaceSpeed: 5
   viewCone: 90
-  shootCone: 4
+  shootCone: 45
   roamDist: 0
   roamPauseTime: 0
   enemyHpBar: {fileID: 9054302891850310792}
   bullet: {fileID: 8677509504579278298, guid: 7e05ce9f368c00b4ba0121b23eee02c9, type: 3}
-  shootRate: 2
+  shootRate: 2.25
 --- !u!95 &7482566003874823673
 Animator:
   serializedVersion: 5

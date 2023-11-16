@@ -10265,7 +10265,7 @@ MonoBehaviour:
   roamPauseTime: 4
   enemyHpBar: {fileID: 4357128449283054081}
   bullet: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
-  shootRate: 2
+  shootRate: 1
 --- !u!195 &3774061873228980479
 NavMeshAgent:
   m_ObjectHideFlags: 0
