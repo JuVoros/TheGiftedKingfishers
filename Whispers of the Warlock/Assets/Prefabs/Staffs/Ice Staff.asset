@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDistance: 150
   shootRate: 0.8
   rechargeRate: 1.2
-  model: {fileID: 5136195102893214346, guid: c92e21fe185fb5c4c9d43d9163635b86, type: 3}
+  model: {fileID: 5136195102893214346, guid: 469b0f30ea71ba348888a510a115f222, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: c29bf0940c16fd544bcab8f98fa43073, type: 3}
   shootSound: {fileID: 8300000, guid: 8171342f1983747b3a1e3a85ad95097b, type: 3}
   shootSoundVol: 0.5
