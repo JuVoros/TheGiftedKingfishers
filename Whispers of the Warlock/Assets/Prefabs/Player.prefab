@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 57562459625050453}
   - component: {fileID: 6000931196559386769}
   - component: {fileID: 3929362100833447832}
-  - component: {fileID: 8174249178069427093}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -54,7 +53,8 @@ MonoBehaviour:
   controller: {fileID: 5483918385945358926}
   audi: {fileID: 3929362100833447832}
   audioDamage:
-  - {fileID: 8300000, guid: 1fb63af572f3ebb469e2d7709aaf8a7c, type: 3}
+  - {fileID: 8300000, guid: d64e91cef03af304fa237225b23c5707, type: 3}
+  - {fileID: 8300000, guid: f066f3ebedc79dc429b921d5076e5491, type: 3}
   audioDamageVol: 0.5
   audioJump:
   - {fileID: 8300000, guid: 6aeefb601c305f64487cebdfacae5b6c, type: 3}
@@ -130,12 +130,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 97b97fae0b55ce141bff2005c510492e, type: 3}
   - {fileID: 8300000, guid: 96860d4e7cdc1f746906da7b7bc7a388, type: 3}
   audioStepsVol: 0.5
+  audioTeleport: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
+  audioTeleportVol: 0.2
   jumpHeight: 10
   playerSpeed: 19
   sprintSpeed: 28
   gravityValue: -15
   jumpsMax: 2
   HP: 20
+  teleportDistance: 10
+  blinkMana: 2
   manaMax: 20
   manaPerRegen: 1
   staffList: []
@@ -144,6 +148,8 @@ MonoBehaviour:
   shootDistance: 0
   shootRate: 0
   rechargeRate: 0
+  staffLight: {fileID: 0}
+  manaCur: 0
 --- !u!143 &5483918385945358926
 CharacterController:
   m_ObjectHideFlags: 0
@@ -339,19 +345,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8174249178069427093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623398284464428166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb8de5a5f6b1474f80c183d25ea5c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDistance: 10
 --- !u!1 &6977520985545770216
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4889608333955938261}
     m_Modifications:
+    - target: {fileID: -5595216963695856909, guid: 290dfd9641b876d4f9a2d797e05d67ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 102111210590672388, guid: 290dfd9641b876d4f9a2d797e05d67ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -15,6 +15,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float audioJumpVol;
     [SerializeField] AudioClip[] audioSteps;
     [SerializeField] float audioStepsVol;
+    [SerializeField] AudioClip audioTeleport;
+    [SerializeField] float audioTeleportVol;
 
     [Header("------Player Stats------")]
     [Range(1, 10)][SerializeField] float jumpHeight;
@@ -23,6 +25,8 @@ public class playerController : MonoBehaviour, IDamage
     [Range(-5, -20)][SerializeField] float gravityValue;
     [Range(1, 10)][SerializeField] int jumpsMax;
     [Range(1, 20)][SerializeField] int HP;
+    [Range(5, 20)][SerializeField] int teleportDistance;
+    [SerializeField] int blinkMana;
 
     [Range(1, 20)][SerializeField] int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
@@ -38,7 +42,7 @@ public class playerController : MonoBehaviour, IDamage
     int staffSelected;
     int PlayerHPOrig;
     private int jumpedTimes;
-    private int manaCur;
+    public int manaCur;
    
     private float speedOrig;
 
@@ -59,27 +63,37 @@ public class playerController : MonoBehaviour, IDamage
         manaCur = manaMax;
         speedOrig = playerSpeed;
         spawnPlayer();
+
+      
     }
 
     void Update()
     {
 
         if (!gameManager.instance.isPaused)
+        {
             Move();
 
-        if (staffList.Count > 0)
-        {
-            selectStaff();
-
-            // Reload();
-            if (!isRegenMana)
+            if (Input.GetButtonDown("Blink"))
             {
-                StartCoroutine(manaRegen());
+                teleport();
             }
 
+            if (staffList.Count > 0)
+            {
+                selectStaff();
 
-            if (Input.GetButton("Shoot") && !isShooting)
-                StartCoroutine(shoot());
+                // Reload();
+                if (!isRegenMana)
+                {
+                    StartCoroutine(manaRegen());
+                }
+
+
+                if (Input.GetButton("Shoot") && !isShooting)
+                    StartCoroutine(shoot());
+            }
+
         }
     }
     public void Move()
@@ -291,6 +305,21 @@ public class playerController : MonoBehaviour, IDamage
             HP = PlayerHPOrig;
         }
         updatePlayerUI() ;
+    }
+
+    public void teleport()
+    {
+        if(manaCur >= blinkMana)
+        {
+            manaCur -= blinkMana;
+            updatePlayerUI();
+        Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
+        if (audioTeleport != null ) 
+        {
+            audi.PlayOneShot(audioTeleport, audioTeleportVol);
+        }
+        controller.Move(teleportPosition - transform.position); 
+        }
     }
 
 }
