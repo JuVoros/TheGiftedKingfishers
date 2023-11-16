@@ -17,6 +17,10 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float audioStepsVol;
     [SerializeField] AudioClip audioTeleport;
     [SerializeField] float audioTeleportVol;
+    [SerializeField]AudioClip potionSound;
+    [SerializeField] float potionVol;
+    [SerializeField] AudioClip pickupSound;
+    [SerializeField] float pickupVol;
 
     [Header("------Player Stats------")]
     [Range(1, 10)][SerializeField] float jumpHeight;
@@ -250,6 +254,8 @@ public class playerController : MonoBehaviour, IDamage
         shootRate = gun.shootRate;
         rechargeRate = gun.rechargeRate;
 
+        audi.PlayOneShot(pickupSound);
+
         staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
 
@@ -289,8 +295,12 @@ public class playerController : MonoBehaviour, IDamage
 
     public void addMana(int amount)
     {
-        manaCur += amount;
-        if(manaCur >= manaMax)
+
+            manaCur += amount;
+            audi.PlayOneShot(potionSound);
+
+        
+        if (manaCur >= manaMax)
         {
             manaCur = manaMax;
         }
@@ -298,8 +308,12 @@ public class playerController : MonoBehaviour, IDamage
     }
     public void addHealth(int amount)
     {
-        StartCoroutine(gameManager.instance.playerFlashHeals());
-        HP += amount;
+
+            StartCoroutine(gameManager.instance.playerFlashHeals());
+            HP += amount;
+            audi.PlayOneShot(potionSound);
+        
+
         if(HP >= PlayerHPOrig)
         {
             HP = PlayerHPOrig;
