@@ -226,9 +226,19 @@ public class playerController : MonoBehaviour, IDamage
             staffSelected++;
             changeStaff();
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0 && staffSelected == staffList.Count-1)
+        {
+            staffSelected = 0;
+            changeStaff();
+        }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0 && staffSelected > 0)
         {
             staffSelected--;
+            changeStaff();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && staffSelected == 0)
+        {
+            staffSelected  = staffList.Count-1;
             changeStaff();
         }
     }

@@ -3956,7 +3956,7 @@ PrefabInstance:
       objectReference: {fileID: 496186964905563113, guid: 9e4a00705005fa8499af141f7b57dc7e, type: 3}
     - target: {fileID: -7820515561820361738, guid: c7d5ce5de4a67a548bfe4ec70728396e, type: 3}
       propertyPath: spawmPos.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7820515561820361738, guid: c7d5ce5de4a67a548bfe4ec70728396e, type: 3}
       propertyPath: spawmPos.Array.data[2]
