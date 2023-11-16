@@ -2484,18 +2484,18 @@ MonoBehaviour:
   menuLose: {fileID: 6071166087025239014}
   controlMenu: {fileID: 3247581006277733093}
   jumpScareScreen: {fileID: 9165775882475387902}
-  audi: {fileID: 0}
   jumpScareSound: {fileID: 8300000, guid: f1bb26b956596e94085f94ae19461f63, type: 3}
-  jumpScareVol: 0.5
+  jumpScareVol: 0.75
   reloadPromp: {fileID: 3331209717134350134}
   gateOne: {fileID: 0}
   gateTwo: {fileID: 0}
   weaponDrops:
   - {fileID: 1291813465720997136, guid: 3c76761571ce90a4594e0a5d73700957, type: 3}
-  - {fileID: 5136195102893214346, guid: 469b0f30ea71ba348888a510a115f222, type: 3}
+  - {fileID: 5136195102893214346, guid: c92e21fe185fb5c4c9d43d9163635b86, type: 3}
   - {fileID: 6759754029706040241, guid: 0b70de5d1249322499864e428576c58a, type: 3}
   - {fileID: 4997516850854380813, guid: 440557fb6745c694b9ae28db0159d320, type: 3}
   - {fileID: 1903397473267234769, guid: 290dfd9641b876d4f9a2d797e05d67ce, type: 3}
+  tempWeaponDrops: []
   weaponSpawmPos:
   - {fileID: 6992164245330047204}
   - {fileID: 7700361854609206913}

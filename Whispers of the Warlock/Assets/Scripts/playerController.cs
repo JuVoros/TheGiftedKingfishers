@@ -254,7 +254,7 @@ public class playerController : MonoBehaviour, IDamage
         shootRate = gun.shootRate;
         rechargeRate = gun.rechargeRate;
 
-        audi.PlayOneShot(pickupSound);
+        audi.PlayOneShot(pickupSound, pickupVol);
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
@@ -297,7 +297,7 @@ public class playerController : MonoBehaviour, IDamage
     {
 
             manaCur += amount;
-            audi.PlayOneShot(potionSound);
+            audi.PlayOneShot(potionSound, potionVol);
 
         
         if (manaCur >= manaMax)
@@ -311,7 +311,7 @@ public class playerController : MonoBehaviour, IDamage
 
             StartCoroutine(gameManager.instance.playerFlashHeals());
             HP += amount;
-            audi.PlayOneShot(potionSound);
+            audi.PlayOneShot(potionSound, potionVol);
         
 
         if(HP >= PlayerHPOrig)

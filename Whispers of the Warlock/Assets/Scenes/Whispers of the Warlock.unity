@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.015437374, g: 0, b: 0.11320752, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -21763,6 +21763,14 @@ PrefabInstance:
     - target: {fileID: 6054495569529181527, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: pickupVol
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: potionVol
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66943,11 +66951,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300106, guid: f62b0587c83d49a4ab1186ff5d37822c, type: 3}
---- !u!82 &1585720172 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3929362100833447832, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
-  m_PrefabInstance: {fileID: 517275852}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1586502735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87120,16 +87123,16 @@ MonoBehaviour:
   numToSpawn: 10
   spawnDelay: 0.25
   spawmPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 459077357}
+  - {fileID: 2059030198}
+  - {fileID: 1762967029}
+  - {fileID: 1670148355}
+  - {fileID: 1929527487}
+  - {fileID: 832848673}
+  - {fileID: 222358086}
+  - {fileID: 1045813614}
+  - {fileID: 329923020}
+  - {fileID: 1880721454}
 --- !u!4 &2092254094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2127641259819765075, guid: 121c0725c8cc59040abe2f36c2b6f430, type: 3}
@@ -88949,10 +88952,6 @@ PrefabInstance:
       value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: audi
-      value: 
-      objectReference: {fileID: 1585720172}
-    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: gateOne
       value: 
       objectReference: {fileID: 1473299087}
@@ -88960,14 +88959,6 @@ PrefabInstance:
       propertyPath: gateTwo
       value: 
       objectReference: {fileID: 733015548}
-    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: jumpScareVol
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8767321190679038486, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
-      propertyPath: weaponDrops.Array.data[1]
-      value: 
-      objectReference: {fileID: 5136195102893214346, guid: 469b0f30ea71ba348888a510a115f222, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

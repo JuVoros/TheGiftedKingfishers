@@ -25,7 +25,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] Animator gateTwo;
 
     [SerializeField] List<GameObject> weaponDrops;
-    List<GameObject> tempWeaponDrops;    
+    public List<GameObject> tempWeaponDrops;    
     [SerializeField] Transform[] weaponSpawmPos;
 
 

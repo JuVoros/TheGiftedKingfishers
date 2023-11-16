@@ -132,6 +132,10 @@ MonoBehaviour:
   audioStepsVol: 0.5
   audioTeleport: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
   audioTeleportVol: 0.2
+  potionSound: {fileID: 8300000, guid: dddde2397affa4973880bcc238b6ad30, type: 3}
+  potionVol: 0.0125
+  pickupSound: {fileID: 8300000, guid: 5dc0d27bde15c4bb7bafcde9f394bc12, type: 3}
+  pickupVol: 0.008
   jumpHeight: 10
   playerSpeed: 19
   sprintSpeed: 28
