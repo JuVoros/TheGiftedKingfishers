@@ -321,5 +321,12 @@ public class playerController : MonoBehaviour, IDamage
         controller.Move(teleportPosition - transform.position); 
         }
     }
+    public IEnumerator jumpScare(GameObject screen, AudioClip clip, float volume)
+    {
+        screen.SetActive(true);
+        audi.PlayOneShot(clip, volume);
+        yield return new WaitForSeconds(1f);
+        screen.SetActive(false);
+    }
 
 }

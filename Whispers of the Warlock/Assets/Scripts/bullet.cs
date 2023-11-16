@@ -6,7 +6,6 @@ public class Bul : MonoBehaviour
 {
     [Header("---- Components ----")]
     [SerializeField] Rigidbody rb;
-    [SerializeField] GameObject explosion;
 
     [Header("---- Stats ----")]
     [SerializeField] int damage;
@@ -21,14 +20,21 @@ public class Bul : MonoBehaviour
         dir /= Time.deltaTime;
         dir = Vector3.ClampMagnitude(dir, speed);
         rb.velocity = dir; 
+
         Destroy(gameObject, destroyTime);
     }
-    public IEnumerator takeDamage()
-    {
-        yield return new WaitForSeconds(destroyTime);
 
-        if (explosion != null)
-            Instantiate(explosion, transform.position, explosion.transform.rotation);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger)
+            return;
+
+        IDamage damagable = other.GetComponent<IDamage>();
+
+        if (damagable != null)
+        {
+            damagable.takeDamage(damage);
+        }
         Destroy(gameObject);
     }
 

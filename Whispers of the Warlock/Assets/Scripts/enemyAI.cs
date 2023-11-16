@@ -201,7 +201,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 DropPotion(gameManager.instance.getPotionDrops());
                 //if (rando >= 50 && rando <= 75)
                 //{
-                    StartCoroutine(gameManager.instance.jumpScare());
+                    gameManager.instance.ScareJump();
                     // for testing purposes
                 //}
 

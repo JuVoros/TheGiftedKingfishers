@@ -16,7 +16,6 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject controlMenu;
     [SerializeField] GameObject jumpScareScreen;
-    [SerializeField] AudioSource audi;
     [SerializeField] AudioClip jumpScareSound;
     [SerializeField] float jumpScareVol;
 
@@ -146,19 +145,16 @@ public class gameManager : MonoBehaviour
         bossDeathScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         bossDeathScreen.SetActive(false);
-    }
-
-    public IEnumerator jumpScare()
-    {
-        jumpScareScreen.SetActive(true);
-        audi.PlayOneShot(jumpScareSound, jumpScareVol);
-        yield return new WaitForSeconds(1f);
-        jumpScareScreen.SetActive(false);
-    }
+    }  
     public void ReloadText(bool set)
     {
 
        reloadPromp.SetActive(set);
+
+    }
+    public void ScareJump()
+    {
+       StartCoroutine(playerScript.jumpScare(jumpScareScreen, jumpScareSound, jumpScareVol));
 
     }
     public void openGate()
