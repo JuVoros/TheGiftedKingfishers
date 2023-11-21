@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     [SerializeField] float rechargeRate;
+    string weaponName;
     public Light staffLight;
     int staffSelected;
     int PlayerHPOrig;
@@ -251,6 +252,7 @@ public class playerController : MonoBehaviour, IDamage
         rechargeRate = staffList[staffSelected].rechargeRate;
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[staffSelected].model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[staffSelected].model.GetComponent<MeshRenderer>().sharedMaterial;
+        gameManager.instance.weaponNameUpdate();
 
         isShooting = false;
     }
@@ -263,12 +265,13 @@ public class playerController : MonoBehaviour, IDamage
         shootDistance = gun.shootDistance;
         shootRate = gun.shootRate;
         rechargeRate = gun.rechargeRate;
+        weaponName = gun.weaponName;
 
         audi.PlayOneShot(pickupSound, pickupVol);
 
         staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
-
+        gameManager.instance.weaponNameUpdate();
 
         staffSelected = staffList.Count - 1;
 
@@ -353,4 +356,8 @@ public class playerController : MonoBehaviour, IDamage
         screen.SetActive(false);
     }
 
+    public string getWeaponName()
+    {
+        return weaponName;
+    }
 }

@@ -36,7 +36,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject bossDeathScreen;
     
     [SerializeField] TMP_Text enemyCountText;
-   [Range(0,1)][SerializeField] float playerFlashTime;
+    [SerializeField] TMP_Text weaponNameText;
+    [Range(0,1)][SerializeField] float playerFlashTime;
 
     public Image playerHPBar;
     public Image playerManaBar;
@@ -98,6 +99,12 @@ public class gameManager : MonoBehaviour
             StartCoroutine(Winner());
         }
     }
+
+    public  void weaponNameUpdate()
+    {
+        weaponNameText.text = playerScript.getWeaponName();
+    }
+
     public IEnumerator Winner()
     {
         yield return new WaitForSeconds(3);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -14,6 +15,7 @@ public class gunStats : ScriptableObject
     public float rechargeRate;
 
 
+    public string weaponName;
     public GameObject model;
     public ParticleSystem hitEffect;
     public AudioClip shootSound;

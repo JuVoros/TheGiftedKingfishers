@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDistance: 80
   shootRate: 1
   rechargeRate: 1.5
-  staffLght: {fileID: 0}
+  weaponName: Earth
   model: {fileID: 6759754029706040241, guid: 0b70de5d1249322499864e428576c58a, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: a33a5949498011e419e0131c1b892b78, type: 3}
   shootSound: {fileID: 8300000, guid: 076c674d9627d49d7bc9428ecb754613, type: 3}

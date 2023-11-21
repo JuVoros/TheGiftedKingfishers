@@ -16,7 +16,7 @@ MonoBehaviour:
   shootDistance: 500
   shootRate: 0.8
   rechargeRate: 0.5
-  staffLght: {fileID: 0}
+  weaponName: Wind
   model: {fileID: 1291813465720997136, guid: 3c76761571ce90a4594e0a5d73700957, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: a3d4a9c660208cc4fb4145c66aff31cb, type: 3}
   shootSound: {fileID: 8300000, guid: 2b26cbea232414fcfab41a84fc7a1c55, type: 3}
