@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1036f8d4fb325c45a6e08cb4f62bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRangedEnemy: 1
   agent: {fileID: 9158889016199873055}
   anim: {fileID: 1032688908546901596}
   model: {fileID: 3583258777665115773}
@@ -438,6 +439,11 @@ MonoBehaviour:
   enemyHpBar: {fileID: 5448186281749231596}
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
   shootRate: 1.25
+  meleeCone: 0
+  meleeAttackDuration: 0
+  meleeAttackRange: 0
+  meleeDamage: 0
+  meleeAttackDamageTiming: 0
 --- !u!95 &1032688908546901596
 Animator:
   serializedVersion: 5

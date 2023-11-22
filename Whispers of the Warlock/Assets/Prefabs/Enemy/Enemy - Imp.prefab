@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1036f8d4fb325c45a6e08cb4f62bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRangedEnemy: 0
   agent: {fileID: 4664120590999084102}
   anim: {fileID: 5474748379052162835}
   model: {fileID: 13700000, guid: 279252e7473c10e4eab95fe64f974013, type: 3}
@@ -226,6 +227,11 @@ MonoBehaviour:
   enemyHpBar: {fileID: 0}
   bullet: {fileID: 3535418521258115099, guid: 7ebccd21ef4c2e9439f9714fa718f261, type: 3}
   shootRate: 1.25
+  meleeCone: 5
+  meleeAttackDuration: 0.8
+  meleeAttackRange: 5
+  meleeDamage: 1
+  meleeAttackDamageTiming: 0.8
 --- !u!136 &1752876550847849733
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -259,11 +265,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 6
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 8
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

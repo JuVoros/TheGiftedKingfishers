@@ -10251,6 +10251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1036f8d4fb325c45a6e08cb4f62bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRangedEnemy: 1
   agent: {fileID: 3774061873228980479}
   anim: {fileID: 5738350337081564231}
   model: {fileID: 1366475028871010091}
@@ -10266,6 +10267,11 @@ MonoBehaviour:
   enemyHpBar: {fileID: 4357128449283054081}
   bullet: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
   shootRate: 1
+  meleeCone: 0
+  meleeAttackDuration: 0
+  meleeAttackRange: 0
+  meleeDamage: 0
+  meleeAttackDamageTiming: 0
 --- !u!195 &3774061873228980479
 NavMeshAgent:
   m_ObjectHideFlags: 0

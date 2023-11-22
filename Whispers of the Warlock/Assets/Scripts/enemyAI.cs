@@ -9,6 +9,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
+    [Header("----- Enemy Type ------")]
+    [SerializeField] bool isRangedEnemy;
+
     [Header("----- Componets ------")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
@@ -33,14 +36,22 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [Range(0, 10)][SerializeField] float shootRate;
 
+    [Header("----- Melee Stats -----")]
+    [SerializeField] int meleeCone;
+    [SerializeField] float meleeAttackDuration;
+    [SerializeField] float meleeAttackRange;
+    [SerializeField] int meleeDamage;
+    [SerializeField] float meleeAttackDamageTiming; //timing within the melee attack anim when damage should be applied, adjust based on our anim
+
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
     bool isDead;
-    float angleToPlayer;
-    int EnemyHPOrig;
-    float stoppingDistOrig;
     bool destinationChosen;
+    bool isMeleeAttacking = false;
+    int EnemyHPOrig;
+    float angleToPlayer;
+    float stoppingDistOrig;
     Vector3 startingPos;
     Vector3 dropLoca;
     Vector3 placeHolder = new Vector3(3, 2, -10);
@@ -73,6 +84,22 @@ public class enemyAI : MonoBehaviour, IDamage
             else if (!playerInRange)
             {
                 StartCoroutine(roam());
+            }
+
+            if(canSeePlayer())
+            {
+                if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
+                {
+                    StartCoroutine(Shoot());
+                }else if (!isRangedEnemy && angleToPlayer <= meleeCone && !isMeleeAttacking)
+                {
+                    StartCoroutine(meleeAttack());
+                }
+            }
+
+            if (canSeePlayer() && angleToPlayer <= meleeCone && !isMeleeAttacking)
+            {
+                StartCoroutine(meleeAttack());
             }
         }
 
@@ -107,7 +134,7 @@ public class enemyAI : MonoBehaviour, IDamage
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
-        
+
 
         RaycastHit hit;
 
@@ -118,12 +145,16 @@ public class enemyAI : MonoBehaviour, IDamage
                 agent.stoppingDistance = stoppingDistOrig;
                 Debug.Log(agent.remainingDistance);
 
-                if (angleToPlayer <= shootCone && !isShooting)
+                if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
+                {
                     StartCoroutine(Shoot());
+                } 
+                else if (!isRangedEnemy && angleToPlayer <= meleeCone && !isMeleeAttacking)
+                    StartCoroutine(meleeAttack());
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
-                    
+
                     faceTarget();
                 }
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -142,7 +173,7 @@ public class enemyAI : MonoBehaviour, IDamage
             playerInRange = true;
             if (agent.CompareTag("Enemy"))
                 enemyHpBar.enabled = true;
-            
+
         }
 
     }
@@ -166,6 +197,30 @@ public class enemyAI : MonoBehaviour, IDamage
         Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    IEnumerator meleeAttack()
+    {
+        isMeleeAttacking = true;
+
+        anim.SetTrigger("Melee");
+        
+        //Wait for melee attack anim to reach a point where damage should be applied
+        yield return new WaitForSeconds(meleeAttackDamageTiming);
+
+        RaycastHit hit;
+        if(Physics.Raycast(headPos.position, playerDir, out hit, meleeAttackRange))
+        {
+            if(hit.collider.CompareTag("Player"))
+            {
+                hit.collider.GetComponent<IDamage>().takeDamage(meleeDamage);
+            }
+        }
+
+        //Waits for rest of melee attack anim to finish
+        yield return new WaitForSeconds(meleeAttackDuration - meleeAttackDamageTiming);
+
+        isMeleeAttacking = false;
     }
 
     public void takeDamage(int damage)
