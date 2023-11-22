@@ -7096,8 +7096,20 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: blinkDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: playerSpeed
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: audioTeleportRecharge
+      value: 
+      objectReference: {fileID: 8300000, guid: 28ade36788553f44d957cae18cd1a0e4, type: 3}
+    - target: {fileID: 6742562851407189401, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
+      propertyPath: audioTeleportRechargeVol
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7305756317911796496, guid: dc987fe990b7aca4b9ef3bde60045bed, type: 3}
       propertyPath: m_Name

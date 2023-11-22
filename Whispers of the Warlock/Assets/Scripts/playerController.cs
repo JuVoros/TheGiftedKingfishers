@@ -17,6 +17,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float audioStepsVol;
     [SerializeField] AudioClip audioTeleport;
     [SerializeField] float audioTeleportVol;
+    [SerializeField] AudioClip audioTeleportRecharge;
+    [SerializeField] float audioTeleportRechargeVol;
     [SerializeField]AudioClip potionSound;
     [SerializeField] float potionVol;
     [SerializeField] AudioClip pickupSound;
@@ -31,23 +33,26 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 20)][SerializeField] int HP;
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
-
+    [SerializeField] int blinkDelay;
     [Range(1, 20)][SerializeField] int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
 
-    [Header("------Staff Stats------")]
+    int PlayerHPOrig;
+    private int jumpedTimes;
+    public int manaCur;
+
+
+    //Gun Stats
     [SerializeField] List<gunStats> staffList = new List<gunStats>();
     [SerializeField] GameObject staffModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     [SerializeField] float rechargeRate;
-    string weaponName;
-    public Light staffLight;
+    [SerializeField] string weaponName;
+    [SerializeField] public Light staffLight;
     int staffSelected;
-    int PlayerHPOrig;
-    private int jumpedTimes;
-    public int manaCur;
+
    
     private float speedOrig;
 
@@ -59,6 +64,7 @@ public class playerController : MonoBehaviour, IDamage
     bool isPlayingSteps;
     bool isSprinting;
     bool isRegenMana;
+    bool isBlinking;
 
 
 
@@ -79,9 +85,9 @@ public class playerController : MonoBehaviour, IDamage
         {
             Move();
 
-            if (Input.GetButtonDown("Blink"))
+            if (Input.GetButtonDown("Blink")&& !isBlinking)
             {
-                teleport();
+                StartCoroutine(teleport());
             }
 
             if (staffList.Count > 0)
@@ -276,18 +282,6 @@ public class playerController : MonoBehaviour, IDamage
         staffSelected = staffList.Count - 1;
 
     }
-   /* void Reload()
-    {
-
-        if (Input.GetButtonDown("Reload"))
-        {
-            staffList[staffSelected].ammoCur = staffList[staffSelected].ammoMax;
-            gameManager.instance.playerManaBar.fillAmount = (float)staffList[staffSelected].ammoCur / staffList[staffSelected].ammoMax;
-
-        }
-        updatePlayerUI();
-
-    }*/
 
     IEnumerator manaRegen()
     {
@@ -334,10 +328,11 @@ public class playerController : MonoBehaviour, IDamage
         updatePlayerUI() ;
     }
 
-    public void teleport()
+    public IEnumerator teleport()
     {
         if(manaCur >= blinkMana)
         {
+            isBlinking = true;
             manaCur -= blinkMana;
             updatePlayerUI();
         Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
@@ -345,7 +340,13 @@ public class playerController : MonoBehaviour, IDamage
         {
             audi.PlayOneShot(audioTeleport, audioTeleportVol);
         }
-        controller.Move(teleportPosition - transform.position); 
+        controller.Move(teleportPosition - transform.position);
+            yield return new WaitForSeconds(blinkDelay);
+            isBlinking = false;
+            if (audioTeleport != null)
+            {
+                audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
+            }
         }
     }
     public IEnumerator jumpScare(GameObject screen, AudioClip clip, float volume)
