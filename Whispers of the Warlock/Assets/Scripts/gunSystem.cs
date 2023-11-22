@@ -41,10 +41,7 @@ public class gunSystem : MonoBehaviour
     private void Update()
     {
         MyInput();
-        if (bulletsLeft <= 0) 
-        { 
-            gameManager.instance.ReloadText(true);
-        }
+        
     }
 
     private void MyInput()
@@ -116,7 +113,6 @@ public class gunSystem : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         gameManager.instance.playerManaBar.fillAmount = (float)bulletsLeft / magazineSize;
-        gameManager.instance.ReloadText(false);
         reloading = false;
     }
     

@@ -16,24 +16,18 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject controlMenu;
     [SerializeField] GameObject jumpScareScreen;
+    [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] GameObject playerHealthScreen;
+    [SerializeField] GameObject bossDeathScreen;
+    [SerializeField] GameObject reticle;
+
     [SerializeField] AudioClip jumpScareSound;
     [SerializeField] float jumpScareVol;
-
-
-    [SerializeField] GameObject reloadPromp;
-    [SerializeField] Animator gateOne;
-    [SerializeField] Animator gateTwo;
 
     [SerializeField] List<GameObject> weaponDrops;
     public List<GameObject> tempWeaponDrops;    
     [SerializeField] Transform[] weaponSpawmPos;
-
-
-    [SerializeField] List<GameObject> potionDrops;
-
-    [SerializeField] GameObject playerDamageScreen;
-    [SerializeField] GameObject playerHealthScreen;
-    [SerializeField] GameObject bossDeathScreen;
+    [SerializeField] List<GameObject> potionDrops;    
     
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text weaponNameText;
@@ -73,6 +67,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = 0;
+        reticle.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -81,6 +76,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = timeScaleOrig;
+        reticle.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
@@ -153,32 +149,11 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         bossDeathScreen.SetActive(false);
     }  
-    public void ReloadText(bool set)
-    {
-
-       reloadPromp.SetActive(set);
-
-    }
     public void ScareJump()
     {
        StartCoroutine(playerScript.jumpScare(jumpScareScreen, jumpScareSound, jumpScareVol));
 
     }
-    public void openGate()
-    {
-        if (enemiesRemaining == 2)
-            gateOne.SetBool("Open", true);
-        if (enemiesRemaining == 1)
-            gateTwo.SetBool("Open", true);
-    }
-
-    public void closeGate()
-    {
-  
-            gateOne.SetBool("Open", false);      
-            gateTwo.SetBool("Open", false);
-    }
-
     public List<GameObject> getWeaponDrops()
     {
         return tempWeaponDrops;

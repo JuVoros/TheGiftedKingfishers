@@ -43,7 +43,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool destinationChosen;
     Vector3 startingPos;
     Vector3 dropLoca;
-    Vector3 placeHolder = new Vector3(1, 2, 3);
+    Vector3 placeHolder = new Vector3(3, 2, -10);
 
     void Start()
     {
@@ -116,13 +116,14 @@ public class enemyAI : MonoBehaviour, IDamage
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-
+                Debug.Log(agent.remainingDistance);
 
                 if (angleToPlayer <= shootCone && !isShooting)
                     StartCoroutine(Shoot());
 
                 if (agent.remainingDistance < agent.stoppingDistance)
                 {
+                    
                     faceTarget();
                 }
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -187,7 +188,6 @@ public class enemyAI : MonoBehaviour, IDamage
             if (agent.CompareTag("Enemy"))
             {
                 gameManager.instance.updateGoal(-1);
-                gameManager.instance.openGate();
                 DropItem(gameManager.instance.getWeaponDrops());
 
             }
@@ -200,7 +200,7 @@ public class enemyAI : MonoBehaviour, IDamage
             {
                 DropPotion(gameManager.instance.getPotionDrops());
 
-                if (rando >= 50 && rando <= 60)
+                if (rando == 59 || rando == 60)
                 {
                     gameManager.instance.ScareJump();
                 }
@@ -254,6 +254,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void faceTarget()
     {
+        
         Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
     }

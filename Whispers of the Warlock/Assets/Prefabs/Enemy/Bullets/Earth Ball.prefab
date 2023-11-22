@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5835394472452040972}
   explosion: {fileID: 9089678457477803695, guid: 74766933814133d4c87f744726a03622, type: 3}
-  speed: 15
-  destroyTime: 3
+  speed: 18
+  destroyTime: 4
   velUp: 3
 --- !u!135 &8950277354476182625
 SphereCollider:
@@ -67,11 +67,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.05
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5835394472452040972
 Rigidbody:
@@ -82,7 +82,7 @@ Rigidbody:
   m_GameObject: {fileID: 8677509504579278298}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.3
   m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

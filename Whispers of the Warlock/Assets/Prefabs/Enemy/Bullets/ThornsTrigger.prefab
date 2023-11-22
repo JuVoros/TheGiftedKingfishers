@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056413400888524662}
   - component: {fileID: 4732163632741765644}
-  - component: {fileID: 4316108678962113148}
+  - component: {fileID: -709523848423202395}
   m_Layer: 0
   m_Name: ThornsTrigger
   m_TagString: Untagged
@@ -48,8 +48,9 @@ MonoBehaviour:
   damage: 1
   destroyTime: 10
   exploEffect: {fileID: 1797975770900342751, guid: f3b76a0e8f8417d4cbbe4e844db510dc, type: 3}
---- !u!65 &4316108678962113148
-BoxCollider:
+  damageCooldown: 2
+--- !u!135 &-709523848423202395
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -67,5 +68,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}

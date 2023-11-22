@@ -23,11 +23,12 @@ public class Grenade : MonoBehaviour
 
         IEnumerator explo()
         {
-
+           
             yield return new WaitForSeconds(destroyTime);
 
             if (explosion != null)
                 Instantiate(explosion, transform.position, explosion.transform.rotation);
+
             Destroy(gameObject);
         }
     }
