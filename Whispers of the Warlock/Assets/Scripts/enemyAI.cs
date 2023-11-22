@@ -86,21 +86,8 @@ public class enemyAI : MonoBehaviour, IDamage
                 StartCoroutine(roam());
             }
 
-            if(canSeePlayer())
-            {
-                if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
-                {
-                    StartCoroutine(Shoot());
-                }else if (!isRangedEnemy && angleToPlayer <= meleeCone && !isMeleeAttacking)
-                {
-                    StartCoroutine(meleeAttack());
-                }
-            }
 
-            if (canSeePlayer() && angleToPlayer <= meleeCone && !isMeleeAttacking)
-            {
-                StartCoroutine(meleeAttack());
-            }
+          
         }
 
     }
@@ -149,7 +136,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 {
                     StartCoroutine(Shoot());
                 } 
-                else if (!isRangedEnemy && angleToPlayer <= meleeCone && !isMeleeAttacking)
+                else if (!isRangedEnemy && angleToPlayer <= meleeCone && !isMeleeAttacking && agent.remainingDistance <= meleeAttackRange)
                     StartCoroutine(meleeAttack());
 
                 if (agent.remainingDistance < agent.stoppingDistance)

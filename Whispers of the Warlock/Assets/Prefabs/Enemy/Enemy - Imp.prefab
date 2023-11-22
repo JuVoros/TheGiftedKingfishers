@@ -229,7 +229,7 @@ MonoBehaviour:
   shootRate: 1.25
   meleeCone: 5
   meleeAttackDuration: 0.8
-  meleeAttackRange: 5
+  meleeAttackRange: 2
   meleeDamage: 1
   meleeAttackDamageTiming: 0.8
 --- !u!136 &1752876550847849733
@@ -269,7 +269,7 @@ NavMeshAgent:
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 4
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
