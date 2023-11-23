@@ -252,6 +252,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void changeStaff()
     {
+        weaponName = staffList[staffSelected].weaponName;
         shootDamage = staffList[staffSelected].shootDamage;
         shootDistance = staffList[staffSelected].shootDistance;
         shootRate = staffList[staffSelected].shootRate;
