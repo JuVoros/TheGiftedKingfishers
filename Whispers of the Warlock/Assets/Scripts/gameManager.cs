@@ -14,7 +14,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject controlMenu;
+    [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject keybindsMenu; 
+    [SerializeField] GameObject audioMenu;
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
@@ -116,17 +118,38 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
 
     }
-    public void Controls()
+    public void Options()
     {
         menuActive.SetActive(false);
-        menuActive = controlMenu;
+        menuActive = optionsMenu;
+        menuActive.SetActive(true);
+    }
+    public void Audio()
+    {
+        menuActive.SetActive(false);
+        menuActive = audioMenu;
+        menuActive.SetActive(true);
+    }
+    public void keybinds()
+    {
+        menuActive.SetActive(false);
+        menuActive = keybindsMenu;
         menuActive.SetActive(true);
     }
     public void backButton()
     {
-        menuActive.SetActive(false);
-        menuActive = menuPause;
-        menuActive.SetActive(true);
+        if (menuActive != optionsMenu)
+        {
+            menuActive.SetActive(false);
+            menuActive = optionsMenu;
+            menuActive.SetActive(true);
+        }
+        else
+        {
+            menuActive.SetActive(false);
+            menuActive = menuPause;
+            menuActive.SetActive(true);
+        }
     }
     public IEnumerator playerFlashDamage()
     {
