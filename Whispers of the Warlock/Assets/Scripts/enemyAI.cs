@@ -212,6 +212,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int damage)
     {
+        
         EnemyHP -= damage;
         
         if(agent.CompareTag("Enemy"))
