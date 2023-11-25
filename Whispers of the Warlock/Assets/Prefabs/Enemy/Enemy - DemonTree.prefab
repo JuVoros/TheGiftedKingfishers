@@ -3429,7 +3429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6569665572855222427}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9659252, z: -0, w: 0.25882143}
+  m_LocalRotation: {x: 0, y: -0.9659258, z: 0, w: 0.2588191}
   m_LocalPosition: {x: 200.26, y: -31.809689, z: 160.77}
   m_LocalScale: {x: 2, y: 2.1578, z: 2}
   m_ConstrainProportionsScale: 0
@@ -3458,7 +3458,7 @@ MonoBehaviour:
   model: {fileID: 3081334667163104680}
   shootPos: {fileID: 2054207384085344088}
   headPos: {fileID: 3819008085177987205}
-  damageColli: {fileID: 5881917974559065100}
+  damageColli: {fileID: 0}
   EnemyHP: 25
   playerFaceSpeed: 5
   viewCone: 90
