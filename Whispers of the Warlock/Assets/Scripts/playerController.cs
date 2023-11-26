@@ -80,7 +80,8 @@ public class playerController : MonoBehaviour, IDamage
 
     void Update()
     {
-
+        if (transform.position.y < 540)
+            spawnPlayer();
         if (!gameManager.instance.isPaused)
         {
             Move();
