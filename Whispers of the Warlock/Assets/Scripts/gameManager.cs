@@ -5,6 +5,9 @@ using System.Diagnostics;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Runtime.InteropServices;
+using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class gameManager : MonoBehaviour
 {
@@ -17,6 +20,14 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject keybindsMenu; 
     [SerializeField] GameObject audioMenu;
+    [SerializeField] GameObject pauseMenuButton;
+    [SerializeField] GameObject optionsMenuButton;
+    [SerializeField] GameObject audioMenuButton;
+    [SerializeField] GameObject controlsMenuButton;
+    [SerializeField] GameObject winMenuButton;
+    [SerializeField] GameObject loseMenuButton;
+
+
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
@@ -44,6 +55,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     float timeScaleOrig;
     public int enemiesRemaining;
+    int index;
     void Awake()
     {
         tempWeaponDrops = weaponDrops;
@@ -61,6 +73,7 @@ public class gameManager : MonoBehaviour
         {
             StatePause();
             menuActive = menuPause;
+            Main();
             menuActive.SetActive(isPaused);
         }
     }
@@ -105,6 +118,8 @@ public class gameManager : MonoBehaviour
 
     public IEnumerator Winner()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(winMenuButton);
         yield return new WaitForSeconds(3);
         StatePause();
         menuActive = menuWin;
@@ -113,6 +128,8 @@ public class gameManager : MonoBehaviour
 
     public void Lose()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(loseMenuButton);
         StatePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
@@ -120,35 +137,53 @@ public class gameManager : MonoBehaviour
     }
     public void Options()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsMenuButton);
         menuActive.SetActive(false);
         menuActive = optionsMenu;
         menuActive.SetActive(true);
+        index = 0;
     }
     public void Audio()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(audioMenuButton);
         menuActive.SetActive(false);
         menuActive = audioMenu;
         menuActive.SetActive(true);
+        index = 1;
     }
     public void keybinds()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controlsMenuButton);
         menuActive.SetActive(false);
         menuActive = keybindsMenu;
         menuActive.SetActive(true);
+        index = 1;
+    }
+    public void Main()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(pauseMenuButton);
+        menuActive.SetActive(false);
+        menuActive = menuPause;
+        menuActive.SetActive(true);
+        index = 0;
+
     }
     public void backButton()
     {
-        if (menuActive != optionsMenu)
+        switch (index)
         {
-            menuActive.SetActive(false);
-            menuActive = optionsMenu;
-            menuActive.SetActive(true);
-        }
-        else
-        {
-            menuActive.SetActive(false);
-            menuActive = menuPause;
-            menuActive.SetActive(true);
+
+            case 0:
+                Main();
+                break;
+
+            case 1:
+                Options();
+                break;
         }
     }
     public IEnumerator playerFlashDamage()

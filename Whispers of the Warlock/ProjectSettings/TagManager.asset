@@ -8,6 +8,8 @@ TagManager:
   - Mana
   - SFX
   - Music
+  - Menu Music
+  - Menu SFX
   layers:
   - Default
   - TransparentFX
