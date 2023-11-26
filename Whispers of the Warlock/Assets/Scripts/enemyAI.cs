@@ -189,8 +189,8 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator meleeAttack()
     {
         isMeleeAttacking = true;
-        //int animIndex = Random.Range(0, 4);
-        //anim.SetFloat("Index", animIndex);
+        int animIndex = Random.Range(0, 4);
+        anim.SetFloat("Index", animIndex);
         anim.SetTrigger("Melee");
         
         //Wait for melee attack anim to reach a point where damage should be applied

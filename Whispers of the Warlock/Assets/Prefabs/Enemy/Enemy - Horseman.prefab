@@ -2630,6 +2630,7 @@ GameObject:
   - component: {fileID: 5267934804337583682}
   - component: {fileID: 587158716115038875}
   - component: {fileID: 6804984010861969949}
+  - component: {fileID: 8839982231237550908}
   m_Layer: 0
   m_Name: Enemy - Horseman
   m_TagString: Untagged
@@ -2647,8 +2648,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2306.8442, y: 600, z: 629.56085}
-  m_LocalScale: {x: 8, y: 8, z: 8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1996723864036217927}
   - {fileID: 768809238109030571}
@@ -2670,6 +2671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1036f8d4fb325c45a6e08cb4f62bc95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRangedEnemy: 0
   agent: {fileID: 587158716115038875}
   anim: {fileID: 5267934804337583682}
   model: {fileID: 8656479324252619429}
@@ -2685,6 +2687,11 @@ MonoBehaviour:
   enemyHpBar: {fileID: 0}
   bullet: {fileID: 0}
   shootRate: 0
+  meleeCone: 0
+  meleeAttackDuration: 0
+  meleeAttackRange: 0
+  meleeDamage: 0
+  meleeAttackDamageTiming: 0
 --- !u!95 &5267934804337583682
 Animator:
   serializedVersion: 5
@@ -2751,6 +2758,27 @@ CapsuleCollider:
   m_Height: 3.38
   m_Direction: 1
   m_Center: {x: 0, y: 1.59, z: 0}
+--- !u!135 &8839982231237550908
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497810979601090897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2544591366857412196
 GameObject:
   m_ObjectHideFlags: 0
