@@ -13,6 +13,7 @@ public class Bul : MonoBehaviour
     [SerializeField] int destroyTime;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,15 @@ public class Bul : MonoBehaviour
         if (other.isTrigger)
             return;
 
+        Shield shield = other.GetComponent<Shield>();
+
+        if (shield != null && shield.IsShieldActive())
+        {
+            rb.velocity = -rb.velocity;
+        }
+        else
+        {
+
         IDamage damagable = other.GetComponent<IDamage>();
 
         if (damagable != null)
@@ -37,5 +47,7 @@ public class Bul : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+        }
 
 }                                                           

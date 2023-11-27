@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour, IDamage
     [Header("-----Components------")]
     [SerializeField] CharacterController controller;
     [SerializeField] AudioSource audi;
+    [SerializeField] GameObject shield;
 
     [Header("------Audio------")]
     [SerializeField] AudioClip[] audioDamage;
@@ -30,17 +31,17 @@ public class playerController : MonoBehaviour, IDamage
     [Range(10, 35)][SerializeField] float sprintSpeed;
     [Range(-5, -20)][SerializeField] float gravityValue;
     [Range(1, 10)][SerializeField] int jumpsMax;
-    [Range(1, 20)][SerializeField] int HP;
+    [Range(1, 120)][SerializeField] int HP;
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
     [SerializeField] int blinkDelay;
     [Range(1, 20)][SerializeField] int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
+    [SerializeField] float fallYLevel;
 
     int PlayerHPOrig;
     private int jumpedTimes;
     public int manaCur;
-
 
     //Gun Stats
     [SerializeField] List<gunStats> staffList = new List<gunStats>();
@@ -80,8 +81,10 @@ public class playerController : MonoBehaviour, IDamage
 
     void Update()
     {
-        if (transform.position.y < 540)
+        if (transform.position.y < fallYLevel)
+        {
             spawnPlayer();
+        }
         if (!gameManager.instance.isPaused)
         {
             Move();
