@@ -233,4 +233,13 @@ public class gameManager : MonoBehaviour
         }
 
     }
+    public void UpdateSpawnPos(Transform transform)
+    {
+
+
+
+
+
+
+    }
 }
