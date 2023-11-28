@@ -22,7 +22,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
 
     [Header("----- Enemy Stats ------")]
-    [Range(1, 100)][SerializeField] int EnemyHP;
+    [Range(1, 100)]public int EnemyHP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
     [SerializeField] int viewCone;
     [SerializeField] int shootCone;
@@ -49,7 +49,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isDead;
     bool destinationChosen;
     bool isMeleeAttacking = false;
-    int EnemyHPOrig;
+    public int EnemyHPOrig;
     float angleToPlayer;
     float stoppingDistOrig;
     Vector3 startingPos;
@@ -130,7 +130,6 @@ public class enemyAI : MonoBehaviour, IDamage
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-                Debug.Log(agent.remainingDistance);
 
                 if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
                 {
@@ -303,7 +302,7 @@ public class enemyAI : MonoBehaviour, IDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
     }
 
-    void updateHpBar()
+    public void updateHpBar()
     {
         enemyHpBar.fillAmount = (float)EnemyHP / EnemyHPOrig;
 

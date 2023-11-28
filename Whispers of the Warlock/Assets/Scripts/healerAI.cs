@@ -7,6 +7,7 @@ public class healerAI : MonoBehaviour
 {
 
 
+
     [Header("----- Enemy Type ------")]
     [SerializeField] bool isRangedEnemy;
 
@@ -22,8 +23,7 @@ public class healerAI : MonoBehaviour
     [Header("----- Enemy Stats ------")]
     [Range(1, 100)][SerializeField] int EnemyHP;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
-    [SerializeField] GameObject friendlyOne;
-    [SerializeField] GameObject friendlyTwo;
+    
     [SerializeField] int viewCone;
     [SerializeField] int shootCone;
     [SerializeField] int roamDist;
@@ -35,12 +35,19 @@ public class healerAI : MonoBehaviour
     [SerializeField] GameObject bullet;
     [Range(0, 10)][SerializeField] float shootRate;
 
+    [Header("----- Healing Stats -----")]
+    [Range(0, 10)][SerializeField] float healRate;
+    [Range(1, 100)][SerializeField] int healAmount;
+    [SerializeField] GameObject friendly;
+
     Vector3 playerDir;
-    Vector3 friendlyOneDir;
-    Vector3 friendlyTwoDir;
+    Vector3 friendlyDir;
     bool playerInRange;
     bool enemyInRange;
     bool isShooting;
+    bool isHealing;
+    int friendlyHpOrig;
+    int friendlyHp;
     bool isDead;
     bool destinationChosen;
     int EnemyHPOrig;
@@ -48,15 +55,16 @@ public class healerAI : MonoBehaviour
     float angleToEnemy;
     float stoppingDistOrig;
     Vector3 startingPos;
-    Vector3 dropLoca;
-    Vector3 placeHolder = new Vector3(3, 2, -10);
+   
 
     void Start()
     {
         EnemyHPOrig = EnemyHP;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-
+        friendly = GameObject.FindWithTag("Boss");
+        friendlyHp = friendly.GetComponent<enemyAI>().EnemyHP;
+        friendlyHpOrig = friendly.GetComponent<enemyAI>().EnemyHPOrig;
     }
 
     void Update()
@@ -86,7 +94,7 @@ public class healerAI : MonoBehaviour
     IEnumerator roam()
     {
 
-        if (agent.remainingDistance < 0.1f && !destinationChosen && !isDead)
+        if (agent.remainingDistance < 0.4f && !destinationChosen && !isDead)
         {
             destinationChosen = true;
             agent.stoppingDistance = 0;
@@ -110,123 +118,155 @@ public class healerAI : MonoBehaviour
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
-        //if (friendlyOne.GetComponent<NavMeshAgent>().isActiveAndEnabled)
-        //{
-        //    friendlyOneDir = friendlyOne.transform.position - headPos.position;
-        //    angleToEnemy = Vector3.Angle(new Vector3(friendlyOneDir.x, 0, friendlyOneDir.y), transform.forward);
-        //}
-        //else
-        //{
-        //    friendlyTwoDir = friendlyTwo.transform.position - headPos.position;
-        //    angleToEnemy = Vector3.Angle(new Vector3(friendlyTwoDir.x, 0, friendlyTwoDir.y), transform.forward);
-        //}
-
+        
+        
+        friendlyDir = friendly.transform.position - headPos.position;
+        angleToEnemy = Vector3.Angle(new Vector3(friendlyDir.x, 0, friendlyDir.y), transform.forward);
         Debug.DrawRay(headPos.position, playerDir);
 
         RaycastHit hit;
 
-        //if (enemyInRange)
-        //{
-        //    if (Physics.Raycast(headPos.position, Dir, out hit))
-        //    {
-        //        if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
-        //        {
-        //            agent.stoppingDistance = stoppingDistOrig;
-        //            Debug.Log(agent.remainingDistance);
-
-        //            if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
-        //            {
-        //                StartCoroutine(Shoot());
-        //            }
-
-        //            if (agent.remainingDistance < agent.stoppingDistance)
-        //            {
-
-        //                faceTarget();
-        //            }
-        //            agent.SetDestination(gameManager.instance.player.transform.position);
-        //            return true;
-        //        }
-        //    }
-            if (!enemyInRange)
+        if (friendly.GetComponent<NavMeshAgent>().isActiveAndEnabled)
+        {
+            if (Physics.Raycast(headPos.position, friendlyDir, out hit))
             {
-
-                if (Physics.Raycast(headPos.position, playerDir, out hit))
+                if (hit.collider.CompareTag("Boss") && angleToEnemy <= viewCone)
                 {
-                    if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+                    agent.stoppingDistance = stoppingDistOrig;
+
+                    if (isRangedEnemy && angleToEnemy <= shootCone && !isHealing && friendlyHp < friendlyHpOrig)
                     {
-                        agent.stoppingDistance = stoppingDistOrig;
-                        Debug.Log(agent.remainingDistance);
-
-                        if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
-                        {
-                            StartCoroutine(Shoot());
-                        }
-
-                        if (agent.remainingDistance < agent.stoppingDistance)
-                        {
-
-                            faceTarget();
-                        }
-                        agent.SetDestination(gameManager.instance.player.transform.position);
-
-                        return true;
+                        StartCoroutine(Heal());
+                        Debug.Log(Heal());
                     }
+
+                    if (agent.remainingDistance < agent.stoppingDistance)
+                    {
+
+                        faceTarget();
+                    }
+                    agent.SetDestination(friendly.transform.position);
+                    return true;
                 }
-                agent.stoppingDistance = 0;
             }
-            return false;
-        }      
-
-        IEnumerator Shoot()
-        {
-            isShooting = true;
-            anim.SetTrigger("Shoot");
-            Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
-            yield return new WaitForSeconds(shootRate);
-            isShooting = false;
         }
-
-        public void takeDamage(int damage)
+        else if(!friendly.GetComponent<NavMeshAgent>().isActiveAndEnabled)
         {
 
-            EnemyHP -= damage;
-
-
-
-            if (EnemyHP <= 0)
+            if (Physics.Raycast(headPos.position, playerDir, out hit))
             {
-                isDead = true;
-                damageColli.enabled = false;
-                anim.SetBool("Death", true);
-                agent.enabled = false;
+                if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+                {
+                    agent.stoppingDistance = stoppingDistOrig;
+                    Debug.Log(agent.remainingDistance);
 
+                    if (isRangedEnemy && angleToPlayer <= shootCone && !isShooting)
+                    {
+                        StartCoroutine(Shoot());
+                    }
 
+                    if (agent.remainingDistance < agent.stoppingDistance)
+                    {
+
+                        faceTarget();
+                    }
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+
+                    return true;
+                }
             }
-            else
-            {
-                anim.SetTrigger("Damage");
-                StartCoroutine(flashRed());
-                agent.SetDestination(gameManager.instance.player.transform.position);
-            }
+            agent.stoppingDistance = 0;
         }
-        IEnumerator flashRed()
+        return false;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-
-            model.GetComponent<Renderer>().sharedMaterial.color = Color.red;
-            yield return new WaitForSeconds(0.1f);
-            model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
-        }
-
-        void faceTarget()
-        {
-
-            Quaternion rot = Quaternion.LookRotation(playerDir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+            playerInRange = true;
+           
         }
 
     }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            agent.stoppingDistance = 0;
+           
+        }
+
+    }
+    IEnumerator Heal()
+    {
+        isHealing = true;
+        
+        anim.SetTrigger("Heal");
+        
+        if ((friendlyHp += healAmount) > friendlyHpOrig)
+        {
+            friendly.GetComponent<enemyAI>().EnemyHP = friendly.GetComponent<enemyAI>().EnemyHPOrig;
+
+        }
+        else
+        {
+            friendly.GetComponent<enemyAI>().EnemyHP += healAmount;
+        }
+
+        //friendly.GetComponent<enemyAI>().updateHpBar();
+        yield return new WaitForSeconds(healRate);
+        isHealing = false;
+    }
+
+    IEnumerator Shoot()
+    {
+        isShooting = true;
+        anim.SetTrigger("Shoot");
+        Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
+    }
+
+    public void takeDamage(int damage)
+    {
+
+        EnemyHP -= damage;
+
+
+
+        if (EnemyHP <= 0)
+        {
+            isDead = true;
+            damageColli.enabled = false;
+            anim.SetBool("Death", true);
+            agent.enabled = false;
+
+
+        }
+        else
+        {
+            anim.SetTrigger("Damage");
+            StartCoroutine(flashRed());
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
+    }
+    IEnumerator flashRed()
+    {
+
+        model.GetComponent<Renderer>().sharedMaterial.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
+    }
+
+    void faceTarget()
+    {
+
+        Quaternion rot = Quaternion.LookRotation(friendlyDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * playerFaceSpeed);
+    }
+
 }
 
-    
+
 
