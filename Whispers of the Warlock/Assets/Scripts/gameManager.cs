@@ -48,6 +48,7 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
     public Image playerManaBar;
+    public Image teleportIcon;
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;

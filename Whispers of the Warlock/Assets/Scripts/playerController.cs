@@ -337,6 +337,7 @@ public class playerController : MonoBehaviour, IDamage
         if(manaCur >= blinkMana)
         {
             isBlinking = true;
+            ChangeIconAlpha(gameManager.instance.teleportIcon, 0.5f);
             manaCur -= blinkMana;
             updatePlayerUI();
         Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
@@ -346,11 +347,12 @@ public class playerController : MonoBehaviour, IDamage
         }
         controller.Move(teleportPosition - transform.position);
             yield return new WaitForSeconds(blinkDelay);
-            isBlinking = false;
             if (audioTeleport != null)
             {
                 audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
             }
+            isBlinking = false;
+            ChangeIconAlpha(gameManager.instance.teleportIcon, 1);
         }
     }
     public IEnumerator jumpScare(GameObject screen, AudioClip clip, float volume)
@@ -365,4 +367,10 @@ public class playerController : MonoBehaviour, IDamage
     {
         return weaponName;
     }
+
+    public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+    }
+
 }
