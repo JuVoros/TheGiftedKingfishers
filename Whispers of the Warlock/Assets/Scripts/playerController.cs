@@ -34,7 +34,8 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 120)][SerializeField] int HP;
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
-    [SerializeField] int blinkDelay;
+    [SerializeField] int blinkCooldown; // in Frames
+    int blinkTimer;
     [Range(1, 20)][SerializeField] int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
     [SerializeField] float fallYLevel;
@@ -74,6 +75,7 @@ public class playerController : MonoBehaviour, IDamage
         PlayerHPOrig = HP;
         manaCur = manaMax;
         speedOrig = playerSpeed;
+        blinkTimer = blinkCooldown;
         spawnPlayer();
 
       
@@ -89,10 +91,10 @@ public class playerController : MonoBehaviour, IDamage
         {
             Move();
 
-            if (Input.GetButtonDown("Blink")&& !isBlinking)
-            {
-                StartCoroutine(teleport());
-            }
+
+            teleport();
+            
+            
 
             if (staffList.Count > 0)
             {
@@ -332,27 +334,43 @@ public class playerController : MonoBehaviour, IDamage
         updatePlayerUI() ;
     }
 
-    public IEnumerator teleport()
+    public void teleport()
     {
-        if(manaCur >= blinkMana)
+        if (Input.GetButtonDown("Blink") && !isBlinking)
         {
-            isBlinking = true;
-            ChangeIconAlpha(gameManager.instance.teleportIcon, 0.5f);
-            manaCur -= blinkMana;
-            updatePlayerUI();
-        Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
-        if (audioTeleport != null ) 
-        {
-            audi.PlayOneShot(audioTeleport, audioTeleportVol);
-        }
-        controller.Move(teleportPosition - transform.position);
-            yield return new WaitForSeconds(blinkDelay);
-            if (audioTeleport != null)
+            if (manaCur >= blinkMana)
             {
-                audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
+                isBlinking = true;
+                gameManager.instance.teleportIcon.fillAmount = 0;
+
+                manaCur -= blinkMana;
+                updatePlayerUI();
+                Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
+                if (audioTeleport != null)
+                {
+                    audi.PlayOneShot(audioTeleport, audioTeleportVol);
+                }
+                controller.Move(teleportPosition - transform.position);
+
             }
-            isBlinking = false;
-            ChangeIconAlpha(gameManager.instance.teleportIcon, 1);
+        }
+
+        if (isBlinking)
+        {
+            gameManager.instance.teleportIcon.fillAmount += 1 / blinkCooldown * Time.deltaTime;
+
+
+            if (gameManager.instance.teleportIcon.fillAmount >= 1)
+            {
+                gameManager.instance.teleportIcon.fillAmount = 1;
+                isBlinking = false;
+                if (audioTeleport != null)
+                {
+                    audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
+                }
+            }
+
+
         }
     }
     public IEnumerator jumpScare(GameObject screen, AudioClip clip, float volume)
@@ -366,6 +384,12 @@ public class playerController : MonoBehaviour, IDamage
     public string getWeaponName()
     {
         return weaponName;
+    }
+
+    public void teleportCooldown()
+    {
+
+
     }
 
     public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
