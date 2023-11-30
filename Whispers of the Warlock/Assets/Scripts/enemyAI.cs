@@ -56,6 +56,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 dropLoca;
     Vector3 placeHolder = new Vector3(3, 2, -10);
 
+
     void Start()
     {
         EnemyHPOrig = EnemyHP;
@@ -89,6 +90,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
           
         }
+        if (isDead && gameObject.activeSelf)
+        {
+            CleanUp();
+
+        }
+
+
 
     }
 
@@ -249,6 +257,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 }
 
             }
+                      
 
         }
         else
@@ -307,4 +316,14 @@ public class enemyAI : MonoBehaviour, IDamage
         enemyHpBar.fillAmount = (float)EnemyHP / EnemyHPOrig;
 
     }
+    void CleanUp()
+    {
+
+        if ((transform.position - gameManager.instance.player.transform.position).magnitude > 90)
+        {
+
+            Destroy(gameObject, 5f);
+        }
+    }
+    
 }
