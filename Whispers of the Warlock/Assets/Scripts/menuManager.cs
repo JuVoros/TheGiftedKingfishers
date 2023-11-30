@@ -1,11 +1,15 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class menuManager : MonoBehaviour
 {
@@ -15,6 +19,8 @@ public class menuManager : MonoBehaviour
     [SerializeField] GameObject AudioMenu;
     [SerializeField] GameObject ControlsMenu;    
     [SerializeField] GameObject CreditMenu;
+    [SerializeField] AudioMixer mixer;
+
 
     [SerializeField] GameObject firstMainButton;
     [SerializeField] GameObject firstOptionsButton;
@@ -41,6 +47,7 @@ public class menuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(firstOptionsButton);
         menuActive.SetActive(false);       
         menuActive = OptionsMenu;
+        mixer.SetFloat("Master", 0);
         menuActive.SetActive(true);
         index = 0;
     }
@@ -50,6 +57,7 @@ public class menuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(firstAudioButton);
         menuActive.SetActive(false);
         menuActive = AudioMenu;
+        //mixer.SetFloat("Master", -80);
         menuActive.SetActive(true);
         index = 1;
     }
@@ -84,20 +92,7 @@ public class menuManager : MonoBehaviour
             case 1:
                 Options();
                 break;
-        }
-        //if(menuActive == ControlsMenu || menuActive == AudioMenu)
-        //{
-        //    menuActive.SetActive(false);
-        //    menuActive = optionsMenu;
-        //    menuActive.SetActive(true);
-        //}
-        //else
-        //{
-        //    menuActive.SetActive(false);
-        //    menuActive = mainMenu;
-        //    menuActive.SetActive(true);
-        //}
-        
+        }     
 
     }
     public void Main()
@@ -113,6 +108,5 @@ public class menuManager : MonoBehaviour
         Application.Quit();
 
     }
-
-
+   
 }

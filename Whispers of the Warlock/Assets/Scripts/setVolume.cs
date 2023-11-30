@@ -3,36 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class setVolume : MonoBehaviour
 {
-   public AudioMixer mixer;
+    [SerializeField] AudioClip sampleClip;
+    [SerializeField] AudioSource Source;
+    [SerializeField] Slider slider;
 
-    public void SetLevel(float sliderVal)
+
+   
+    public void Sample()
     {
+        if (!Source.isPlaying)
+        {
+            float volume = slider.value;
+            Source.PlayOneShot(sampleClip, volume);
+        }
         
-        if (CompareTag("Music"))
-        {
-            mixer.SetFloat("Music Volume", Mathf.Log10(sliderVal) * 20);
-            PlayerPrefs.SetFloat("Music value", sliderVal);
-        }
-        else if (CompareTag("SFX"))
-        {
-            mixer.SetFloat("SFX Volume", Mathf.Log10(sliderVal) * 20);
-            PlayerPrefs.SetFloat("SFX value", sliderVal);
-
-        }
-        else if (CompareTag("Menu Music"))
-        {
-            mixer.SetFloat("Menu Music Volume", Mathf.Log10(sliderVal) * 20);
-            PlayerPrefs.SetFloat("Menu Music value", sliderVal);
-
-        }
-        else if (CompareTag("Menu SFX"))
-        {
-            mixer.SetFloat("Menu SFX Volume", Mathf.Log10(sliderVal) * 20);
-            PlayerPrefs.SetFloat("Menu SFX value", sliderVal);
-
-        }
     }
 }

@@ -8,18 +8,31 @@ using Unity.VisualScripting;
 using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
-
     [SerializeField] GameObject menuActive;
+    
+
+    [Header("------ Menus ------")]    
     [SerializeField] GameObject menuPause;
-    [SerializeField] GameObject menuWin;
-    [SerializeField] GameObject menuLose;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject keybindsMenu; 
     [SerializeField] GameObject audioMenu;
+    [SerializeField] GameObject menuWin;
+    [SerializeField] GameObject menuLose;
+
+    [Header("------Features ------")]
+    [SerializeField] AudioClip jumpScareSound;
+    [SerializeField] GameObject jumpScareScreen;
+    [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] GameObject playerHealthScreen;
+    [SerializeField] GameObject bossDeathScreen;
+    [Range(0,1)][SerializeField] float playerFlashTime;
+
+    [Header("------ Buttons ------")]
     [SerializeField] GameObject pauseMenuButton;
     [SerializeField] GameObject optionsMenuButton;
     [SerializeField] GameObject audioMenuButton;
@@ -27,24 +40,22 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject winMenuButton;
     [SerializeField] GameObject loseMenuButton;
 
-
-    [SerializeField] GameObject jumpScareScreen;
-    [SerializeField] GameObject playerDamageScreen;
-    [SerializeField] GameObject playerHealthScreen;
-    [SerializeField] GameObject bossDeathScreen;
-    [SerializeField] GameObject reticle;
-
-    [SerializeField] AudioClip jumpScareSound;
+    [Header("------ Audio ------")]
+    [SerializeField] AudioMixer mixer;
     [SerializeField] float jumpScareVol;
 
+    [Header("------ Weapons ------")]
     [SerializeField] List<GameObject> weaponDrops;
     public List<GameObject> tempWeaponDrops;    
     [SerializeField] Transform[] weaponSpawmPos;
-    [SerializeField] List<GameObject> potionDrops;    
-    
+    [SerializeField] List<GameObject> potionDrops;
+
+    [Header("------ UI ------")]
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text weaponNameText;
-    [Range(0,1)][SerializeField] float playerFlashTime;
+    [SerializeField] GameObject reticle;
+
+
 
     public Image playerHPBar;
     public Image playerManaBar;
@@ -143,6 +154,7 @@ public class gameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(optionsMenuButton);
         menuActive.SetActive(false);
         menuActive = optionsMenu;
+        mixer.SetFloat("Master", 0);
         menuActive.SetActive(true);
         index = 0;
     }
@@ -152,6 +164,7 @@ public class gameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(audioMenuButton);
         menuActive.SetActive(false);
         menuActive = audioMenu;
+        mixer.SetFloat("Master", -80);
         menuActive.SetActive(true);
         index = 1;
     }
