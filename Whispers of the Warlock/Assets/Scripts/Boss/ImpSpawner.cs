@@ -2,47 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class ImpSpawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
     [SerializeField] public int numToSpawn;
     [SerializeField] float spawnDelay;
     [SerializeField] Transform[] spawmPos;
-
+    [SerializeField] GameObject boss;
     int spawnCount;
-    bool isSpawning;
-    public bool startSpawning = false;
+    bool isSpawning = false;
+    bool startSpawning;
+    int enemyHp;
+    int enemyHpOrig;
 
     void Start()
     {
-
+        enemyHp = boss.GetComponent<BossScript>().enemyHp;
+        enemyHpOrig = boss.GetComponent<BossScript>().enemyHpOrig;
 
     }
     void Update()
     {
-        if (startSpawning && !isSpawning && spawnCount < numToSpawn)
+        if(startSpawning && !isSpawning && spawnCount < numToSpawn)
         {
             StartCoroutine(Spawn());
 
         }
-
-
     }
-    void OnTriggerEnter(Collider other)
+
+    public void startSpawn(int amount)
     {
-        if (other.CompareTag("Player"))
-        {
-
-            startSpawning = true;
-
-        }
+        Debug.Log("spawn");
+        spawnCount = 0;
+        numToSpawn = amount;
+        startSpawning = true;
 
     }
 
-    IEnumerator Spawn()
+
+
+    public IEnumerator Spawn()
     {
         isSpawning = true;
-        
+
         Instantiate(objectToSpawn, spawmPos[spawnCount].position, spawmPos[spawnCount].rotation);
         yield return new WaitForSeconds(spawnDelay);
         spawnCount++;

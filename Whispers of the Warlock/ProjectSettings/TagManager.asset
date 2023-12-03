@@ -11,6 +11,7 @@ TagManager:
   - Menu Music
   - Menu SFX
   - Boss
+  - Totem
   layers:
   - Default
   - TransparentFX

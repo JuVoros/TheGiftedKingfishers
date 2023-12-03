@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 5474748379052162835}
   - component: {fileID: 7125728241707559907}
   m_Layer: 0
-  m_Name: Enemy - Imp
+  m_Name: Imp Melee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
