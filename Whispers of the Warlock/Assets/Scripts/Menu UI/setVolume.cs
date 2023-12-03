@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class setVolume : MonoBehaviour
 {
@@ -20,11 +22,6 @@ public class setVolume : MonoBehaviour
             float volume = slider.value;
             Source.PlayOneShot(sampleClip, volume);
         }
-        
     }
-
-
-    
-
 
 }
