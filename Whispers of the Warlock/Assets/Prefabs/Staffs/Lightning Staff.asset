@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning Staff
   m_EditorClassIdentifier: 
   shootDamage: 1
-  shootDistance: 100
+  shootDistance: 50
   shootRate: 0.2
   rechargeRate: 2
   weaponName: Lightning

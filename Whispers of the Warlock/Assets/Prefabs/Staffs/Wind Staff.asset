@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wind Staff
   m_EditorClassIdentifier: 
   shootDamage: 1
-  shootDistance: 500
+  shootDistance: 100
   shootRate: 0.8
   rechargeRate: 0.5
   weaponName: Wind
