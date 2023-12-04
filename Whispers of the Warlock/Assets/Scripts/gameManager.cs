@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
     [SerializeField] GameObject bossDeathScreen;
+    [SerializeField] cameraController cameraController;
     [Range(0,1)][SerializeField] float playerFlashTime;
 
     [Header("------ Buttons ------")]
@@ -57,6 +58,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text hpPotionCount;
     [SerializeField] TMP_Text manaPotionCount;
     [SerializeField] GameObject reticle;
+    [SerializeField] Slider sensitivitySlider;
+    [SerializeField] Text sensitivityText;
+
 
     [Header("----- Potions -----")]
     [Range(1, 10)][SerializeField] int HpOnPickup;
@@ -88,6 +92,18 @@ public class gameManager : MonoBehaviour
         playerScript = player.GetComponent<playerController>(); 
         playerSpawnPos = GameObject.FindWithTag("Respawn");
         spawnItem();
+        sensitivitySlider.value = cameraController.sensitivity;
+        UpdateSensitivityText(cameraController.sensitivity);
+    }
+
+    public void UpdateSensitivity(float newSensitivity)
+    {
+        cameraController.UpdateSensitivity(newSensitivity);
+        UpdateSensitivityText(newSensitivity);
+    }
+    private void UpdateSensitivityText(float sensitivityValue)
+    {
+        sensitivityText.text = $"Sensitivity: {sensitivityValue}";
     }
 
     void Update()
@@ -123,7 +139,10 @@ public class gameManager : MonoBehaviour
             consumeMP();
 
         }
+
+       
     }
+
 
     public void StatePause()
     {
@@ -297,6 +316,7 @@ public class gameManager : MonoBehaviour
         manaPots -= 1;
        playerScript.addMana(ManaOnPickup);
     }
+
 
 
 

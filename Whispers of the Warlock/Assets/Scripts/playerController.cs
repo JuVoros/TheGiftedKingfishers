@@ -68,8 +68,6 @@ public class playerController : MonoBehaviour, IDamage
     bool isRegenMana;
     bool isBlinking;
 
-
-
     void Start()
     {
         PlayerHPOrig = HP;
@@ -77,7 +75,6 @@ public class playerController : MonoBehaviour, IDamage
         speedOrig = playerSpeed;
         blinkTimer = blinkCooldown;
         spawnPlayer();
-
       
     }
 
