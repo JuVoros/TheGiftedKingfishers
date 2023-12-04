@@ -13,6 +13,7 @@ TagManager:
   - Boss
   - Totem
   - Potion
+  - Hp
   layers:
   - Default
   - TransparentFX
