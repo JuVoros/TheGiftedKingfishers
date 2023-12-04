@@ -31,16 +31,16 @@ public class playerController : MonoBehaviour, IDamage
     [Range(10, 35)][SerializeField] float sprintSpeed;
     [Range(-5, -20)][SerializeField] float gravityValue;
     [Range(1, 10)][SerializeField] int jumpsMax;
-    [Range(1, 120)][SerializeField] int HP;
+    [Range(1, 120)][SerializeField] public int HP;
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
     [SerializeField] int blinkCooldown; // in Frames
     int blinkTimer;
-    [Range(1, 20)][SerializeField] int manaMax;
+    [Range(1, 20)][SerializeField] public int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
     [SerializeField] float fallYLevel;
 
-    int PlayerHPOrig;
+    public int PlayerHPOrig;
     private int jumpedTimes;
     public int manaCur;
 

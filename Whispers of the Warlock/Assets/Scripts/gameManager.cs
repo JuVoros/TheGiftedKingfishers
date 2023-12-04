@@ -23,6 +23,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject audioMenu;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject inven;
 
     [Header("------Features ------")]
     [SerializeField] AudioClip jumpScareSound;
@@ -53,7 +54,13 @@ public class gameManager : MonoBehaviour
     [Header("------ UI ------")]
     [SerializeField] TMP_Text enemyCountText;
     [SerializeField] TMP_Text weaponNameText;
+    [SerializeField] TMP_Text hpPotionCount;
+    [SerializeField] TMP_Text manaPotionCount;
     [SerializeField] GameObject reticle;
+
+    [Header("----- Potions -----")]
+    [Range(1, 10)][SerializeField] int HpOnPickup;
+    [Range(1, 10)][SerializeField] int ManaOnPickup;
 
 
 
@@ -63,10 +70,14 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
-
-    public bool isPaused;
-    float timeScaleOrig;
+    manaPotion manaScript;
+    HealthPotion healthScript;
+    public int manaPots;
+    public int hpPots;
     public int enemiesRemaining;
+    public bool isPaused;
+    bool invenOpen;
+    float timeScaleOrig;
     int index;
     void Awake()
     {
@@ -81,14 +92,37 @@ public class gameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Cancel") && menuActive == null)
+        if(Input.GetButtonDown("Cancel") && menuActive == null && !invenOpen)
         {
             StatePause();
             menuActive = menuPause;
             Main();
             menuActive.SetActive(isPaused);
         }
-        
+        if (Input.GetButtonDown("Inventory") && menuActive == null && !invenOpen)
+        {
+
+            Inventory();
+
+        }
+        else if (Input.GetButtonDown("Inventory") && invenOpen)
+        {
+
+            inven.SetActive(false);
+            invenOpen = false;
+            
+        }
+        hpPotionCount.text = hpPots.ToString("0");
+        manaPotionCount.text = manaPots.ToString("0");
+        if (Input.GetButtonDown("Health Pot") && hpPots > 0 && playerScript.PlayerHPOrig != playerScript.HP)
+        {
+            consumeHP();
+        }
+        if (Input.GetButtonDown("Mana Pot") && manaPots > 0 && playerScript.manaMax != playerScript.manaCur)
+        {
+            consumeMP();
+
+        }
     }
 
     public void StatePause()
@@ -247,13 +281,24 @@ public class gameManager : MonoBehaviour
         }
 
     }
-    public void UpdateSpawnPos(Transform transform)
+    void Inventory()
     {
-
-
-
-
-
-
+        inven.SetActive(true);
+        invenOpen = true;
+        
     }
+    void consumeHP()
+    {
+        hpPots -= 1;
+        playerScript.addHealth(HpOnPickup);
+    }
+    void consumeMP()
+    {
+        manaPots -= 1;
+       playerScript.addMana(ManaOnPickup);
+    }
+
+
+
+
 }

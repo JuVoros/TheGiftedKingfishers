@@ -12,6 +12,7 @@ TagManager:
   - Menu SFX
   - Boss
   - Totem
+  - Potion
   layers:
   - Default
   - TransparentFX
