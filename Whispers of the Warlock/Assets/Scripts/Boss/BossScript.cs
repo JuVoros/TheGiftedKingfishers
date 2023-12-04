@@ -141,6 +141,8 @@ public class BossScript : MonoBehaviour, IDamage
             anim.SetBool("Death", true);
             agent.enabled = false;
             isDead = true;
+            gameManager.instance.updateGoal(2500);
+            StartCoroutine(gameManager.instance.Winner());
         }
         else
         {
@@ -151,6 +153,7 @@ public class BossScript : MonoBehaviour, IDamage
                 totemsToSpawn = 1;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                gameManager.instance.updateGoal(250);
             }
             else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.47)
             {
@@ -160,6 +163,7 @@ public class BossScript : MonoBehaviour, IDamage
                 totemsToSpawn = 2;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                gameManager.instance.updateGoal(500);
             }
             else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.22)
             {
@@ -168,6 +172,7 @@ public class BossScript : MonoBehaviour, IDamage
                 totemsToSpawn = 4;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                gameManager.instance.updateGoal(750);
             }
             anim.SetTrigger("Damage");
             StartCoroutine(flashRed());

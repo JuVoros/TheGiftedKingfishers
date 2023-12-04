@@ -62,11 +62,7 @@ public class enemyAI : MonoBehaviour, IDamage
         EnemyHPOrig = EnemyHP;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-        if (agent.CompareTag("Enemy"))
-        {
-            enemyHpBar.enabled = false;
-            gameManager.instance.updateGoal(1);
-        }
+
     }
 
     void Update()
@@ -232,13 +228,13 @@ public class enemyAI : MonoBehaviour, IDamage
             damageColli.enabled = false;
             anim.SetBool("Death", true);
             agent.enabled = false;
-            
-            
+            gameManager.instance.updateGoal(100);
+
             int rando = Random.Range(0, 100);
 
             if (agent.CompareTag("Enemy"))
             {
-                gameManager.instance.updateGoal(-1);
+                gameManager.instance.updateGoal(500);
                 DropItem(gameManager.instance.getWeaponDrops());
 
             }

@@ -298,6 +298,7 @@ public class playerController : MonoBehaviour, IDamage
         else
         {
             manaCur += manaPerRegen;
+            gameManager.instance.updateGoal(10);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -339,7 +340,7 @@ public class playerController : MonoBehaviour, IDamage
             {
                 isBlinking = true;
                 gameManager.instance.teleportIcon.fillAmount = 0;
-
+                gameManager.instance.updateGoal(50);
                 manaCur -= blinkMana;
                 updatePlayerUI();
                 Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
