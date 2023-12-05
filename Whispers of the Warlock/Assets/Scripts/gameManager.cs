@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] GameObject playerHealthScreen;
+    [SerializeField] GameObject blinkScreen;
     [SerializeField] GameObject bossDeathScreen;
     [SerializeField] cameraController cameraController;
     [Range(0,1)][SerializeField] float playerFlashTime;
@@ -262,6 +263,25 @@ public class gameManager : MonoBehaviour
         playerHealthScreen.SetActive(true);
         yield return new WaitForSeconds(playerFlashTime);
         playerHealthScreen.SetActive(false);
+    }
+
+    public IEnumerator playerFlashBlink()
+    {
+        blinkScreen.SetActive(true);
+        yield return new WaitForSeconds(playerFlashTime);
+        blinkScreen.SetActive(false);
+    }
+
+    public void playerBlinkFOVup()
+    {
+        cameraController.blinkFOVup();
+        StartCoroutine(playerFlashBlink());
+
+    }
+
+    public void playerBlinkFOVdown()
+    {
+        cameraController.blinkFOVdown();
     }
 
     public IEnumerator BossDeathFlash()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
 
-
+    [SerializeField] Camera m_camera;
     [SerializeField] int lockVertMin;
     [SerializeField] int lockVertMax;
 
@@ -46,5 +46,15 @@ public class cameraController : MonoBehaviour
     {
         sensitivity = newSensitivity;
         Debug.Log($"Sensitivity updated to: {newSensitivity}");
+    }
+
+    public void blinkFOVup()
+    {
+        m_camera.fieldOfView = m_camera.fieldOfView + 30;
+
+    }
+    public void blinkFOVdown()
+    {
+        m_camera.fieldOfView = Mathf.Lerp(m_camera.fieldOfView, 60, 7.5f * Time.deltaTime);
     }
 }

@@ -67,6 +67,7 @@ public class playerController : MonoBehaviour, IDamage
     bool isSprinting;
     bool isRegenMana;
     bool isBlinking;
+    bool rechargeStarted;
 
     void Start()
     {
@@ -339,33 +340,31 @@ public class playerController : MonoBehaviour, IDamage
             if (manaCur >= blinkMana)
             {
                 isBlinking = true;
+                gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
                 gameManager.instance.updateGoal(50);
                 manaCur -= blinkMana;
                 updatePlayerUI();
                 Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
+
                 if (audioTeleport != null)
                 {
                     audi.PlayOneShot(audioTeleport, audioTeleportVol);
                 }
                 controller.Move(teleportPosition - transform.position);
-
             }
         }
 
         if (isBlinking)
         {
             gameManager.instance.teleportIcon.fillAmount += 1 / blinkCooldown * Time.deltaTime;
+            gameManager.instance.playerBlinkFOVdown();
 
-
-            if (gameManager.instance.teleportIcon.fillAmount >= 1)
+            if (gameManager.instance.teleportIcon.fillAmount >= 1 - audioTeleportRecharge.length/blinkCooldown && rechargeStarted == false)
             {
-                gameManager.instance.teleportIcon.fillAmount = 1;
-                isBlinking = false;
-                if (audioTeleport != null)
-                {
-                    audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
-                }
+
+                rechargeStarted = true;
+                StartCoroutine(teleportCooldown());
             }
 
 
@@ -384,10 +383,17 @@ public class playerController : MonoBehaviour, IDamage
         return weaponName;
     }
 
-    public void teleportCooldown()
+    IEnumerator teleportCooldown()
     {
 
-
+        if (audioTeleportRecharge != null)
+        {
+            audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
+        }
+        yield return new WaitForSeconds(audioTeleportRecharge.length);
+        isBlinking = false;
+        rechargeStarted = false;
+        gameManager.instance.teleportIcon.fillAmount = 1;
     }
 
     public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
