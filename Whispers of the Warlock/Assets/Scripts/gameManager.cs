@@ -54,7 +54,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] List<GameObject> potionDrops;
 
     [Header("------ UI ------")]
-    [SerializeField] TMP_Text enemyCountText;
+    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text gameGoal;
     [SerializeField] TMP_Text weaponNameText;
     [SerializeField] TMP_Text hpPotionCount;
@@ -85,10 +86,16 @@ public class gameManager : MonoBehaviour
     bool invenOpen;
     float timeScaleOrig;
     int index;
+    float startTime;
+    float timer;
+    float minutes;
+    float seconds;
+    float fraction;
     void Awake()
     {
         tempWeaponDrops = weaponDrops;
         timeScaleOrig = Time.timeScale;
+        startTime = Time.time;
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>(); 
@@ -142,7 +149,20 @@ public class gameManager : MonoBehaviour
 
         }
 
-       
+        gameTimer();
+    }
+
+    public void gameTimer()
+    {
+        if(!isPaused)
+        {
+            timer = Time.time - startTime;
+            minutes = timer / 60;
+            seconds = timer % 60;
+            fraction = (timer * 100) % 100;
+
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
+        }
     }
 
 
@@ -168,10 +188,7 @@ public class gameManager : MonoBehaviour
     public void updateGoal(int amount)
     {
         enemiesRemaining += amount;
-        enemyCountText.text = enemiesRemaining.ToString("0");
-
-            
-
+        scoreText.text = enemiesRemaining.ToString("0");
     }
 
     public  void weaponNameUpdate()
@@ -276,7 +293,6 @@ public class gameManager : MonoBehaviour
     {
         cameraController.blinkFOVup();
         StartCoroutine(playerFlashBlink());
-
     }
 
     public void playerBlinkFOVdown()
