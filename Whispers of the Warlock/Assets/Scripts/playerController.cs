@@ -24,6 +24,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float potionVol;
     [SerializeField] AudioClip pickupSound;
     [SerializeField] float pickupVol;
+    [SerializeField] AudioClip heartBeat;
+    [SerializeField] float heartbeatVol;
 
     [Header("------Player Stats------")]
     [Range(1, 10)][SerializeField] float jumpHeight;
@@ -68,7 +70,7 @@ public class playerController : MonoBehaviour, IDamage
     bool isRegenMana;
     bool isBlinking;
     bool rechargeStarted;
-
+    bool isLowHealthFlashing = false;
     void Start()
     {
         PlayerHPOrig = HP;
@@ -88,8 +90,6 @@ public class playerController : MonoBehaviour, IDamage
         if (!gameManager.instance.isPaused)
         {
             Move();
-
-
             teleport();
             
             
@@ -109,6 +109,10 @@ public class playerController : MonoBehaviour, IDamage
                     StartCoroutine(shoot());
             }
 
+            if((float)HP/PlayerHPOrig <= 0.25 && !isLowHealthFlashing)
+            {
+                StartCoroutine(lowHealthFlash());
+            }
         }
     }
     public void Move()
@@ -396,9 +400,13 @@ public class playerController : MonoBehaviour, IDamage
         gameManager.instance.teleportIcon.fillAmount = 1;
     }
 
-    public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
+    IEnumerator lowHealthFlash()
     {
-        image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+        isLowHealthFlashing = true;
+        audi.PlayOneShot(heartBeat, heartbeatVol);
+        StartCoroutine(gameManager.instance.playerFlashLowHealth());
+        yield return new WaitForSeconds(2.5f);
+        isLowHealthFlashing = false;
     }
 
 }

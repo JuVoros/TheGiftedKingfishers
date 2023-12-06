@@ -29,6 +29,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] AudioClip jumpScareSound;
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
+    [SerializeField] GameObject playerLowHealthScreen;
+
+
     [SerializeField] GameObject playerHealthScreen;
     [SerializeField] GameObject blinkScreen;
     [SerializeField] GameObject bossDeathScreen;
@@ -49,7 +52,7 @@ public class gameManager : MonoBehaviour
 
     [Header("------ Weapons ------")]
     [SerializeField] List<GameObject> weaponDrops;
-    public List<GameObject> tempWeaponDrops;    
+    private List<GameObject> tempWeaponDrops;    
     [SerializeField] Transform[] weaponSpawmPos;
     [SerializeField] List<GameObject> potionDrops;
 
@@ -275,6 +278,13 @@ public class gameManager : MonoBehaviour
         playerDamageScreen.SetActive(false);
     }
 
+    public IEnumerator playerFlashLowHealth()
+    {
+        playerLowHealthScreen.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        playerLowHealthScreen.SetActive(false);
+    }
+
     public IEnumerator playerFlashHeals()
     {
         playerHealthScreen.SetActive(true);
@@ -350,7 +360,8 @@ public class gameManager : MonoBehaviour
     }
 
 
-
-
-
+    public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+    }
 }
