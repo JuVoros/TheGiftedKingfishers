@@ -28,6 +28,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int shootCone;
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTime;
+    [SerializeField] int deathAnimation;
 
 
     public Image enemyHpBar;
@@ -53,8 +54,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     float stoppingDistOrig;
     Vector3 startingPos;
-    Vector3 dropLoca;
-    Vector3 placeHolder = new Vector3(3, 2, -10);
+   
 
 
     void Start()
@@ -227,15 +227,21 @@ public class enemyAI : MonoBehaviour, IDamage
             isDead = true;
             damageColli.enabled = false;
             anim.SetBool("Death", true);
-            agent.enabled = false;
+            StartCoroutine(DeathAnimTimer());
             gameManager.instance.updateGoal(100);
 
             int rando = Random.Range(0, 100);
 
-            if (agent.CompareTag("Enemy"))
+            if (agent.CompareTag("Enemy") && agent.GetComponent<TreeitemDrop>() == null)
             {
                 gameManager.instance.updateGoal(500);
                 DropItem(gameManager.instance.getWeaponDrops());
+
+            }
+            else if (agent.GetComponent<TreeitemDrop>() != null)
+            {
+                agent.GetComponent<TreeitemDrop>().DropItem(gameManager.instance.getWeaponDrops());
+
 
             }
             else if(rando == 99 )
@@ -253,8 +259,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 }
 
             }
-                      
-
+            agent.enabled = false;
         }
         else
         {
@@ -271,10 +276,9 @@ public class enemyAI : MonoBehaviour, IDamage
             return;
         }
 
-        dropLoca = transform.position + placeHolder;
 
         int drop = Random.Range(0, drops.Count - 1);
-        Instantiate(drops[drop], dropLoca, transform.rotation);
+        Instantiate(drops[drop], transform.position, transform.rotation);
         drops.RemoveAt(drop);
     }
 
@@ -285,10 +289,9 @@ public class enemyAI : MonoBehaviour, IDamage
             return;
         }
 
-        dropLoca = transform.position + placeHolder;
 
         int drop = Random.Range(0, drops.Count - 1);
-        Instantiate(drops[drop], dropLoca, transform.rotation);
+        Instantiate(drops[drop], transform.position, transform.rotation);
         
     }
 
@@ -320,6 +323,12 @@ public class enemyAI : MonoBehaviour, IDamage
 
             Destroy(gameObject, 5f);
         }
+    }
+    IEnumerator DeathAnimTimer()
+    {
+
+        yield return new WaitForSeconds(deathAnimation);
+
     }
     
 }

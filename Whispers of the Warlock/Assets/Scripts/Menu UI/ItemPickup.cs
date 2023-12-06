@@ -87,6 +87,7 @@ public class ItemPickup : MonoBehaviour
         if (gameObject.CompareTag("Hp"))
         {
             gameManager.instance.hpPots += 1;
+
             Debug.Log("addhp");
 
         }
