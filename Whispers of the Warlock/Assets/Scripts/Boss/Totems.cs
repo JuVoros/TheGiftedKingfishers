@@ -12,22 +12,23 @@ public class Totems : MonoBehaviour, IDamage
     [SerializeField] GameObject beam;
     [SerializeField] GameObject Boss;
     [SerializeField] float shootRate;
-    [SerializeField] int totemHealth = 15;
+    [SerializeField] int totemHealth;
     
     Vector3 bossDir;
-    int totemHealthorig = 15;
+    public int totemHealthorig;
+    bool isDead;
     public void Start()
     {
-
         Boss = GameObject.FindWithTag("Boss");
-
+        totemHealth = Boss.GetComponent<BossScript>().totemHealth;
+        totemHealthorig = totemHealth;
     }
 
 
 
     public void Update()
     {
-        if (gameObject.activeSelf)
+        if(!isDead)
             Channel();
 
     }
@@ -41,9 +42,12 @@ public class Totems : MonoBehaviour, IDamage
 
         if( totemHealth <= 0)
         {
-            totem.enabled = false;
-            damageColli.enabled = false;
-            totemHealth = totemHealthorig;   
+
+            Boss.GetComponent<BossScript>().isAttacking = true;
+            Boss.GetComponent<BossScript>().isShielding = false;
+
+            isDead = true;
+            Destroy(gameObject);
         }
         
     }
@@ -52,21 +56,12 @@ public class Totems : MonoBehaviour, IDamage
     {
 
         bossDir = Boss.transform.position - headPos.position;
-        RaycastHit hit;
-
-        if (Physics.Raycast(headPos.position, bossDir, out hit))
-        {
-            //if (hit.collider.CompareTag("Player"))
-            //{            
-            //    StartCoroutine(Shieldbeam());
-            //}
-        }
+        StartCoroutine(Shieldbeam());
     }
 
     IEnumerator Shieldbeam()
     {
-
-        Instantiate(beam, shootPos.position + transform.forward, transform.rotation);
+        Instantiate(beam, shootPos.position + (-transform.forward), transform.rotation);
         yield return new WaitForSeconds(shootRate);
 
     }

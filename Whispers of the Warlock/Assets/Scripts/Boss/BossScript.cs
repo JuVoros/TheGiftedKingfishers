@@ -29,32 +29,30 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] float meleeAttackDamageTiming;
 
     [Header("----- Spawner -----")]
-    [SerializeField] int totemsToSpawn;
-    [SerializeField] GameObject totem1;
-    [SerializeField] GameObject totem2;
-    [SerializeField] GameObject totem3;
-    [SerializeField] GameObject totem4;
     [SerializeField] GameObject meleeSpawn;
     [SerializeField] GameObject rangeSpawn;
+    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] GameObject totem;
 
 
     //int
     int animToPlay;
-    int spawnCount;
+    public int totemHealth;
+    int totemSpawnCount;
 
     //bool
-    bool isAttacking = false;
+    public bool isAttacking = false;
     bool isMelee;
     bool isShooting;
     bool isDead;
     public bool meleeRange;
     bool playerInRange;
-    bool isShielding = false;
-    bool isSpawning;
-    bool totemSpawned;
+    public bool isShielding = false;
 
     //Vectors
     Vector3 playerDir;
+    Vector3 totemOffset = new Vector3(15,0,0);
+    Vector3 totemDrop;
 
     //List
     List<int> animList = new List<int>();
@@ -80,12 +78,23 @@ public class BossScript : MonoBehaviour, IDamage
         {
             
             HandleShieldingState();
-            
+            if (totemSpawnCount == 0)
+                StartCoroutine(Spawn());
+
+
+            model.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
+
+
+
+
+
         }
         else if (!isShielding && isAttacking && !isDead)
         {
             HandleAttackingState();
             agent.SetDestination(gameManager.instance.player.transform.position);
+            model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
+
         }
 
 
@@ -95,6 +104,10 @@ public class BossScript : MonoBehaviour, IDamage
             faceTarget();
 
         }
+
+        totem = GameObject.FindWithTag("Totem");
+
+
     }
     void HandleIdleState()
     {
@@ -113,6 +126,7 @@ public class BossScript : MonoBehaviour, IDamage
     void HandleAttackingState()
     {
         anim.SetBool("Idle", false);
+        totemSpawnCount = 0;
 
         if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee & !isShooting)
         {
@@ -150,7 +164,6 @@ public class BossScript : MonoBehaviour, IDamage
             {
                 isShielding = true;
                 isAttacking = false;
-                totemsToSpawn = 1;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
                 gameManager.instance.updateGoal(250);
@@ -160,7 +173,6 @@ public class BossScript : MonoBehaviour, IDamage
 
                 isShielding = true;
                 isAttacking = false;
-                totemsToSpawn = 2;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                 gameManager.instance.updateGoal(500);
@@ -169,7 +181,6 @@ public class BossScript : MonoBehaviour, IDamage
             {
                 isShielding = true;
                 isAttacking = false;
-                totemsToSpawn = 4;
                 rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
                 meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                 gameManager.instance.updateGoal(750);
@@ -189,57 +200,8 @@ public class BossScript : MonoBehaviour, IDamage
     {
 
         damageCollider.enabled = false;
+        totemHealth += 5;
         
-        switch(totemsToSpawn)
-        {
-            case 1:
-
-                if (!totemSpawned)
-                {
-                    totem1.GetComponent<Totems>().totem.enabled = true;
-                    totem1.GetComponent<Totems>().damageColli.enabled = true;
-                    totemSpawned = true;
-                }
-                break;
-
-            case 2:
-                if (!totemSpawned)
-                {
-                    totem1.GetComponent<Totems>().totem.enabled = true;
-                    totem1.GetComponent<Totems>().damageColli.enabled = true;
-                    totem4.GetComponent<Totems>().totem.enabled = true;
-                    totem4.GetComponent<Totems>().damageColli.enabled = true;
-                    totemSpawned = true;
-                }
-                break;
-
-            case 4:
-                if (!totemSpawned)
-                {
-                    totem1.GetComponent<Totems>().totem.enabled = true;
-                    totem1.GetComponent<Totems>().damageColli.enabled = true;
-                    totem2.GetComponent<Totems>().totem.enabled = true;
-                    totem2.GetComponent<Totems>().damageColli.enabled = true;
-                    totem3.GetComponent<Totems>().totem.enabled = true;
-                    totem3.GetComponent<Totems>().damageColli.enabled = true;
-                    totem4.GetComponent<Totems>().totem.enabled = true;
-                    totem4.GetComponent<Totems>().damageColli.enabled = true;
-                    totemSpawned = true;
-                }
-                break;
-        }
-
-        if(!totem1.GetComponent<Totems>().totem.enabled && !totem2.GetComponent<Totems>().totem.enabled && 
-        !totem3.GetComponent<Totems>().totem.enabled && !totem4.GetComponent<Totems>().totem.enabled)
-        {
-
-            isShielding = false;
-            isAttacking = true;
-            totemSpawned = false;
-            damageCollider.enabled = true;
-
-        }
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -275,7 +237,6 @@ public class BossScript : MonoBehaviour, IDamage
             anim.SetFloat("Index", animList[i]);
             anim.SetTrigger("Melee");
 
-            //Wait for melee attack anim to reach a point where damage should be applied
             yield return new WaitForSeconds(meleeAttackDamageTiming);
 
             RaycastHit hit;
@@ -286,8 +247,6 @@ public class BossScript : MonoBehaviour, IDamage
                     hit.collider.GetComponent<IDamage>().takeDamage(meleeDamage);
                 }
             }
-
-            //Waits for rest of melee attack anim to finish
             yield return new WaitForSeconds(meleeAttackDuration - meleeAttackDamageTiming);
         }
 
@@ -300,4 +259,15 @@ public class BossScript : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.GetComponent<Renderer>().sharedMaterial.color = Color.white;
     }
+    public IEnumerator Spawn()
+    {
+        totemDrop = transform.position + totemOffset;
+
+        Instantiate(objectToSpawn,totemDrop,transform.rotation);
+        yield return new WaitForSeconds(0);
+        totemSpawnCount = 1;
+    }
+
+
+
 }
