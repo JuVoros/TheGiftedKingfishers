@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour, IDamage
 
     private Vector3 playerVelocity;
     private Vector3 move;
-    Vector3 weaponOffset = new Vector3(-1,-1,0);
+    GameObject descendant;
 
     private bool isGrounded;
     bool isShooting;
@@ -80,8 +80,6 @@ public class playerController : MonoBehaviour, IDamage
         blinkTimer = blinkCooldown;
         spawnPlayer();
 
-       
-
     }
 
     void Update()
@@ -94,7 +92,6 @@ public class playerController : MonoBehaviour, IDamage
         {
             Move();
             teleport();
-            
             
 
             if (staffList.Count > 0)
@@ -191,7 +188,7 @@ public class playerController : MonoBehaviour, IDamage
 
             if (attackPoint != null)
             {
-                Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position + weaponOffset, attackPoint.transform.rotation);
+                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position, attackPoint.transform.rotation);
 
                // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
                 //RaycastHit hit;
@@ -242,7 +239,7 @@ public void takeDamage(int amount)
         updatePlayerUI();
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
-        
+
     }
     
     public void updatePlayerUI()
@@ -289,12 +286,33 @@ public void takeDamage(int amount)
 
         isShooting = false;
     }
+    public GameObject returnChild(GameObject parent, string descendantName)
+    {
+
+        foreach(Transform child in parent.transform)
+        {
+            if(child.name == descendantName)
+            {
+                descendant = child.gameObject;
+                break;
+
+            }
+            else
+            {
+                returnChild(child.gameObject, descendantName);
+
+            }
+        }
+            return descendant;
+
+    }
 
     public void getGunStats(gunStats gun, GameObject attackPointPrefab)
     {
-        Transform weaponHolder = transform.Find("Weapon Holder");
-
-        foreach (Transform child in weaponHolder)
+        string descendantName = "Weapon Holder";
+        GameObject weaponHolder = returnChild(gameManager.instance.player, descendantName);
+        Transform weaponTransform = weaponHolder.transform;
+        foreach (Transform child in weaponTransform)
         {
             child.gameObject.SetActive(false);
         }
@@ -308,10 +326,10 @@ public void takeDamage(int amount)
 
         audi.PlayOneShot(pickupSound, pickupVol);
 
-        if (weaponHolder != null)
+        if (weaponTransform != null)
         {
-            GameObject staffObject = Instantiate(gun.model, weaponHolder.transform.position, weaponHolder.transform.rotation);
-            staffObject.transform.parent = weaponHolder;
+            GameObject staffObject = Instantiate(gun.model, weaponTransform.transform.position, weaponTransform.transform.rotation);
+            staffObject.transform.parent = weaponTransform;
 
             staffObject.SetActive(false);
 
@@ -373,6 +391,7 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
+            gameManager.instance.updateGoal(10);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -415,13 +434,14 @@ public void takeDamage(int amount)
                 isBlinking = true;
                 gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
+                gameManager.instance.updateGoal(50);
                 manaCur -= blinkMana;
                 updatePlayerUI();
                 Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
 
                 if (audioTeleport != null)
                 {
-                    audi.PlayOneShot(audioTeleport, 3);
+                    audi.PlayOneShot(audioTeleport, audioTeleportVol);
                 }
                 controller.Move(teleportPosition - transform.position);
             }
@@ -470,7 +490,7 @@ public void takeDamage(int amount)
 
     IEnumerator lowHealthFlash()
     {
-        isLowHealthFlashing = true;
+        isLowHealthFlashing = true; 
         audi.PlayOneShot(heartBeat, heartbeatVol);
         StartCoroutine(gameManager.instance.playerFlashLowHealth());
         yield return new WaitForSeconds(2.5f);
