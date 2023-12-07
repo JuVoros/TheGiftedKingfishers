@@ -85,6 +85,7 @@ public class gameManager : MonoBehaviour
     public int enemiesRemaining;
     public bool isPaused;
     bool invenOpen;
+    bool fadingUp;
     float timeScaleOrig;
     int index;
     float startTime;
@@ -276,12 +277,12 @@ public class gameManager : MonoBehaviour
         playerDamageScreen.SetActive(false);
     }
 
-    public IEnumerator playerFlashLowHealth()
+    public void playerLowHealth(bool isLowHealth)
     {
-        playerLowHealthScreen.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        playerLowHealthScreen.SetActive(false);
+        playerLowHealthScreen.SetActive(isLowHealth);
     }
+
+
 
     public IEnumerator playerFlashHeals()
     {

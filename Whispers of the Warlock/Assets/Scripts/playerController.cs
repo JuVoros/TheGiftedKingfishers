@@ -109,9 +109,17 @@ public class playerController : MonoBehaviour, IDamage
                     StartCoroutine(shoot());
             }
 
-            if((float)HP/PlayerHPOrig <= 0.25 && !isLowHealthFlashing)
+            if((float)HP/PlayerHPOrig <= 0.25)
             {
-                StartCoroutine(lowHealthFlash());
+                gameManager.instance.playerLowHealth(true);
+                if(!isLowHealthFlashing)
+                {
+                    StartCoroutine(playHeartbeat());
+                }
+            }
+            else
+            {
+                gameManager.instance.playerLowHealth(false);
             }
         }
     }
@@ -488,13 +496,13 @@ public void takeDamage(int amount)
         gameManager.instance.teleportIcon.fillAmount = 1;
     }
 
-    IEnumerator lowHealthFlash()
+    IEnumerator playHeartbeat()
     {
-        isLowHealthFlashing = true; 
+        isLowHealthFlashing = true;
         audi.PlayOneShot(heartBeat, heartbeatVol);
-        StartCoroutine(gameManager.instance.playerFlashLowHealth());
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(5f);
         isLowHealthFlashing = false;
+        
     }
 
 }
