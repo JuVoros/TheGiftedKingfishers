@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class playerBullets : MonoBehaviour
+{
+    [Header("---- Components ----")]
+    [SerializeField] Rigidbody rb;
+
+    [Header("---- Stats ----")]
+    [SerializeField] int damage;
+    [SerializeField] int speed;
+    [SerializeField] int destroyTime;
+
+    void Start()
+    {
+       
+        Camera playerCamera = gameManager.instance.player.GetComponentInChildren<Camera>();
+
+       
+        if (playerCamera != null)
+        {
+            
+            Vector3 dir = playerCamera.transform.forward;
+            rb.velocity = dir * speed;
+
+
+            Destroy(gameObject, destroyTime);
+        }
+        else
+        {
+            Debug.LogWarning("Player camera not found!");
+            Destroy(gameObject); 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger)
+            return;
+      
+            IDamage damagable = other.GetComponent<IDamage>();
+
+        if (damagable != null)
+        {
+            damagable.takeDamage(damage);
+        }
+
+        Destroy(gameObject);
+        
+    }
+}
+

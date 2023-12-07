@@ -134,6 +134,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &899652045300500042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3673419860300746913}
+  m_Layer: 0
+  m_Name: WaterAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3673419860300746913
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899652045300500042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1662807974143759615}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.611}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2795614562577347849
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +205,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8136438401904085039}
+  - {fileID: 3673419860300746913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 25.564, y: -16.041, z: -42.387}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -337,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 4594c1ff4be95bb4192326a0226d0df1, type: 2}
   button: {fileID: 6540092801498528264}
+  attackPointPrefab: {fileID: 899652045300500042}
   item: {fileID: 11400000, guid: 06d289815d4a1e44d9b80a87ddd88d6d, type: 2}
 --- !u!222 &5528001740262248114
 CanvasRenderer:

@@ -210,6 +210,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4891248449840697198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7502636921622117111}
+  m_Layer: 0
+  m_Name: IceAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7502636921622117111
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891248449840697198}
+  m_LocalRotation: {x: -0, y: -0, z: 0.258819, w: 0.9659259}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8311642977731075514}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0077, y: 0.5286}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6789102901931038681
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +396,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3120163416388558167}
+  - {fileID: 7502636921622117111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -528,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 4dc32edecdde40947b6e8438d0d8a3eb, type: 2}
   button: {fileID: 6789102901931038681}
+  attackPointPrefab: {fileID: 4891248449840697198}
   item: {fileID: 11400000, guid: edd2eefbdc5954741ac28f2c85ee8e2f, type: 2}
 --- !u!222 &606819950270038797
 CanvasRenderer:

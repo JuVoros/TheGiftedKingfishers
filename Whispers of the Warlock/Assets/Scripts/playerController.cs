@@ -55,8 +55,8 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float rechargeRate;
     [SerializeField] string weaponName;
     [SerializeField] public Light staffLight;
+    private GameObject currentStaffModel;
     int staffSelected;
-
    
     private float speedOrig;
 
@@ -78,7 +78,9 @@ public class playerController : MonoBehaviour, IDamage
         speedOrig = playerSpeed;
         blinkTimer = blinkCooldown;
         spawnPlayer();
-      
+
+       
+
     }
 
     void Update()
@@ -182,24 +184,39 @@ public class playerController : MonoBehaviour, IDamage
             updatePlayerUI();
             audi.PlayOneShot(staffList[staffSelected].shootSound, staffList[staffSelected].shootSoundVol);
 
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+            string weaponName = staffList[staffSelected].weaponName;
+
+           GameObject attackPoint = AttackPointManager.instance.GetAttackPoint(weaponName);
+
+            if (attackPoint != null)
             {
-                Instantiate(staffList[staffSelected].hitEffect, hit.point, staffList[staffSelected].hitEffect.transform.rotation);
-                IDamage damageable = hit.collider.GetComponent<IDamage>();
+                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position, attackPoint.transform.rotation);
 
+               // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
+                //RaycastHit hit;
+                //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
+                //{
+                //    Instantiate(staffList[staffSelected].hitEffect, hit.point, staffList[staffSelected].hitEffect.transform.rotation);
+                //    IDamage damageable = hit.collider.GetComponent<IDamage>();
 
-                if (hit.transform != transform && damageable != null)
-                {
-                    damageable.takeDamage(shootDamage);
-                }
+                //    if (hit.transform != transform && damageable != null)
+                //    {
+                //        damageable.takeDamage(shootDamage);
+                //    }
+                //}
             }
-            yield return new WaitForSeconds(shootRate);
-            isShooting = false;
+            else
+            {
+                Debug.LogError("Attack Point Not Found for weapon: " + weaponName);
+            }
+
+                yield return new WaitForSeconds(shootRate);
+                isShooting = false;
         }
     }
+     
 
-    public void takeDamage(int amount)
+public void takeDamage(int amount)
     {
         HP -= amount;
         updatePlayerUI();
@@ -259,6 +276,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void changeStaff()
     {
+
         weaponName = staffList[staffSelected].weaponName;
         shootDamage = staffList[staffSelected].shootDamage;
         shootDistance = staffList[staffSelected].shootDistance;
@@ -271,24 +289,75 @@ public class playerController : MonoBehaviour, IDamage
         isShooting = false;
     }
 
-    public void getGunStats(gunStats gun)
+    public void getGunStats(gunStats gun, GameObject attackPointPrefab)
     {
+        Transform weaponHolder = transform.Find("Weapon Holder");
+
+        foreach (Transform child in weaponHolder)
+        {
+            child.gameObject.SetActive(false);
+        }
         staffList.Add(gun);
-       
+
         shootDamage = gun.shootDamage;
         shootDistance = gun.shootDistance;
         shootRate = gun.shootRate;
         rechargeRate = gun.rechargeRate;
-        weaponName = gun.weaponName;
+        string weaponName = gun.weaponName;
 
         audi.PlayOneShot(pickupSound, pickupVol);
 
-        staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
-        staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
-        gameManager.instance.weaponNameUpdate();
+        if (weaponHolder != null)
+        {
+            GameObject staffObject = Instantiate(gun.model, weaponHolder.transform.position, weaponHolder.transform.rotation);
+            staffObject.transform.parent = weaponHolder;
 
-        staffSelected = staffList.Count - 1;
+            staffObject.SetActive(false);
 
+            string attackPointName = weaponName + "AttackPoint";
+
+            Transform attackPoint = staffObject.transform.Find(attackPointName);
+
+            if (attackPoint != null)
+            {
+                AttackPointManager.AttackPoint point = new AttackPointManager.AttackPoint
+                {
+                    weaponName = weaponName,
+                    pointTransform = attackPoint.gameObject
+                };
+                AttackPointManager.instance.AddAttackPoint(point);
+            }
+            else
+            {
+              
+                if (attackPointPrefab != null)
+                {
+                    attackPoint = Instantiate(attackPointPrefab, staffObject.transform).transform;
+                    attackPoint.gameObject.name = attackPointName;
+
+                    AttackPointManager.AttackPoint point = new AttackPointManager.AttackPoint
+                    {
+                        weaponName = weaponName,
+                        pointTransform = attackPoint.gameObject
+                    };
+                    AttackPointManager.instance.AddAttackPoint(point);
+                }
+                else
+                {
+                    Debug.LogError("Attack Point Not Found on staffObject! Make sure the name matches");
+                }
+            }
+
+            staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
+            staffModel.GetComponent<MeshRenderer>().sharedMaterial = gun.model.GetComponent<MeshRenderer>().sharedMaterial;
+            gameManager.instance.weaponNameUpdate();
+
+            staffSelected = staffList.Count - 1;
+        }
+        else
+        {
+            Debug.LogError("Weapon Holder not found!");
+        }
     }
 
     IEnumerator manaRegen()

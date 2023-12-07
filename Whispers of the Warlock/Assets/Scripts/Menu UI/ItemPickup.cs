@@ -7,7 +7,7 @@ public class ItemPickup : MonoBehaviour
 { 
     [SerializeField] gunStats gun;
     [SerializeField] GameObject button;
-
+    public GameObject attackPointPrefab;
 
 
     public Item item;
@@ -19,7 +19,7 @@ public class ItemPickup : MonoBehaviour
     {
         
         InventoryManager.Instance.Add(item);
-        gameManager.instance.playerScript.getGunStats(gun);
+        gameManager.instance.playerScript.getGunStats(gun, attackPointPrefab);
         Destroy(gameObject);
 
 

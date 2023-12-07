@@ -21,6 +21,8 @@ public class gunStats : ScriptableObject
     public AudioClip shootSound;
     [Range(0, 1)] public float shootSoundVol;
 
+    public GameObject bulletPrefab;
+    //public string attackPointID;
 
 
 

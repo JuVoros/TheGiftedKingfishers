@@ -6,6 +6,7 @@ public class GunPickup : MonoBehaviour
 {
 
     [SerializeField] gunStats gun;
+    public GameObject attackPointPrefab;
 
 
     void Start()
@@ -19,7 +20,7 @@ public class GunPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            gameManager.instance.playerScript.getGunStats(gun);
+            gameManager.instance.playerScript.getGunStats(gun, attackPointPrefab);
             Destroy(gameObject);
 
 
