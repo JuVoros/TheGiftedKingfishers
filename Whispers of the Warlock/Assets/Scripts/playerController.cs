@@ -62,6 +62,7 @@ public class playerController : MonoBehaviour, IDamage
 
     private Vector3 playerVelocity;
     private Vector3 move;
+    Vector3 weaponOffset = new Vector3(-1,-1,0);
 
     private bool isGrounded;
     bool isShooting;
@@ -190,7 +191,7 @@ public class playerController : MonoBehaviour, IDamage
 
             if (attackPoint != null)
             {
-                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position, attackPoint.transform.rotation);
+                Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position + weaponOffset, attackPoint.transform.rotation);
 
                // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
                 //RaycastHit hit;
@@ -241,7 +242,7 @@ public void takeDamage(int amount)
         updatePlayerUI();
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
-
+        
     }
     
     public void updatePlayerUI()
@@ -372,7 +373,6 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
-            gameManager.instance.updateGoal(10);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -415,14 +415,13 @@ public void takeDamage(int amount)
                 isBlinking = true;
                 gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
-                gameManager.instance.updateGoal(50);
                 manaCur -= blinkMana;
                 updatePlayerUI();
                 Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
 
                 if (audioTeleport != null)
                 {
-                    audi.PlayOneShot(audioTeleport, audioTeleportVol);
+                    audi.PlayOneShot(audioTeleport, 3);
                 }
                 controller.Move(teleportPosition - transform.position);
             }

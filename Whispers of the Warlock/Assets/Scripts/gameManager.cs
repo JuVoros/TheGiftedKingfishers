@@ -80,8 +80,6 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
-    manaPotion manaScript;
-    HealthPotion healthScript;
     public int manaPots;
     public int hpPots;
     public int enemiesRemaining;
