@@ -20,9 +20,21 @@ public class playerBullets : MonoBehaviour
        
         if (playerCamera != null)
         {
-            
+            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                Vector3 dir = (hit.point - transform.position).normalized;
+                rb.velocity = dir * speed;
+            }
+            else
+            {
+
+
             Vector3 dir = playerCamera.transform.forward;
             rb.velocity = dir * speed;
+            }
 
 
             Destroy(gameObject, destroyTime);

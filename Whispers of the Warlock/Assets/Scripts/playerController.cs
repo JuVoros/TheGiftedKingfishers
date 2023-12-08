@@ -196,9 +196,14 @@ public class playerController : MonoBehaviour, IDamage
 
             if (attackPoint != null)
             {
-                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, attackPoint.transform.position, attackPoint.transform.rotation);
+                Vector3 spawnPosition = attackPoint.transform.position;
+                Vector3 spawnDirection = Camera.main.transform.forward;
 
-               // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
+                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, spawnPosition, Quaternion.LookRotation(spawnDirection));
+
+               // bullet.transform.position = attackPoint.transform.position;
+
+                // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
                 //RaycastHit hit;
                 //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
                 //{
