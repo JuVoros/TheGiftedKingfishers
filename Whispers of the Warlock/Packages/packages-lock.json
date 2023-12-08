@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "com.binarycharm.common": {
+      "version": "file:com.binarycharm.common",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.binarycharm.samples.ui": {
+      "version": "file:com.binarycharm.samples.ui",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.binarycharm.text-color-buttons": {
+      "version": "file:com.binarycharm.text-color-buttons",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      }
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
