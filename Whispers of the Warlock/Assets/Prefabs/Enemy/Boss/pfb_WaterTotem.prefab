@@ -494,7 +494,7 @@ MonoBehaviour:
   headPos: {fileID: 406096}
   totem: {fileID: 2388952}
   damageColli: {fileID: 2984693427069807161}
-  beam: {fileID: 8677509504579278298, guid: bbbb672c202ac394baf2c45602ad7f44, type: 3}
+  beam: {fileID: 6789043929391779657, guid: bebbd045ecfd5ac46a4ef931b8e987d4, type: 3}
   Boss: {fileID: 0}
   shootRate: 0
   totemHealth: 0

@@ -363,4 +363,8 @@ public class gameManager : MonoBehaviour
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
     }
+
+
+
+
 }
