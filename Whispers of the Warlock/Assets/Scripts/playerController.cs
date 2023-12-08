@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour, IDamage
 {
     [Header("-----Components------")]
     [SerializeField] CharacterController controller;
-    [SerializeField] AudioSource audi;
+    [SerializeField] public AudioSource audi;
     [SerializeField] GameObject shield;
 
     [Header("------Audio------")]
@@ -24,7 +24,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float potionVol;
     [SerializeField] AudioClip pickupSound;
     [SerializeField] float pickupVol;
-    [SerializeField] AudioClip heartBeat;
+    [SerializeField] public AudioClip heartBeat;
     [SerializeField] float heartbeatVol;
 
     [Header("------Player Stats------")]
@@ -45,6 +45,15 @@ public class playerController : MonoBehaviour, IDamage
     public int PlayerHPOrig;
     private int jumpedTimes;
     public int manaCur;
+    [Header("------Low Health Screens------")]
+    [SerializeField] GameObject stageOneLow;
+    [SerializeField] GameObject stageTwoLow;
+    [SerializeField] GameObject stageThreeLow;
+    [SerializeField] GameObject stageFourLow;
+    [SerializeField] GameObject stageFiveLow;
+
+
+
 
     //Gun Stats
     [SerializeField] List<gunStats> staffList = new List<gunStats>();
@@ -72,7 +81,7 @@ public class playerController : MonoBehaviour, IDamage
     bool isBlinking;
     bool rechargeStarted;
     bool isLowHealthFlashing = false;
-    void Start()
+    void Awake()
     {
         PlayerHPOrig = HP;
         manaCur = manaMax;
@@ -109,18 +118,12 @@ public class playerController : MonoBehaviour, IDamage
                     StartCoroutine(shoot());
             }
 
-            if((float)HP/PlayerHPOrig <= 0.25)
+            if (PlayerHPOrig * .5 >= HP && !isLowHealthFlashing)
             {
-                gameManager.instance.playerLowHealth(true);
-                if(!isLowHealthFlashing)
-                {
-                    StartCoroutine(playHeartbeat());
-                }
+                StartCoroutine(playHeartbeat());
+
             }
-            else
-            {
-                gameManager.instance.playerLowHealth(false);
-            }
+            
         }
     }
     public void Move()
@@ -231,15 +234,17 @@ public void takeDamage(int amount)
     {
         HP -= amount;
         updatePlayerUI();
-
-        if (amount > 0)
-        {
+        if (PlayerHPOrig * 0.5 >= HP)
+            SetLowScreen(HP, PlayerHPOrig);
+        if (HP > 0)
+        {            
             StartCoroutine(gameManager.instance.playerFlashDamage());
             audi.PlayOneShot(audioDamage[Random.Range(0, audioDamage.Length)], audioDamageVol);
         }
         
         if (HP <= 0)
         {
+         
             gameManager.instance.Lose();
         }
     }
@@ -500,14 +505,38 @@ public void takeDamage(int amount)
         rechargeStarted = false;
         gameManager.instance.teleportIcon.fillAmount = 1;
     }
+    public void SetLowScreen(int Hp, int original)
+    {
+        if ((float)original * 0.5 >= Hp && (float)original * 0.4 < Hp)
+            stageOneLow.SetActive(true);
+        else if ((float)original * 0.4 >= Hp && (float)original * 0.3 < Hp)
+        {
+            stageOneLow.SetActive(false);
+            stageTwoLow.SetActive(true);
+        }
+        else if ((float)original * 0.3 >= Hp && (float)original * 0.2 < Hp)
+        {
+            stageTwoLow.SetActive(false);
+            stageThreeLow.SetActive(true);
+        }
+        else if ((float)original * 0.2 >= Hp && (float)original * 0.1 < Hp)
+        {
+            stageThreeLow.SetActive(false);
+            stageFourLow.SetActive(true);
+        }
+        else if ((float)original * 0.1 >= Hp)
+        {
+            stageFourLow.SetActive(false);
+            stageFiveLow.SetActive(true);
+        }
 
-    IEnumerator playHeartbeat()
+    }
+    IEnumerator playHeartbeat() 
     {
         isLowHealthFlashing = true;
         audi.PlayOneShot(heartBeat, heartbeatVol);
         yield return new WaitForSeconds(5f);
         isLowHealthFlashing = false;
-        
-    }
 
+    }
 }

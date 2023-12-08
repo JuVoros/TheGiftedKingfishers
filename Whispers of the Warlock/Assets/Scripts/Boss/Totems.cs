@@ -20,8 +20,8 @@ public class Totems : MonoBehaviour, IDamage
     public void Start()
     {
         Boss = GameObject.FindWithTag("Boss");
-        totemHealth = Boss.GetComponent<BossScript>().totemHealth;
-        totemHealthorig = totemHealth;
+        totemHealthorig = Boss.GetComponent<BossScript>().totemHealth;
+        totemHealth = totemHealthorig;
     }
 
 

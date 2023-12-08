@@ -48,6 +48,7 @@ public class BossScript : MonoBehaviour, IDamage
     public bool meleeRange;
     bool playerInRange;
     public bool isShielding = false;
+    bool totemSpawned;
 
     //Vectors
     Vector3 playerDir;
@@ -126,7 +127,9 @@ public class BossScript : MonoBehaviour, IDamage
     void HandleAttackingState()
     {
         anim.SetBool("Idle", false);
+        damageCollider.enabled = true;
         totemSpawnCount = 0;
+        totemSpawned = false;
 
         if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee & !isShooting)
         {
@@ -200,8 +203,11 @@ public class BossScript : MonoBehaviour, IDamage
     {
 
         damageCollider.enabled = false;
-        totemHealth += 5;
-        
+        if (!totemSpawned)
+        {
+            totemSpawned = true;
+            totemHealth += 5;
+        }
     }
     void OnTriggerEnter(Collider other)
     {

@@ -29,7 +29,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] AudioClip jumpScareSound;
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
-    [SerializeField] GameObject playerLowHealthScreen;
+    [SerializeField] public GameObject playerLowHealthScreen;
 
 
     [SerializeField] GameObject playerHealthScreen;
@@ -359,7 +359,7 @@ public class gameManager : MonoBehaviour
     }
 
 
-    public void ChangeIconAlpha(UnityEngine.UI.Image image, float alpha)
+    public void ChangeIconAlpha(Image image, float alpha)
     {
         image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
     }

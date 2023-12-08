@@ -125,7 +125,6 @@ public class enemyAI : MonoBehaviour, IDamage
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
-        Debug.Log("Ray");
 
         RaycastHit hit;
 
