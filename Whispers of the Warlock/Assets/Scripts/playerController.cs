@@ -347,7 +347,7 @@ public void takeDamage(int amount)
         if (weaponTransform != null)
         {
             GameObject staffObject = Instantiate(gun.model, weaponTransform.transform.position, weaponTransform.transform.rotation);
-            staffObject.transform.parent = weaponTransform;
+            staffObject.transform.SetParent(transform);
 
             staffObject.SetActive(false);
 

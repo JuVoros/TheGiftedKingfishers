@@ -8077,6 +8077,7 @@ Transform:
   m_Children:
   - {fileID: 1965620899687816129}
   - {fileID: 203106354}
+  - {fileID: 7937754895104840038}
   m_Father: {fileID: 6054495569414690203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &257849359
@@ -67841,7 +67842,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 257849358}
-  - {fileID: 7937754895104840038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!4 &6169310000576403527
@@ -69574,11 +69574,11 @@ MonoBehaviour:
   fallYLevel: 540
   PlayerHPOrig: 0
   manaCur: 0
-  stageOneLow: {fileID: 0}
-  stageTwoLow: {fileID: 0}
-  stageThreeLow: {fileID: 0}
-  stageFourLow: {fileID: 0}
-  stageFiveLow: {fileID: 0}
+  stageOneLow: {fileID: 1927749299}
+  stageTwoLow: {fileID: 621877023}
+  stageThreeLow: {fileID: 1094312889}
+  stageFourLow: {fileID: 1313609710}
+  stageFiveLow: {fileID: 302553911}
   staffList: []
   staffModel: {fileID: 7305756318410197980}
   shootDamage: 0
@@ -70163,11 +70163,11 @@ Transform:
   m_GameObject: {fileID: 7305756318410197980}
   serializedVersion: 2
   m_LocalRotation: {x: 0.21643963, y: -0, z: 0.000000029802322, w: 0.97629607}
-  m_LocalPosition: {x: 0.50001484, y: 0.74999136, z: 0.59998375}
+  m_LocalPosition: {x: 0.50001484, y: -0.25000864, z: 0.59998375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6054495569414690203}
+  m_Father: {fileID: 257849358}
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!1001 &8402628789539974667
 PrefabInstance:
@@ -70376,8 +70376,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -0.06, y: -1.62, z: 2.29}
-  m_Center: {x: -0.02, y: 1.18, z: -0.000005483747}
+  m_Size: {x: 0.1, y: 1.62, z: 2.29}
+  m_Center: {x: 0, y: 1.18, z: -0.000005483747}
 --- !u!65 &8987373914668149596
 BoxCollider:
   m_ObjectHideFlags: 0

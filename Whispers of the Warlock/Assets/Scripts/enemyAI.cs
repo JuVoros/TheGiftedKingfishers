@@ -62,7 +62,8 @@ public class enemyAI : MonoBehaviour, IDamage
         EnemyHPOrig = EnemyHP;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-
+        if (agent.CompareTag("Enemy"))
+            enemyHpBar.enabled = false;
     }
 
     void Update()

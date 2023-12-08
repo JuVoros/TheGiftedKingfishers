@@ -48,7 +48,7 @@ public class playerBullets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger)
+        if (other.isTrigger || other.CompareTag("Player"))
             return;
       
             IDamage damagable = other.GetComponent<IDamage>();
