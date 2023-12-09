@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b5bc3811859da164da40a02dc2c3f21f
+guid: eaf2f3a8f9c6f5d41ad96a7b7b835195
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -1313,7 +1313,7 @@ ModelImporter:
     second: weapon1
   - first:
       74: 7400000
-    second: death2
+    second: Take 001
   - first:
       95: 9500000
     second: //RootNode
@@ -1347,11 +1347,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: death2
+      name: Take 001
       takeName: Take 001
       internalID: 7400000
       firstFrame: 1
-      lastFrame: 30
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

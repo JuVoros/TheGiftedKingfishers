@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45140105, g: 0.5008942, b: 0.57231283, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140105, g: 0.5008943, b: 0.57231283, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1022,6 +1022,7 @@ GameObject:
   - component: {fileID: 398015983}
   - component: {fileID: 398015985}
   - component: {fileID: 398015984}
+  - component: {fileID: 398015986}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1045,7 +1046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -830}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &398015984
@@ -1068,19 +1069,33 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Developed by:
-
-
-    Daniel Cheban
-
-    George Dixon
-
-    Corwin
-    Turner
-
-    Julian Voros'
+  m_text: "Designed - Developed - Produced by:\r\nGeorge Dixon \r\nJulian Voros\r\nDaniel
+    Cheban\r\nCorwin Turner\r\n\r\nAll Assets can be found on:\nassetstore.unity.com\r\n\r\nVisual
+    Assets:\r\n\r\n3DForge   ->   Blacksmith\r\n\nAlexandr Voevodov   ->   Modular
+    Medieval Lanterns \r\n\nALP   ->   Terrain Textures Pack Free\n \r\nAndreiCG  
+    ->   Church 3D   \r\n\nAstrofish   ->   DETAILED - Medieval Village: Demo   \r\n\nAstrofish  
+    ->   DETAILED - Medieval Wells & Props   \r\n\nBlink   ->   Free - Stylized Weapons  
+    \r\n\nBlink   ->   Free - RPG fantasy Spell Icons  \n \r\nBlink   ->   FREE -
+    32 RPG Animations   \r\n\nDanilec   ->   Bush or Grass bend as Detail Mesh  
+    \r\n\nFrank climax   ->   Frank RPG Mage  \n \r\nGameplan VFX   ->   Potions  
+    \r\n\nGnome's Artwork   ->   Elemental Magic Totems   \r\nInari_Green   ->  
+    Horseman   \r\n\nIndieChest   ->   Responsive Energy Shield \n  \r\nIoan Stan  
+    ->   Altar Ruins Free   \r\n\nJoshua Pearson   ->   Environmental Asset Pack  
+    \r\n\nKevin Iglesias   ->   Bc Motions FREEasi \n  \r\nKiria   ->   Medieval
+    Barrows and Wagons   \n\r\nLiquidFire   ->   Mausoleum   \r\n\nMikes digital
+    Emporium   ->   Medieval Village Building Kit   \r\n\nMixamo   ->   Magic Pack  
+    \r\n\nNobiax / Yughues   ->   Yughues Free Bushes\n\nOmni Studio   ->   Free
+    Medieval Room \n   \r\nPlutark_Games   ->   Medieval_Castle   \r\n\nSehat YuceKaya  
+    ->   Cursed Priest - Horror Character   \r\n\nSilena_Art   ->   Stone UI   \r\n\nSkullvertex  
+    ->   Demon Tree   \r\n\nstudiolan.dev   ->   Sponza   \r\n\nTeam XS   ->   Blue
+    Sedan   \r\n\nTexture Haven   ->   Rock Textures - 4K   \r\n\nTexture Me!   ->  
+    Hand Painted Rocks-Road Texture   \r\n\nTriForge Assets    ->   Fantasy Forest
+    Environment - Free Demo   \r\n\nTs Work   ->   Fantasy Monster(Wizard) DEMO  
+    \r\nVisyde Interactives   ->   Simple Modern Crosshairs: Pack 1   \r\n\nWello
+    Soft   ->   10 Skyboxes Pack : Day - Night   \r\n\nWill Morillas   ->   Lesser
+    Imp   \r\n\nZakman   ->   Rock_Pack   \r\n\r\n\n\r\nAudio Assets:\r\n\r\nAnthon  
+    ->   Horror Elements   \r\n\nIdia Software LLC   ->   Action Music Pack\n   \r\nMarcelo
+    Fernandez Music   ->   Action Music Pack   \r\n\nNox_ Sound   ->   footsteps-Essentials "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8c2449f7de28c6479647b4faec61201, type: 2}
   m_sharedMaterial: {fileID: 8244152825393351561, guid: b8c2449f7de28c6479647b4faec61201, type: 2}
@@ -1115,7 +1130,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1157,6 +1172,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398015982}
   m_CullTransparentMesh: 1
+--- !u!114 &398015986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398015982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc61956f3d33e324c93764b4fccb214b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  mainText: {fileID: 398015984}
+  isLooping: 1
 --- !u!1 &564207748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,7 +2149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &968059005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2634,7 +2664,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1175391385

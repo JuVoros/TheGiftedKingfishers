@@ -11,7 +11,8 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] Animator anim;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
-    [SerializeField] Collider damageCollider;
+    [SerializeField] Collider damageColli;
+    [SerializeField] Collider KneelColli;
     [SerializeField] public GameObject undamageableScreen;
 
     [Header("----- Stats -----")]
@@ -128,10 +129,11 @@ public class BossScript : MonoBehaviour, IDamage
     void HandleAttackingState()
     {
         anim.SetBool("Idle", false);
-        damageCollider.enabled = true;
+        anim.SetBool("Kneel", false);
+        damageColli.enabled = true;
+        KneelColli.enabled = false;
         totemSpawnCount = 0;
         totemSpawned = false;
-        //damageCollider.enabled = true;
         negateDamage = false;
 
         if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee & !isShooting)
@@ -211,7 +213,9 @@ public class BossScript : MonoBehaviour, IDamage
     void Shield()
     {
 
-        //damageCollider.enabled = false;
+        anim.SetBool("Kneel", true);
+        damageColli.enabled = false;
+        KneelColli.enabled = true;
         negateDamage = true;
         if (!totemSpawned)
         {
