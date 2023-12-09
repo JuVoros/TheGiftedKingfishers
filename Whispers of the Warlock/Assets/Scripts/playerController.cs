@@ -409,7 +409,6 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
-            gameManager.instance.updateGoal(10);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -452,7 +451,6 @@ public void takeDamage(int amount)
                 isBlinking = true;
                 gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
-                gameManager.instance.updateGoal(50);
                 manaCur -= blinkMana;
                 updatePlayerUI();
                 Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;

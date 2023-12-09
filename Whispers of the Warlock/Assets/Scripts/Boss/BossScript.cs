@@ -12,6 +12,7 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] GameObject bullet;
     [SerializeField] Collider damageCollider;
+    [SerializeField] public GameObject undamageableScreen;
 
     [Header("----- Stats -----")]
     [SerializeField] public int enemyHp;
@@ -32,13 +33,13 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] GameObject meleeSpawn;
     [SerializeField] GameObject rangeSpawn;
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] GameObject totem;
 
 
     //int
     int animToPlay;
     public int totemHealth;
     int totemSpawnCount;
+    public int enemyHpOrig;
 
     //bool
     public bool isAttacking = false;
@@ -49,6 +50,7 @@ public class BossScript : MonoBehaviour, IDamage
     bool playerInRange;
     public bool isShielding = false;
     bool totemSpawned;
+    bool negateDamage;
 
     //Vectors
     Vector3 playerDir;
@@ -58,8 +60,7 @@ public class BossScript : MonoBehaviour, IDamage
     //List
     List<int> animList = new List<int>();
 
-    ImpSpawner spawner;
-    public int enemyHpOrig;
+    
 
 
 
@@ -106,7 +107,7 @@ public class BossScript : MonoBehaviour, IDamage
 
         }
 
-        totem = GameObject.FindWithTag("Totem");
+        
 
 
     }
@@ -130,6 +131,8 @@ public class BossScript : MonoBehaviour, IDamage
         damageCollider.enabled = true;
         totemSpawnCount = 0;
         totemSpawned = false;
+        //damageCollider.enabled = true;
+        negateDamage = false;
 
         if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee & !isShooting)
         {
@@ -149,48 +152,54 @@ public class BossScript : MonoBehaviour, IDamage
     }
     public void takeDamage(int damage)
     {
+        if(!negateDamage)
+        {
+            enemyHp -= damage;
 
-        enemyHp -= damage;
-       
-        if (enemyHp <= 0)
-        {
-            damageCollider.enabled = false;
-            anim.SetBool("Death", true);
-            agent.enabled = false;
-            isDead = true;
-            gameManager.instance.updateGoal(2500);
-            StartCoroutine(gameManager.instance.Winner());
-        }
-        else
-        {
-            if (enemyHp <= (float)enemyHpOrig * 0.75 && enemyHp > (float)enemyHpOrig * 0.72)
-            {
-                isShielding = true;
-                isAttacking = false;
-                rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
-                meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
-                gameManager.instance.updateGoal(250);
-            }
-            else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.47)
+            if (enemyHp <= 0)
             {
 
-                isShielding = true;
-                isAttacking = false;
-                rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                gameManager.instance.updateGoal(500);
+                anim.SetBool("Death", true);
+                agent.enabled = false;
+                isDead = true;
+                gameManager.instance.updateGoal(2500);
+                StartCoroutine(gameManager.instance.Winner());
             }
-            else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.22)
+            else
             {
-                isShielding = true;
-                isAttacking = false;
-                rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
-                meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                gameManager.instance.updateGoal(750);
+                if (enemyHp <= (float)enemyHpOrig * 0.75 && enemyHp > (float)enemyHpOrig * 0.73)
+                {
+                    isShielding = true;
+                    isAttacking = false;
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                    gameManager.instance.updateGoal(250);
+                }
+                else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.48)
+                {
+
+                    isShielding = true;
+                    isAttacking = false;
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                    gameManager.instance.updateGoal(500);
+                }
+                else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.23)
+                {
+                    isShielding = true;
+                    isAttacking = false;
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                    gameManager.instance.updateGoal(750);
+                }
+                anim.SetTrigger("Damage");
+                StartCoroutine(flashRed());
             }
-            anim.SetTrigger("Damage");
-            StartCoroutine(flashRed());
+
         }
+        else if (negateDamage)
+            StartCoroutine(DamagenegateScreen());
+        
     }
     void faceTarget()
     {
@@ -202,7 +211,8 @@ public class BossScript : MonoBehaviour, IDamage
     void Shield()
     {
 
-        damageCollider.enabled = false;
+        //damageCollider.enabled = false;
+        negateDamage = true;
         if (!totemSpawned)
         {
             totemSpawned = true;
@@ -273,7 +283,15 @@ public class BossScript : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0);
         totemSpawnCount = 1;
     }
+    IEnumerator DamagenegateScreen()
+    {
 
+        undamageableScreen.SetActive(true);
+
+        yield return new WaitForSeconds(0.8f);
+
+        undamageableScreen.SetActive(false);
+    }
 
 
 }
