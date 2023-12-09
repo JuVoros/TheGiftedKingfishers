@@ -166,8 +166,8 @@ public class BossScript : MonoBehaviour, IDamage
                 {
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(3);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
                     gameManager.instance.updateGoal(250);
                 }
                 else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.48)
@@ -175,15 +175,15 @@ public class BossScript : MonoBehaviour, IDamage
 
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
                     gameManager.instance.updateGoal(500);
                 }
                 else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.23)
                 {
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                     meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                     gameManager.instance.updateGoal(750);
                 }
