@@ -20,7 +20,7 @@ public class menuManager : MonoBehaviour
     [SerializeField] GameObject ControlsMenu;    
     [SerializeField] GameObject CreditMenu;
     [SerializeField] AudioMixer mixer;
-
+    [SerializeField] LoadingScreen loadingScreen;
 
     [SerializeField] GameObject firstMainButton;
     [SerializeField] GameObject firstOptionsButton;
@@ -39,7 +39,7 @@ public class menuManager : MonoBehaviour
     }  
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        loadingScreen.loadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void Options()
     {

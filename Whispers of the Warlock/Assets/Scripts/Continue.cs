@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Continue : MonoBehaviour
 {
+    [SerializeField] LoadingScreen loadingScreen;
     public void Start()
     {
         Cursor.visible = false;
@@ -17,7 +18,7 @@ public class Continue : MonoBehaviour
         KeyCode continueKey = KeyCode.Space;
         if (Input.GetKeyDown(continueKey))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            loadingScreen.loadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("Switch Scenes");
         }
     }
