@@ -8,7 +8,6 @@ public class playerController : MonoBehaviour, IDamage
     [Header("-----Components------")]
     [SerializeField] CharacterController controller;
     [SerializeField] public AudioSource audi;
-    [SerializeField] GameObject shield;
 
     [Header("------Audio------")]
     [SerializeField] AudioClip[] audioDamage;
@@ -39,7 +38,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int blinkMana;
     [SerializeField] int blinkCooldown; // in Frames
     int blinkTimer;
-    [Range(1, 20)][SerializeField] public int manaMax;
+    [Range(1, 200)][SerializeField] public int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
     [SerializeField] float fallYLevel;
 
@@ -53,9 +52,6 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] GameObject stageFourLow;
     [SerializeField] GameObject stageFiveLow;
 
-
-
-
     //Gun Stats
     [SerializeField] List<gunStats> staffList = new List<gunStats>();
     [SerializeField] GameObject staffModel;
@@ -67,7 +63,16 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] public Light staffLight;
     private GameObject currentStaffModel;
     int staffSelected;
-   
+
+    [Header("------Shield Stats------")]
+    [Range(1, 5)][SerializeField] int shieldManaCost;
+    [Range(1, 5)][SerializeField] int drainRateWhileShielding;
+    [Range(1, 5)][SerializeField] float shieldDrainTimer;
+    [SerializeField] GameObject shield;
+    public bool isShieldActive = false;
+    private bool isHoldingShieldButton = false;
+    private float shieldDrainTimerOrig;
+
     private float speedOrig;
 
     private Vector3 playerVelocity;
@@ -88,6 +93,7 @@ public class playerController : MonoBehaviour, IDamage
         manaCur = manaMax;
         speedOrig = playerSpeed;
         blinkTimer = blinkCooldown;
+        shieldDrainTimerOrig = shieldDrainTimer; 
         spawnPlayer();
 
     }
@@ -102,7 +108,7 @@ public class playerController : MonoBehaviour, IDamage
         {
             Move();
             teleport();
-            
+
 
             if (staffList.Count > 0)
             {
@@ -131,6 +137,23 @@ public class playerController : MonoBehaviour, IDamage
                 stageThreeLow.SetActive(false);
                 stageFourLow.SetActive(false);
                 stageFiveLow.SetActive(false);
+            }
+
+
+            if (Input.GetKey(KeyCode.R) && !isHoldingShieldButton && manaCur >= shieldManaCost)
+            {
+                isHoldingShieldButton = true;
+                ActivateShield();
+            }
+            else if (Input.GetKeyUp(KeyCode.R) && isHoldingShieldButton)
+            {
+                isHoldingShieldButton = false;
+                DeactivateShield();
+            }
+
+            if(isShieldActive)
+            {
+                DrainManaWhileShielding();
             }
 
         }
@@ -212,21 +235,6 @@ public class playerController : MonoBehaviour, IDamage
                 Vector3 spawnDirection = Camera.main.transform.forward;
 
                 GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, spawnPosition, Quaternion.LookRotation(spawnDirection));
-
-               // bullet.transform.position = attackPoint.transform.position;
-
-                // playerBullets bulletScript = bullet.GetComponent<playerBullets>();
-                //RaycastHit hit;
-                //if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
-                //{
-                //    Instantiate(staffList[staffSelected].hitEffect, hit.point, staffList[staffSelected].hitEffect.transform.rotation);
-                //    IDamage damageable = hit.collider.GetComponent<IDamage>();
-
-                //    if (hit.transform != transform && damageable != null)
-                //    {
-                //        damageable.takeDamage(shootDamage);
-                //    }
-                //}
             }
             else
             {
@@ -554,4 +562,41 @@ public void takeDamage(int amount)
         isLowHealthFlashing = false;
 
     }
+
+    private void DrainManaWhileShielding()
+    {
+        shieldDrainTimer -= Time.deltaTime;
+        Debug.Log("Shield Drain Timer: " + shieldDrainTimer);
+
+        if (shieldDrainTimer <= 0f)
+        {
+            
+            manaCur = Mathf.Clamp(manaCur - shieldManaCost, 0, manaMax);
+            updatePlayerUI();
+            Debug.Log("Mana Drained: " + manaCur);
+
+            shieldDrainTimer = shieldDrainTimerOrig;
+            Debug.Log("Shield Drain Timer Reset: " + shieldDrainTimer);
+        }
+    }
+
+    private void ActivateShield()
+    {
+        if(manaCur >= shieldManaCost && !isShieldActive)
+        {
+            isShieldActive = true;
+            shield.SetActive(true);
+            manaCur -= shieldManaCost;
+            updatePlayerUI();
+
+            shieldDrainTimer = shieldDrainTimerOrig;
+        }
+    }
+
+    private void DeactivateShield()
+    {
+        isShieldActive = false;
+        shield.SetActive(false);
+    }
+
 }

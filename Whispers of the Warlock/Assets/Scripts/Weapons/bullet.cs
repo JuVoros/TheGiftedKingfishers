@@ -30,11 +30,11 @@ public class Bul : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        Shield shield = other.GetComponent<Shield>();
+        playerController playerController = gameManager.instance.player.GetComponent<playerController>();
 
-        if (shield != null && shield.IsShieldActive())
+        if (playerController != null && playerController.isShieldActive)
         {
-            rb.velocity = -rb.velocity;
+            Destroy(gameObject);
         }
         else
         {
