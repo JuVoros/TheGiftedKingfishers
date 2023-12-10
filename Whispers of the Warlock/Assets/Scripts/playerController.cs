@@ -27,6 +27,10 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float pickupVol;
     [SerializeField] public AudioClip heartBeat;
     [SerializeField] float heartbeatVol;
+    [SerializeField] public AudioClip shieldSound;
+    [SerializeField] float shieldSoundVol;
+    [SerializeField] public AudioClip deactivateShieldSound;
+    [SerializeField] float deactivateShieldSoundVol;
 
     [Header("------Player Stats------")]
     [Range(1, 10)][SerializeField] float jumpHeight;
@@ -70,7 +74,9 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 5)][SerializeField] int drainRateWhileShielding;
     [Range(1, 5)][SerializeField] float shieldDrainTimer;
     [Range(5, 10)][SerializeField] float shieldRadius;
+    [Range(5, 10)][SerializeField] float bossShieldRadius;
     [Range(1, 10)][SerializeField] float shieldPushForce;
+    [Range(1, 10)][SerializeField] float bossShieldPushForce;
     [SerializeField] GameObject shield;
     public bool isShieldActive = false;
     private bool isHoldingShieldButton = false;
@@ -181,6 +187,8 @@ public class playerController : MonoBehaviour, IDamage
             if (enemy != null)
             {
                 enemyAI enemyAI = enemy.GetComponent<enemyAI>();
+                BossScript bossScript = enemy.GetComponent<BossScript>();
+
                 if (enemyAI != null)
                 {
                     Vector3 direction = enemy.transform.position - transform.position;
@@ -190,15 +198,30 @@ public class playerController : MonoBehaviour, IDamage
                     float newStoppingDistance = enemyAI.stoppingDistOrig * shieldRadius;
 
                     NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
-                    if (enemyAgent != null)
+                    enemyAgent.stoppingDistance = newStoppingDistance;
+                    if (distanceToEnemy <= shieldRadius)
                     {
-                        enemyAgent.stoppingDistance = newStoppingDistance;
+                        Vector3 pushDirection = direction.normalized;
+                        enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
+                    }
+                }
 
-                        if (distanceToEnemy <= shieldRadius)
-                        {
-                            Vector3 pushDirection = direction.normalized;
-                            enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
-                        }
+                else if (bossScript != null)
+                {
+                    // Handle stopping distance and pushing logic for BossScript
+                    Vector3 direction = enemy.transform.position - transform.position;
+                    direction.y = 0f; // Ignore vertical distance
+                    float distanceToEnemy = direction.magnitude;
+
+                    float newStoppingDistance = bossScript.stoppingDistOriginal * shieldRadius;
+
+                    NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
+                    enemyAgent.stoppingDistance = newStoppingDistance;
+
+                    if (distanceToEnemy <= shieldRadius)
+                    {
+                        Vector3 pushDirection = direction.normalized;
+                        enemyAgent.Move(pushDirection * bossShieldPushForce * Time.fixedDeltaTime);
                     }
                 }
             }
@@ -631,6 +654,7 @@ public void takeDamage(int amount)
     {
         if(manaCur >= shieldManaCost && !isShieldActive)
         {
+            audi.PlayOneShot(shieldSound, shieldSoundVol);
             isShieldActive = true;
             shield.SetActive(true);
             manaCur -= shieldManaCost;
@@ -642,6 +666,7 @@ public void takeDamage(int amount)
 
     private void DeactivateShield()
     {
+        audi.PlayOneShot(deactivateShieldSound, deactivateShieldSoundVol);
         isShieldActive = false;
         shield.SetActive(false);
     }

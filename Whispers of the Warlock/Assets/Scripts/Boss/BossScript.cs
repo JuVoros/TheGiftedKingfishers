@@ -39,7 +39,7 @@ public class BossScript : MonoBehaviour, IDamage
     public int enemyHpOrig;
     
     //float
-    float stoppingDistOriginal;
+    public float stoppingDistOriginal;
 
     //bool
     public bool isAttacking = false;
