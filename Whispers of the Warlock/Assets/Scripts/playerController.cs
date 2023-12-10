@@ -496,6 +496,7 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
+            gameManager.instance.updateGoal(5);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -506,8 +507,8 @@ public void takeDamage(int amount)
 
             manaCur += amount;
             audi.PlayOneShot(potionSound, potionVol);
+        gameManager.instance.updateGoal(50);
 
-        
         if (manaCur >= manaMax)
         {
             manaCur = manaMax;
@@ -520,9 +521,9 @@ public void takeDamage(int amount)
             StartCoroutine(gameManager.instance.playerFlashHeals());
             HP += amount;
             audi.PlayOneShot(potionSound, potionVol);
-        
+        gameManager.instance.updateGoal(50);
 
-        if(HP >= PlayerHPOrig)
+        if (HP >= PlayerHPOrig)
         {
             HP = PlayerHPOrig;
         }
@@ -536,6 +537,7 @@ public void takeDamage(int amount)
             if (manaCur >= blinkMana)
             {
                 isBlinking = true;
+                gameManager.instance.updateGoal(25);
                 gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
                 manaCur -= blinkMana;

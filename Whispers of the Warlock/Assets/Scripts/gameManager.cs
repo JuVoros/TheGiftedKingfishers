@@ -58,7 +58,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] List<GameObject> potionDrops;
 
     [Header("------ UI ------")]
-    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text[] scoreTexts;
+    [SerializeField] TMP_Text[] HighScoreTexts;
+    [SerializeField] TMP_Text[] BestTimeTexts;
+    [SerializeField] TMP_Text[] timeTexts;
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text gameGoal;
     [SerializeField] TMP_Text weaponNameText;
@@ -169,6 +172,37 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    void checkTimer()
+    {
+        if (timer < PlayerPrefs.GetFloat("BestTime", 9999999))
+        {
+            PlayerPrefs.SetFloat("BestTime", timer);
+        }
+    }
+
+    void endGameUpdates()
+    {
+        for (int i = 0; i < timeTexts.Length; i++)
+        {
+            timeTexts[i].text = timerText.text;
+        }
+        minutes = PlayerPrefs.GetFloat("BestTime", 60*99) / 60;
+        seconds = PlayerPrefs.GetFloat("BestTime", 59) % 60;
+        fraction = (PlayerPrefs.GetFloat("BestTime", 99) * 100) % 100;
+        for (int i = 0; i < BestTimeTexts.Length; i++)
+        {
+            BestTimeTexts[i].text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
+        }
+        for (int i = 0; i < scoreTexts.Length; i++)
+        {
+            scoreTexts[i].text = enemiesRemaining.ToString("0");
+
+        }
+        for (int i = 0; i < HighScoreTexts.Length; i++)
+        {
+            HighScoreTexts[i].text = PlayerPrefs.GetInt("HighScore").ToString("0");
+        }
+    }
 
     public void StatePause()
     {
@@ -192,9 +226,16 @@ public class gameManager : MonoBehaviour
     public void updateGoal(int amount)
     {
         enemiesRemaining += amount;
-        scoreText.text = enemiesRemaining.ToString("0");
-        PlayerPrefs.SetInt("HighScore", enemiesRemaining);
-        PlayerPrefs.GetInt("HighScore");
+        scoreTexts[0].text = enemiesRemaining.ToString("0");
+        checkHighScore();
+    }
+
+    void checkHighScore()
+    {
+        if(enemiesRemaining > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", enemiesRemaining);
+        }
     }
 
     public  void weaponNameUpdate()
@@ -206,7 +247,9 @@ public class gameManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(winMenuButton);
-        yield return new WaitForSeconds(3);
+        checkTimer();
+        endGameUpdates();
+        yield return new WaitForSeconds(2);
         StatePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
@@ -217,6 +260,7 @@ public class gameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(loseMenuButton);
         StatePause();
+        endGameUpdates();
         menuActive = menuLose;
         menuActive.SetActive(true);
 
