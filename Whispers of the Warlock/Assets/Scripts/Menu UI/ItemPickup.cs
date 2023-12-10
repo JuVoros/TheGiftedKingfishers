@@ -34,18 +34,25 @@ public class ItemPickup : MonoBehaviour
 
     private void Update()
     {
-        if(playerInTrigger && Input.GetButtonDown("Interact") && gameObject.CompareTag("Hp") || gameObject.CompareTag("Mana"))
+        if (playerInTrigger && Input.GetButtonDown("Interact") && gameObject.CompareTag("Hp"))
         {
 
             Debug.Log("Item Pickup");
             PickupPotion();
 
         }
-        else if(playerInTrigger && Input.GetButtonDown("Interact"))
+        else if (playerInTrigger && Input.GetButtonDown("Interact") && gameObject.CompareTag("Mana"))
         {
-            
+
+            Debug.Log("Item Pickup");
+            PickupPotion();
+
+        }
+        else if (playerInTrigger && Input.GetButtonDown("Interact"))
+        {
+
             PickupStaff();
-           
+
         }
     }
 

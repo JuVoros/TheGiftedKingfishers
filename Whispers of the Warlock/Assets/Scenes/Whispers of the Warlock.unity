@@ -10853,6 +10853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 344301332}
   - component: {fileID: 344301331}
+  - component: {fileID: 344301333}
   m_Layer: 0
   m_Name: Music Audio
   m_TagString: Music
@@ -10870,7 +10871,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4169252179079603523, guid: bd8937fbd014f4d44a0aa89b15e6f2f5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: cc468fb90f6fb4d12abe3e585f961695, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -10971,6 +10972,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1545070120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344301333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344301330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efba4a7432bff8744adb491259bca31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: cc468fb90f6fb4d12abe3e585f961695, type: 3}
+  - {fileID: 8300000, guid: 45400638a56be7a4ea9c7e920d8410b6, type: 3}
+  source: {fileID: 344301331}
 --- !u!4 &345475819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1607273112081685229, guid: 28e4adff16b69cf41971d6aaf48f80ae, type: 3}
@@ -67181,11 +67198,11 @@ PrefabInstance:
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[1]
       value: 
-      objectReference: {fileID: 1712987340946448860, guid: 114c59889c1fc7a49b36e71f4f1872f5, type: 3}
+      objectReference: {fileID: 5196503440786111777, guid: 1e5feba4e5c5f2c4dba90f90a8526285, type: 3}
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[2]
       value: 
-      objectReference: {fileID: 5196503440786111777, guid: 1e5feba4e5c5f2c4dba90f90a8526285, type: 3}
+      objectReference: {fileID: 1712987340946448860, guid: 114c59889c1fc7a49b36e71f4f1872f5, type: 3}
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[3]
       value: 
