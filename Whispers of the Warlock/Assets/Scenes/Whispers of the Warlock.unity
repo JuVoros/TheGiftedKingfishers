@@ -1284,6 +1284,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Indiana Jones
+
+        1945-2007'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1356,6 +1364,10 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: "R.I.P.\nRadagon \n0001 - 1500\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -1482,6 +1494,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Peter Parker
+
+        2000-2022'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -2527,6 +2547,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Michael Myers
+
+        1800-1900'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -3568,6 +3596,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Luigi The Plumber
+
+        1970-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4229,6 +4265,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Malenia the Rot Witch
+
+        0001 - 1000
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4756,6 +4802,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Luke Cage
+
+        1980-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -5619,6 +5673,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Ralph the Turtle
+
+        1990-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -6461,6 +6523,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        George Dixon
+
+        1940-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -7843,6 +7913,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Jack Skellington
+
+        1638-1960'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (1)
@@ -8081,6 +8159,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Mary Poppins
+
+        1732-1840'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -11296,6 +11382,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Michael Jackson
+
+        1930-2012'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -12228,6 +12322,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Maliketh
+
+        0001-0700'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -12730,6 +12832,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Mario the Plumber
+
+        1730-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -14330,6 +14440,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Davy Jones
+
+        1696-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (24)
@@ -15440,6 +15558,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Marc Spector
+
+        1800-1932'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -16992,6 +17118,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Natasha Romanoff
+
+        1985 - 2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -20020,6 +20154,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Nathan Drake
+
+        1980-2013'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -20222,6 +20364,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Saint Nicholas
+
+        1700-2022'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -20958,6 +21108,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        John Mc''Carthy
+
+        1726-1874'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (13)
@@ -21078,6 +21236,14 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Splinter the Rat
+
+        1987-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -21821,6 +21987,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        John O''Leske
+
+        1940-2022'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -23066,6 +23240,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Barack Obama
+
+        1940-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (19)
@@ -23251,6 +23433,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Theodore the Chimpmunk
+
+        2000-2002'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -24925,6 +25115,156 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 78b36f9936c94fa42a52b47dc600068f, type: 3}
+--- !u!1001 &842196697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8469330542997646158}
+    m_Modifications:
+    - target: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_Name
+      value: Fence Rocks (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43.669483
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.91500247
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.57892
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5019219
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8649129
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -119.746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842196702}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842196701}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 842196700}
+  m_SourcePrefab: {fileID: 100100000, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+--- !u!4 &842196698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 842196697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &842196699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 842196697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &842196700
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842196699}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!136 &842196701
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842196699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &842196702
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842196699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &842702559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25080,6 +25420,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Donald Duck
+
+        1920-2022'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -25359,6 +25707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Kobe Bryant
+
+        1990-2019'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -25431,6 +25787,14 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Kara Danvers
+
+        1400-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -25696,6 +26060,156 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f135bd543bf8d0f48be1d73c0430a6df, type: 3}
+--- !u!1001 &867564505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8469330542997646158}
+    m_Modifications:
+    - target: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_Name
+      value: Fence Rocks (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.92744
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5709961
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.101689
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7797
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6261533
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 77.534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 867564510}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 867564509}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 867564508}
+  m_SourcePrefab: {fileID: 100100000, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+--- !u!4 &867564506 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 867564505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &867564507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 867564505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &867564508
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867564507}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!136 &867564509
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867564507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &867564510
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867564507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &871005768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7755033885698263279, guid: f135bd543bf8d0f48be1d73c0430a6df, type: 3}
@@ -25766,6 +26280,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        George Washington
+
+        1800-1860'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -27068,6 +27590,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        King T''Challa
+
+        1990-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -27573,6 +28103,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Felix Kjellberg
+
+        1910-1965'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -29867,6 +30405,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Peter Griffin
+
+        1930-1970'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -30241,6 +30787,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Eren Jaegar
+
+        1700-1725'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -33240,6 +33794,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Alvin the Chimpmunk
+
+        2000-2002'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -33606,6 +34168,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Johnny Depp
+
+        1250-1339'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -34316,6 +34886,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        April O''Neal
+
+        1990 - 2012'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -37088,6 +37666,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Hagrid
+
+        1700-1985'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -37939,6 +38525,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Among Us
+
+        2020-2022'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -38063,6 +38657,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Monkey D. Luffy
+
+        1800-1960'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -40785,6 +41387,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Corwin Turner
+
+        1800-1850'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (7)
@@ -40887,6 +41497,14 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        John Adams
+
+        1913-2007'
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -42815,6 +43433,7 @@ Transform:
   - {fileID: 473819440}
   - {fileID: 149969199}
   - {fileID: 885556785}
+  - {fileID: 2125306709}
   - {fileID: 1432942631}
   - {fileID: 972490661}
   - {fileID: 1281172979}
@@ -44343,6 +44962,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Harry Potter
+
+        1730-1830'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -45212,6 +45839,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Markiplier
+
+        1900-1940'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (27)
@@ -45384,6 +46019,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Roger the Alien
+
+        1832-2003'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -45717,6 +46360,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Oogie Boogie
+
+        1300-1932'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (15)
@@ -45880,6 +46531,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Lenardo the Turtle
+
+        1990-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -46033,6 +46692,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: "Rest in Peace\nHermione Granger \n1834-1912"
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -47213,6 +47876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Thanos
+
+        1913-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -47529,6 +48200,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Tony Stark
+
+        1980-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -47809,6 +48488,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Steven Grant
+
+        1995-2022'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -48306,6 +48993,14 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Bowser the Dragon
+
+        1998-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -53304,6 +53999,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Mickey Mouse
+
+        1900-2022'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -54833,6 +55536,40 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056587863314240475, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.458
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: '
+
+        YOU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.76157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.76157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4290953935
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -56773,6 +57510,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Julian Voros
+
+        1950-2000'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (26)
@@ -57456,6 +58201,156 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f135bd543bf8d0f48be1d73c0430a6df, type: 3}
+--- !u!1001 &1887999728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8469330542997646158}
+    m_Modifications:
+    - target: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_Name
+      value: Fence Rocks (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.934
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887999733}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887999732}
+    - targetCorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1887999731}
+  m_SourcePrefab: {fileID: 100100000, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+--- !u!4 &1887999729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8469330543617264012, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 1887999728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887999730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2544658040455675144, guid: 25e24cef2f4311e42a6316f4e7354a51, type: 3}
+  m_PrefabInstance: {fileID: 1887999728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1887999731
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887999730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!136 &1887999732
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887999730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &1887999733
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887999730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1893002362
 GameObject:
   m_ObjectHideFlags: 0
@@ -58013,6 +58908,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeadstoneBase (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Margit the Fell Omen
+
+        0001 - 0560'
+      objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -58518,6 +59421,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Will Smith
+
+        Get My Wifes Name Out
+
+        Your Mouth'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (8)
@@ -58903,6 +59822,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Anne Frank
+
+        1800-1890'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -58979,6 +59906,14 @@ PrefabInstance:
     - target: {fileID: 1135924864135553736, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_Name
       value: HeadstoneBase (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357900358774945238, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
+      propertyPath: m_text
+      value: 'R.I.P.
+
+        Donatello the Turtle
+
+        1990-2000'
       objectReference: {fileID: 0}
     - target: {fileID: 3472961858604626210, guid: 54b6554dfac16d543880409d95cfaee9, type: 3}
       propertyPath: m_LocalScale.x
@@ -59106,6 +60041,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Simon the Chimpmunk
+
+        2000-2002'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -59179,6 +60122,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Goofy the Dog
+
+        1950-2022'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -59928,6 +60879,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Joe Swanson
+
+        1430-1440'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (21)
@@ -60433,6 +61392,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1522575895}
     m_Modifications:
+    - target: {fileID: 2070589202583906985, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
+      propertyPath: m_text
+      value: 'Rest in Peace
+
+        Freddy Krugger
+
+        1800-1900'
+      objectReference: {fileID: 0}
     - target: {fileID: 6162328608090854573, guid: 33e0081895bd46b4b960721ddc114c6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -60832,6 +61799,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Tarnished
+
+        1857-1924'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (10)
@@ -61042,6 +62017,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Daniel Cheban
+
+        1490-1540'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -62023,6 +63006,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Gilbert Gottfried
+
+        1955-2022'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (4)
@@ -62970,6 +63961,14 @@ PrefabInstance:
     - target: {fileID: 250332872023450667, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Yugi Muto
+
+        1995 - 2012'
       objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
@@ -64408,6 +65407,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023427095409632688, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
+      propertyPath: m_text
+      value: 'Here lies
+
+        Queen Elizabeth
+
+        1700-1900'
+      objectReference: {fileID: 0}
     - target: {fileID: 5588708802363338417, guid: a4d32fb490e48a94eb19f10ba386fb97, type: 3}
       propertyPath: m_Name
       value: gravestoneBase (11)
@@ -64779,6 +65786,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3272917690383531347, guid: 14898f6c0074cb84e88e62a2350ec2bf, type: 3}
   m_PrefabInstance: {fileID: 2124360513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2125306708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1545070120}
+    m_Modifications:
+    - target: {fileID: 7559505531904761941, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_Name
+      value: Large Rock 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0000009536742
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+--- !u!4 &2125306709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420651816542619034, guid: e5c358a373d2fa840a2b94c42d8966af, type: 3}
+  m_PrefabInstance: {fileID: 2125306708}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2125589801 stripped
 GameObject:
@@ -66799,15 +67884,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1208.25
+      value: -1252.4897
       objectReference: {fileID: 0}
     - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.95
+      value: 30.07
       objectReference: {fileID: 0}
     - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.84
+      value: 55.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071088
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071048
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813532353127222790, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6826431953875558962, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: m_IsActive
@@ -71132,6 +72229,9 @@ Transform:
   - {fileID: 26900899}
   - {fileID: 1722497791}
   - {fileID: 967197136}
+  - {fileID: 1887999729}
+  - {fileID: 867564506}
+  - {fileID: 842196698}
   - {fileID: 1166945818}
   - {fileID: 1226891095}
   - {fileID: 1361019694}
