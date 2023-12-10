@@ -3038,6 +3038,7 @@ MonoBehaviour:
   meleeDamage: 0
   meleeAttackDamageTiming: 0
   EnemyHPOrig: 0
+  stoppingDistOrig: 0
 --- !u!64 &3116508587816605061
 MeshCollider:
   m_ObjectHideFlags: 0

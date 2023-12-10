@@ -493,6 +493,7 @@ MonoBehaviour:
   - {fileID: 7770278504300257986}
   - {fileID: 6563237355289024105}
   - {fileID: 6854094332213372295}
+  startSpawning: 0
 --- !u!65 &3339297673391400498
 BoxCollider:
   m_ObjectHideFlags: 0

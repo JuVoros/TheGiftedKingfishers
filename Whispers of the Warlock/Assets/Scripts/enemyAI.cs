@@ -52,7 +52,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isMeleeAttacking = false;
     public int EnemyHPOrig;
     float angleToPlayer;
-    float stoppingDistOrig;
+    public float stoppingDistOrig;
     Vector3 startingPos;
    
 

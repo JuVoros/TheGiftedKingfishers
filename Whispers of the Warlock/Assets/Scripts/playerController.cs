@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.UI.Image;
 
 public class playerController : MonoBehaviour, IDamage
@@ -68,6 +69,8 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 5)][SerializeField] int shieldManaCost;
     [Range(1, 5)][SerializeField] int drainRateWhileShielding;
     [Range(1, 5)][SerializeField] float shieldDrainTimer;
+    [Range(5, 10)][SerializeField] float shieldRadius;
+    [Range(1, 10)][SerializeField] float shieldPushForce;
     [SerializeField] GameObject shield;
     public bool isShieldActive = false;
     private bool isHoldingShieldButton = false;
@@ -158,6 +161,50 @@ public class playerController : MonoBehaviour, IDamage
 
         }
     }
+
+    void FixedUpdate()
+    {
+        if (isShieldActive)
+        {
+            UpdateStoppingDistance("Enemy");
+            UpdateStoppingDistance("Boss");
+            UpdateStoppingDistance("Foe");
+        }
+    }
+
+    void UpdateStoppingDistance(string tag)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
+
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                enemyAI enemyAI = enemy.GetComponent<enemyAI>();
+                if (enemyAI != null)
+                {
+                    Vector3 direction = enemy.transform.position - transform.position;
+                    direction.y = 0f; // Ignore vertical distance
+                    float distanceToEnemy = direction.magnitude;
+
+                    float newStoppingDistance = enemyAI.stoppingDistOrig * shieldRadius;
+
+                    NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
+                    if (enemyAgent != null)
+                    {
+                        enemyAgent.stoppingDistance = newStoppingDistance;
+
+                        if (distanceToEnemy <= shieldRadius)
+                        {
+                            Vector3 pushDirection = direction.normalized;
+                            enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void Move()
     {
         //Ray tracing
@@ -217,7 +264,7 @@ public class playerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (manaCur > 0)
+        if (manaCur > 0 && !isShieldActive)
         {
             isShooting = true;
             manaCur--;

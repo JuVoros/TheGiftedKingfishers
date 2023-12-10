@@ -436,6 +436,7 @@ MonoBehaviour:
   shootCone: 10
   roamDist: 35
   roamPauseTime: 3
+  deathAnimation: 0
   enemyHpBar: {fileID: 5448186281749231596}
   bullet: {fileID: 8677509504579278298, guid: fef23bf5206fceb42be6e60d1274bb48, type: 3}
   shootRate: 1.25
@@ -444,6 +445,8 @@ MonoBehaviour:
   meleeAttackRange: 0
   meleeDamage: 0
   meleeAttackDamageTiming: 0
+  EnemyHPOrig: 0
+  stoppingDistOrig: 0
 --- !u!95 &1032688908546901596
 Animator:
   serializedVersion: 5

@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 7125728241707559907}
   m_Layer: 0
   m_Name: Imp Melee
-  m_TagString: Untagged
+  m_TagString: Foe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   shootCone: 3
   roamDist: 25
   roamPauseTime: 2
+  deathAnimation: 0
   enemyHpBar: {fileID: 0}
   bullet: {fileID: 3535418521258115099, guid: 7ebccd21ef4c2e9439f9714fa718f261, type: 3}
   shootRate: 1.25
@@ -232,6 +233,8 @@ MonoBehaviour:
   meleeAttackRange: 2
   meleeDamage: 1
   meleeAttackDamageTiming: 0.8
+  EnemyHPOrig: 0
+  stoppingDistOrig: 0
 --- !u!136 &1752876550847849733
 CapsuleCollider:
   m_ObjectHideFlags: 0

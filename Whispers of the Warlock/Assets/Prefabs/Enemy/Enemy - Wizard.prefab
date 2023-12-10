@@ -10264,6 +10264,7 @@ MonoBehaviour:
   shootCone: 8
   roamDist: 25
   roamPauseTime: 4
+  deathAnimation: 0
   enemyHpBar: {fileID: 4357128449283054081}
   bullet: {fileID: 8677509504579278298, guid: 2d31316a783b69c4b9bb7c6f45536546, type: 3}
   shootRate: 1
@@ -10272,6 +10273,8 @@ MonoBehaviour:
   meleeAttackRange: 0
   meleeDamage: 0
   meleeAttackDamageTiming: 0
+  EnemyHPOrig: 0
+  stoppingDistOrig: 0
 --- !u!195 &3774061873228980479
 NavMeshAgent:
   m_ObjectHideFlags: 0
