@@ -191,6 +191,8 @@ public class gameManager : MonoBehaviour
     {
         enemiesRemaining += amount;
         scoreText.text = enemiesRemaining.ToString("0");
+        PlayerPrefs.SetInt("HighScore", enemiesRemaining);
+        PlayerPrefs.GetInt("HighScore");
     }
 
     public  void weaponNameUpdate()
