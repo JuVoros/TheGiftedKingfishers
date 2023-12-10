@@ -39,15 +39,15 @@ public class Bul : MonoBehaviour
         else
         {
 
-        IDamage damagable = other.GetComponent<IDamage>();
+            IDamage damagable = other.GetComponent<IDamage>();
 
-        if (damagable != null && other.CompareTag("Player"))
-        {
-            damagable.takeDamage(damage);
+            if (damagable != null && other.CompareTag("Player"))
+            {
+                damagable.takeDamage(damage);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+
     }
-
-        }
 
 }                                                           

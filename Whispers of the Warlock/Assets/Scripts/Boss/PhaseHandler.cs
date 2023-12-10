@@ -34,8 +34,8 @@ public class PhaseHandler : MonoBehaviour
         healthOrig = boss.GetComponent<BossScript>().enemyHpOrig;
         normalSpeed = boss.GetComponent<NavMeshAgent>().speed;
         speedUp1 = boss.GetComponent<NavMeshAgent>().speed * (float)1.05;
-        speedUp2 = boss.GetComponent<NavMeshAgent>().speed * (float)1.15; 
-        speedUp3 = boss.GetComponent<NavMeshAgent>().speed * (float)1.22; 
+        speedUp2 = boss.GetComponent<NavMeshAgent>().speed * (float)1.1; 
+        speedUp3 = boss.GetComponent<NavMeshAgent>().speed * (float)1.15; 
 
     }
 

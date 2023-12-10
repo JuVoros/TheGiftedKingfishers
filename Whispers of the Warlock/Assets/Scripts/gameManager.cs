@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject jumpScareScreen;
     [SerializeField] GameObject playerDamageScreen;
     [SerializeField] public GameObject playerLowHealthScreen;
+    [SerializeField] public GameObject pfDamagePopup;
 
 
     [SerializeField] GameObject playerHealthScreen;
@@ -80,6 +81,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
+    
     public int manaPots;
     public int hpPots;
     public int enemiesRemaining;

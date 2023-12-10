@@ -30,10 +30,8 @@ public class playerBullets : MonoBehaviour
             }
             else
             {
-
-
-            Vector3 dir = playerCamera.transform.forward;
-            rb.velocity = dir * speed;
+                Vector3 dir = playerCamera.transform.forward;
+                rb.velocity = dir * speed;
             }
 
 
@@ -56,6 +54,7 @@ public class playerBullets : MonoBehaviour
         if (damagable != null)
         {
             damagable.takeDamage(damage);
+            DamagePopup.Create(other.transform.position, damage);
         }
 
         Destroy(gameObject);

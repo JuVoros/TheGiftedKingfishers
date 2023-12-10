@@ -18,8 +18,6 @@ public class BossScript : MonoBehaviour, IDamage
     [Header("----- Stats -----")]
     [SerializeField] public int enemyHp;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
-    [SerializeField] float shootRate;
-    [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
 
 
@@ -41,25 +39,26 @@ public class BossScript : MonoBehaviour, IDamage
     public int totemHealth;
     int totemSpawnCount;
     public int enemyHpOrig;
+    
+    //float
+    float stoppingDistOriginal;
 
     //bool
     public bool isAttacking = false;
     bool isMelee;
-    bool isShooting;
     bool isDead;
     public bool meleeRange;
     bool playerInRange;
     public bool isShielding = false;
     bool totemSpawned;
     bool negateDamage;
+    bool playAnim1;
 
     //Vectors
     Vector3 playerDir;
     Vector3 totemOffset = new Vector3(15,0,0);
     Vector3 totemDrop;
 
-    //List
-    List<int> animList = new List<int>();
 
     
 
@@ -68,11 +67,14 @@ public class BossScript : MonoBehaviour, IDamage
     public void Start()
     {
         enemyHpOrig = enemyHp;
-        animList.AddRange(new List<int>() {1,2,3,4});
+        
+        stoppingDistOriginal = agent.GetComponent<NavMeshAgent>().stoppingDistance;
         
     }
     public void Update()
     {
+
+        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         playerDir = gameManager.instance.player.transform.position - headPos.position;
 
         if (!isAttacking && !isShielding)
@@ -121,7 +123,6 @@ public class BossScript : MonoBehaviour, IDamage
     }
     void HandleShieldingState()
     {
-        anim.SetBool("Idle", true);
         agent.SetDestination(myself.transform.position);
 
         Shield();
@@ -132,11 +133,10 @@ public class BossScript : MonoBehaviour, IDamage
         anim.SetBool("Kneel", false);
         damageColli.enabled = true;
         KneelColli.enabled = false;
-        totemSpawnCount = 0;
         totemSpawned = false;
         negateDamage = false;
 
-        if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee & !isShooting)
+        if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee)
         {
 
             isMelee = true;
@@ -144,13 +144,6 @@ public class BossScript : MonoBehaviour, IDamage
             
 
         }
-        else if(!isMelee && !isShooting)
-        {
-            isShooting = true;
-            StartCoroutine(Shooting());
-
-        }    
-
     }
     public void takeDamage(int damage)
     {
@@ -173,8 +166,8 @@ public class BossScript : MonoBehaviour, IDamage
                 {
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(3);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
                     gameManager.instance.updateGoal(250);
                 }
                 else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.48)
@@ -182,15 +175,15 @@ public class BossScript : MonoBehaviour, IDamage
 
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
                     gameManager.instance.updateGoal(500);
                 }
                 else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.23)
                 {
                     isShielding = true;
                     isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(10);
+                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                     meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
                     gameManager.instance.updateGoal(750);
                 }
@@ -227,6 +220,7 @@ public class BossScript : MonoBehaviour, IDamage
     {
         if (other.CompareTag("Player"))
         {
+            agent.stoppingDistance = stoppingDistOriginal;
             playerInRange = true;
             isAttacking = true;
         }
@@ -241,20 +235,20 @@ public class BossScript : MonoBehaviour, IDamage
         }
 
     }
-    IEnumerator Shooting()
-    {
-        anim.SetTrigger("Shoot");
-        Instantiate(bullet, shootPos.position + transform.forward, transform.rotation);
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
-    }
-
     IEnumerator MeleeAttack()
     {
-
-        for (int i = 0; i < animList.Count; i++)
+        if (!playAnim1)
+        {         
+            animToPlay = 1;
+            playAnim1 = true;
+        }
+        else
         {
-            anim.SetFloat("Index", animList[i]);
+            animToPlay = 2;
+            playAnim1 = false;
+        }
+        
+            anim.SetFloat("Index", animToPlay);
             anim.SetTrigger("Melee");
 
             yield return new WaitForSeconds(meleeAttackDamageTiming);
@@ -268,7 +262,7 @@ public class BossScript : MonoBehaviour, IDamage
                 }
             }
             yield return new WaitForSeconds(meleeAttackDuration - meleeAttackDamageTiming);
-        }
+        
 
 
         isMelee = false;

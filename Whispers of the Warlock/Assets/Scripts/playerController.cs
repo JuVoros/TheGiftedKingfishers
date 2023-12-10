@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class playerController : MonoBehaviour, IDamage
 {
@@ -123,7 +124,15 @@ public class playerController : MonoBehaviour, IDamage
                 StartCoroutine(playHeartbeat());
 
             }
-            
+            if ((float)PlayerHPOrig * 0.5 < HP)
+            {
+                stageOneLow.SetActive(false);
+                stageTwoLow.SetActive(false);
+                stageThreeLow.SetActive(false);
+                stageFourLow.SetActive(false);
+                stageFiveLow.SetActive(false);
+            }
+
         }
     }
     public void Move()
@@ -526,6 +535,14 @@ public void takeDamage(int amount)
         {
             stageFourLow.SetActive(false);
             stageFiveLow.SetActive(true);
+        }
+        else if((float)original * 0.5 < Hp)
+        {
+            stageOneLow.SetActive(false);
+            stageTwoLow.SetActive(false);
+            stageThreeLow.SetActive(false);
+            stageFourLow.SetActive(false);
+            stageFiveLow.SetActive(false);
         }
 
     }
