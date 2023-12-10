@@ -66113,11 +66113,11 @@ PrefabInstance:
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[1]
       value: 
-      objectReference: {fileID: 1712987340946448860, guid: 114c59889c1fc7a49b36e71f4f1872f5, type: 3}
+      objectReference: {fileID: 5196503440786111777, guid: 1e5feba4e5c5f2c4dba90f90a8526285, type: 3}
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[2]
       value: 
-      objectReference: {fileID: 5196503440786111777, guid: 1e5feba4e5c5f2c4dba90f90a8526285, type: 3}
+      objectReference: {fileID: 1712987340946448860, guid: 114c59889c1fc7a49b36e71f4f1872f5, type: 3}
     - target: {fileID: 454793416913443825, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: potionDrops.Array.data[3]
       value: 
