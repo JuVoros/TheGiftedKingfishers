@@ -22,7 +22,6 @@ public class BossScript : MonoBehaviour, IDamage
 
 
     [Header("----- Melee Stats -----")]
-    [SerializeField] float meleeAttackChaseRange;
     [SerializeField] float meleeAttackDuration;
     [SerializeField] float meleeAttackRange;
     [SerializeField] public int meleeDamage;
@@ -136,7 +135,7 @@ public class BossScript : MonoBehaviour, IDamage
         totemSpawned = false;
         negateDamage = false;
 
-        if ((gameManager.instance.player.transform.position - transform.position).magnitude <= meleeAttackChaseRange && !isMelee)
+        if (!isMelee)
         {
 
             isMelee = true;
