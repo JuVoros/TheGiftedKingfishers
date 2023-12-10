@@ -24,7 +24,7 @@ public class BossTeleport : MonoBehaviour
 
 
         gameManager.instance.playerScript.spawnPlayer();
-
+        playerInTrigger = false;
         gameManager.instance.playerSpawnPos = GameObject.FindWithTag("Respawn");
     }
     void OnTriggerEnter(Collider other)
