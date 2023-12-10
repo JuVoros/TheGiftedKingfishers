@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5835394472452040972}
   explosion: {fileID: 9089678457477803695, guid: 74766933814133d4c87f744726a03622, type: 3}
-  speed: 25
-  destroyTime: 4
+  speed: 30
+  destroyTime: 2
   velUp: 3
 --- !u!135 &8950277354476182625
 SphereCollider:

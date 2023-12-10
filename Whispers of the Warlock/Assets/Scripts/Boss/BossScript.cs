@@ -22,7 +22,6 @@ public class BossScript : MonoBehaviour, IDamage
 
 
     [Header("----- Melee Stats -----")]
-    [SerializeField] float meleeAttackDuration;
     [SerializeField] float meleeAttackRange;
     [SerializeField] public int meleeDamage;
     [SerializeField] float meleeAttackDamageTiming;
@@ -76,9 +75,7 @@ public class BossScript : MonoBehaviour, IDamage
         anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
         playerDir = gameManager.instance.player.transform.position - headPos.position;
 
-        if (!isAttacking && !isShielding)
-            HandleIdleState();
-        else if (isShielding && !isAttacking)
+        if (isShielding && !isAttacking)
         {
             
             HandleShieldingState();
@@ -113,13 +110,6 @@ public class BossScript : MonoBehaviour, IDamage
 
 
     }
-    void HandleIdleState()
-    {
-
-        anim.SetBool("Idle", true);
-
-
-    }
     void HandleShieldingState()
     {
         agent.SetDestination(myself.transform.position);
@@ -128,14 +118,13 @@ public class BossScript : MonoBehaviour, IDamage
     }
     void HandleAttackingState()
     {
-        anim.SetBool("Idle", false);
         anim.SetBool("Kneel", false);
         damageColli.enabled = true;
         KneelColli.enabled = false;
         totemSpawned = false;
         negateDamage = false;
 
-        if (!isMelee)
+        if (!isMelee && gameManager.instance.player.transform.position.magnitude - transform.position.magnitude <= meleeAttackRange)
         {
 
             isMelee = true;
@@ -237,7 +226,7 @@ public class BossScript : MonoBehaviour, IDamage
     IEnumerator MeleeAttack()
     {
         if (!playAnim1)
-        {         
+        {
             animToPlay = 1;
             playAnim1 = true;
         }
@@ -246,25 +235,14 @@ public class BossScript : MonoBehaviour, IDamage
             animToPlay = 2;
             playAnim1 = false;
         }
-        
-            anim.SetFloat("Index", animToPlay);
-            anim.SetTrigger("Melee");
 
-            yield return new WaitForSeconds(meleeAttackDamageTiming);
+        anim.SetFloat("Index", animToPlay);
+        anim.SetTrigger("Melee");
 
-            RaycastHit hit;
-            if (Physics.Raycast(headPos.position, playerDir, out hit, meleeAttackRange))
-            {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    hit.collider.GetComponent<IDamage>().takeDamage(meleeDamage);
-                }
-            }
-            yield return new WaitForSeconds(meleeAttackDuration - meleeAttackDamageTiming);
-        
-
-
+        yield return new WaitForSeconds(meleeAttackDamageTiming);
+    
         isMelee = false;
+
     }
     IEnumerator flashRed()
     {
@@ -290,5 +268,19 @@ public class BossScript : MonoBehaviour, IDamage
         undamageableScreen.SetActive(false);
     }
 
+    void InflictDamage()
+    {
 
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit, meleeAttackRange))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                hit.collider.GetComponent<IDamage>().takeDamage(meleeDamage);
+            }
+        }
+        
+
+
+    }
 }
