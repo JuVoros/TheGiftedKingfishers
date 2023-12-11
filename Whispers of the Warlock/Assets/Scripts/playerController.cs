@@ -150,7 +150,7 @@ public class playerController : MonoBehaviour, IDamage
             }
 
 
-            if (GetKeyUp("Shield") && !isHoldingShieldButton && manaCur >= shieldManaCost)
+            if (GetKeyDown("Shield") && !isHoldingShieldButton && manaCur >= shieldManaCost)
             {
                 isHoldingShieldButton = true;
                 gameManager.instance.ChangeIconAlpha(gameManager.instance.shieldIcon, 0.4f);
@@ -202,7 +202,7 @@ public class playerController : MonoBehaviour, IDamage
 
                     NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
                     enemyAgent.stoppingDistance = newStoppingDistance;
-                    if (distanceToEnemy <= shieldRadius)
+                    if (distanceToEnemy <= shieldRadius && enemyAgent.enabled)
                     {
                         Vector3 pushDirection = direction.normalized;
                         enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
@@ -505,7 +505,6 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
-            gameManager.instance.updateGoal(5);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -516,7 +515,6 @@ public void takeDamage(int amount)
 
             manaCur += amount;
             audi.PlayOneShot(potionSound, potionVol);
-        gameManager.instance.updateGoal(50);
 
         if (manaCur >= manaMax)
         {
@@ -530,7 +528,6 @@ public void takeDamage(int amount)
             StartCoroutine(gameManager.instance.playerFlashHeals());
             HP += amount;
             audi.PlayOneShot(potionSound, potionVol);
-        gameManager.instance.updateGoal(50);
 
         if (HP >= PlayerHPOrig)
         {
@@ -546,7 +543,6 @@ public void takeDamage(int amount)
             if (manaCur >= blinkMana)
             {
                 isBlinking = true;
-                gameManager.instance.updateGoal(25);
                 gameManager.instance.playerBlinkFOVup();
                 gameManager.instance.teleportIcon.fillAmount = 0;
                 manaCur -= blinkMana;
