@@ -79,7 +79,7 @@ public class BossScript : MonoBehaviour, IDamage
         {
             
             HandleShieldingState();
-            if (totemSpawnCount == 0)
+            if (!totemSpawned)
                 StartCoroutine(Spawn());
 
 
@@ -123,6 +123,7 @@ public class BossScript : MonoBehaviour, IDamage
         KneelColli.enabled = false;
         totemSpawned = false;
         negateDamage = false;
+
 
         if (!isMelee && gameManager.instance.player.transform.position.magnitude - transform.position.magnitude <= meleeAttackRange)
         {

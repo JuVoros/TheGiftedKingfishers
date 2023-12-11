@@ -20,6 +20,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject keybindsMenu; 
+    [SerializeField] GameObject changeKeybindsMenu; 
     [SerializeField] GameObject audioMenu;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -44,6 +45,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject optionsMenuButton;
     [SerializeField] GameObject audioMenuButton;
     [SerializeField] GameObject controlsMenuButton;
+    [SerializeField] GameObject changeKeysMenuButton;
     [SerializeField] GameObject winMenuButton;
     [SerializeField] GameObject loseMenuButton;
 
@@ -81,6 +83,7 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerManaBar;
     public Image teleportIcon;
+    public Image shieldIcon;
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
@@ -291,6 +294,15 @@ public class gameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(controlsMenuButton);
         menuActive.SetActive(false);
         menuActive = keybindsMenu;
+        menuActive.SetActive(true);
+        index = 1;
+    }    
+    public void changeKeys()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(changeKeysMenuButton);
+        menuActive.SetActive(false);
+        menuActive = changeKeybindsMenu;
         menuActive.SetActive(true);
         index = 1;
     }
