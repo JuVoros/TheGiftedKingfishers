@@ -47896,9 +47896,9 @@ MonoBehaviour:
   rechargeRate: 0
   weaponName: 
   staffLight: {fileID: 0}
-  shieldManaCost: 1
+  shieldManaCost: 4
   drainRateWhileShielding: 2
-  shieldDrainTimer: 2
+  shieldDrainTimer: 1.5
   shieldRadius: 5
   bossShieldRadius: 9
   shieldPushForce: 8
