@@ -81,7 +81,7 @@ public class playerController : MonoBehaviour, IDamage
     public bool isShieldActive = false;
     private bool isHoldingShieldButton = false;
     private float shieldDrainTimerOrig;
-
+    private playerPrefsManager prefsManager;
     private float speedOrig;
 
     private Vector3 playerVelocity;
@@ -102,7 +102,8 @@ public class playerController : MonoBehaviour, IDamage
         manaCur = manaMax;
         speedOrig = playerSpeed;
         blinkTimer = blinkCooldown;
-        shieldDrainTimerOrig = shieldDrainTimer; 
+        shieldDrainTimerOrig = shieldDrainTimer;
+        prefsManager = GetComponent<playerPrefsManager>();
         spawnPlayer();
 
     }
@@ -130,7 +131,7 @@ public class playerController : MonoBehaviour, IDamage
                 }
 
 
-                if (Input.GetButton("Shoot") && !isShooting)
+                if (GetKeyDown("Shoot") && !isShooting)
                     StartCoroutine(shoot());
             }
 
@@ -149,14 +150,16 @@ public class playerController : MonoBehaviour, IDamage
             }
 
 
-            if (Input.GetKey(KeyCode.R) && !isHoldingShieldButton && manaCur >= shieldManaCost)
+            if (GetKeyUp("Shield") && !isHoldingShieldButton && manaCur >= shieldManaCost)
             {
                 isHoldingShieldButton = true;
+                gameManager.instance.ChangeIconAlpha(gameManager.instance.shieldIcon, 0.4f);
                 ActivateShield();
             }
-            else if (Input.GetKeyUp(KeyCode.R) && isHoldingShieldButton)
+            else if (GetKeyUp("Shield") && isHoldingShieldButton)
             {
                 isHoldingShieldButton = false;
+                gameManager.instance.ChangeIconAlpha(gameManager.instance.shieldIcon, 1.0f);
                 DeactivateShield();
             }
 
@@ -246,24 +249,30 @@ public class playerController : MonoBehaviour, IDamage
             jumpedTimes = 0;
         }
         //getting button input
-        move = Input.GetAxis("Horizontal") * transform.right +
-            Input.GetAxis("Vertical") * transform.forward;
+        //move = Input.GetAxis("Horizontal") * transform.right +
+        //    Input.GetAxis("Vertical") * transform.forward;
+        float horizontalInput = prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveRight) - prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveLeft);
+        float verticalInput = prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveUp) - prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveDown);
+
+        move = horizontalInput * transform.right + verticalInput * transform.forward;
+
+
         //moving the player
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         //check for jumps
-        if (Input.GetButtonDown("Jump") && jumpedTimes < jumpsMax)
+        if (GetKeyDown("Jump") && jumpedTimes < jumpsMax)
         {
             audi.PlayOneShot(audioJump[Random.Range(0, audioJump.Length)], audioJumpVol);
             playerVelocity.y = jumpHeight;
             jumpedTimes++;
         }
-        if (Input.GetButtonDown("Sprint"))
+        if (GetKeyDown("Sprint"))
         {
             isSprinting = true;
             playerSpeed = sprintSpeed;
         }
-        else if (Input.GetButtonUp("Sprint"))
+        else if (GetKeyUp("Sprint"))
         {
             isSprinting = false;
             playerSpeed = speedOrig;
@@ -532,7 +541,7 @@ public void takeDamage(int amount)
 
     public void teleport()
     {
-        if (Input.GetButtonDown("Blink") && !isBlinking)
+        if (GetKeyDown("Blink") && !isBlinking)
         {
             if (manaCur >= blinkMana)
             {
@@ -672,5 +681,15 @@ public void takeDamage(int amount)
         isShieldActive = false;
         shield.SetActive(false);
     }
+
+   bool GetKeyDown(string action)
+{
+    return Input.GetKey(prefsManager.GetKeybind(playerPrefsManager.GameActionFromString(action)));
+}
+
+bool GetKeyUp(string action)
+{
+    return Input.GetKeyUp(prefsManager.GetKeybind(playerPrefsManager.GameActionFromString(action)));
+}
 
 }
