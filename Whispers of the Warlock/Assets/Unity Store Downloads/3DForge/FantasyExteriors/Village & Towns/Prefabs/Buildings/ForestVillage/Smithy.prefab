@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3344102}
   - component: {fileID: 2377220}
   - component: {fileID: 6594514}
+  - component: {fileID: 8329998720012175835}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_win1_1mX1m
   m_TagString: Untagged
@@ -105,6 +106,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15005493, y: 3, z: 2.4999979}
   m_Center: {x: 0.07498169, y: 1.5, z: -0.0000010728836}
+--- !u!64 &8329998720012175835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102538}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a808269bb349cb64e8f3fe010f764281, type: 3}
 --- !u!1 &103742
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +140,7 @@ GameObject:
   - component: {fileID: 3363898}
   - component: {fileID: 2360798}
   - component: {fileID: 6586162}
+  - component: {fileID: 5002322938938264762}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_win1_1mX1m 2
   m_TagString: Untagged
@@ -210,6 +234,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15005493, y: 3, z: 2.4999979}
   m_Center: {x: 0.07498169, y: 1.5, z: -0.0000010728836}
+--- !u!64 &5002322938938264762
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103742}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a808269bb349cb64e8f3fe010f764281, type: 3}
 --- !u!1 &104482
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +268,7 @@ GameObject:
   - component: {fileID: 3377070}
   - component: {fileID: 2302256}
   - component: {fileID: 6529594}
+  - component: {fileID: 999958773920009246}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 8
   m_TagString: Untagged
@@ -315,6 +362,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &999958773920009246
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &106226
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +396,7 @@ GameObject:
   - component: {fileID: 3373928}
   - component: {fileID: 2387528}
   - component: {fileID: 6516708}
+  - component: {fileID: 304983868154207267}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_win1_1mX1m 1
   m_TagString: Untagged
@@ -420,6 +490,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15005493, y: 3, z: 2.4999979}
   m_Center: {x: 0.07498169, y: 1.5, z: -0.0000010728836}
+--- !u!64 &304983868154207267
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106226}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a808269bb349cb64e8f3fe010f764281, type: 3}
 --- !u!1 &109844
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +842,7 @@ GameObject:
   - component: {fileID: 3335608}
   - component: {fileID: 2393976}
   - component: {fileID: 6565124}
+  - component: {fileID: 8900451644555300387}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 6
   m_TagString: Untagged
@@ -843,6 +936,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &8900451644555300387
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &132394
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +1041,7 @@ GameObject:
   - component: {fileID: 3396202}
   - component: {fileID: 2360906}
   - component: {fileID: 6529528}
+  - component: {fileID: 9130687179507833062}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 5
   m_TagString: Untagged
@@ -1019,6 +1135,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &9130687179507833062
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &136122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1201,7 @@ GameObject:
   - component: {fileID: 3354476}
   - component: {fileID: 2314608}
   - component: {fileID: 6518522}
+  - component: {fileID: 6670597867276797773}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 4
   m_TagString: Untagged
@@ -1156,6 +1295,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &6670597867276797773
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &145934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1329,7 @@ GameObject:
   - component: {fileID: 3325706}
   - component: {fileID: 2303782}
   - component: {fileID: 6543992}
+  - component: {fileID: 346973432621039217}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 1
   m_TagString: Untagged
@@ -1261,6 +1423,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &346973432621039217
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145934}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &147188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1457,7 @@ GameObject:
   - component: {fileID: 3331912}
   - component: {fileID: 2383860}
   - component: {fileID: 6523642}
+  - component: {fileID: 1719107808981543985}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base
   m_TagString: Untagged
@@ -1366,6 +1551,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &1719107808981543985
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147188}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &150076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1847,7 @@ GameObject:
   - component: {fileID: 3388296}
   - component: {fileID: 2352478}
   - component: {fileID: 6506872}
+  - component: {fileID: 5846813491060011925}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_win1_1mX1m 4
   m_TagString: Untagged
@@ -1733,6 +1941,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15005493, y: 3, z: 2.4999979}
   m_Center: {x: 0.07498169, y: 1.5, z: -0.0000010728836}
+--- !u!64 &5846813491060011925
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155770}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a808269bb349cb64e8f3fe010f764281, type: 3}
 --- !u!1 &169918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1975,7 @@ GameObject:
   - component: {fileID: 3379258}
   - component: {fileID: 2306026}
   - component: {fileID: 6572618}
+  - component: {fileID: 1402726226543072539}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 2
   m_TagString: Untagged
@@ -1838,6 +2069,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &1402726226543072539
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &171880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2527,7 @@ GameObject:
   - component: {fileID: 3361602}
   - component: {fileID: 2304350}
   - component: {fileID: 6544126}
+  - component: {fileID: 5219625914450399862}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 3
   m_TagString: Untagged
@@ -2367,6 +2621,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &5219625914450399862
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179200}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &187936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,6 +2655,7 @@ GameObject:
   - component: {fileID: 3377078}
   - component: {fileID: 2307774}
   - component: {fileID: 6528330}
+  - component: {fileID: 5900608270380217859}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 7
   m_TagString: Untagged
@@ -2472,6 +2749,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &5900608270380217859
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &190706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2889,7 @@ GameObject:
   - component: {fileID: 3391226}
   - component: {fileID: 2351588}
   - component: {fileID: 6528794}
+  - component: {fileID: 8379962618156011284}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_base 9
   m_TagString: Untagged
@@ -2683,6 +2983,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.099975586, y: 3, z: 2.5}
   m_Center: {x: 0.049987793, y: 1.5, z: 0}
+--- !u!64 &8379962618156011284
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193484}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b2199dcf82f4a3e4aa156625121b5863, type: 3}
 --- !u!1 &197668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,6 +3017,7 @@ GameObject:
   - component: {fileID: 3399412}
   - component: {fileID: 2310526}
   - component: {fileID: 6554594}
+  - component: {fileID: 3837714903099728697}
   m_Layer: 0
   m_Name: fi_vil_wall_stone01_win1_1mX1m 3
   m_TagString: Untagged
@@ -2788,6 +3111,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15005493, y: 3, z: 2.4999979}
   m_Center: {x: 0.07498169, y: 1.5, z: -0.0000010728836}
+--- !u!64 &3837714903099728697
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197668}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a808269bb349cb64e8f3fe010f764281, type: 3}
 --- !u!1 &198064
 GameObject:
   m_ObjectHideFlags: 0

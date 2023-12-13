@@ -51,6 +51,13 @@ public class BossScript : MonoBehaviour, IDamage
     bool totemSpawned;
     bool negateDamage;
     bool playAnim1;
+    bool phaseTwo;
+    bool phaseThree;
+    bool phaseFour;
+
+
+
+
 
     //Vectors
     Vector3 playerDir;
@@ -152,30 +159,42 @@ public class BossScript : MonoBehaviour, IDamage
             }
             else
             {
-                if (enemyHp <= (float)enemyHpOrig * 0.75 && enemyHp > (float)enemyHpOrig * 0.73)
+                if (enemyHp <= (float)enemyHpOrig * 0.75 && enemyHp > (float)enemyHpOrig * 0.5)
                 {
-                    isShielding = true;
-                    isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(3);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
-                    gameManager.instance.updateGoal(250);
+                    if (!phaseTwo)
+                    {
+                        phaseTwo = true;
+                        isShielding = true;
+                        isAttacking = false;
+                        rangeSpawn.GetComponent<ImpSpawner>().startSpawn(3);
+                        meleeSpawn.GetComponent<ImpSpawner>().startSpawn(4);
+                        gameManager.instance.updateGoal(250);
+                    }
                 }
-                else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * 0.48)
+                else if (enemyHp <= (float)enemyHpOrig * 0.5 && enemyHp > (float)enemyHpOrig * .25)
                 {
-
-                    isShielding = true;
-                    isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
-                    gameManager.instance.updateGoal(500);
+                    if (!phaseThree)
+                    {
+                        phaseThree = true;
+                        isShielding = true;
+                        isAttacking = false;
+                        rangeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                        meleeSpawn.GetComponent<ImpSpawner>().startSpawn(5);
+                        gameManager.instance.updateGoal(500);
+                    }
+                    
                 }
-                else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.23)
+                else if (enemyHp <= (float)enemyHpOrig * 0.25 && enemyHp > (float)enemyHpOrig * 0.01)
                 {
-                    isShielding = true;
-                    isAttacking = false;
-                    rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                    meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
-                    gameManager.instance.updateGoal(750);
+                    if (!phaseFour)
+                    {
+                        phaseFour = true;
+                        isShielding = true;
+                        isAttacking = false;
+                        rangeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                        meleeSpawn.GetComponent<ImpSpawner>().startSpawn(6);
+                        gameManager.instance.updateGoal(750);
+                    }
                 }
                 anim.SetTrigger("Damage");
                 StartCoroutine(flashRed());
