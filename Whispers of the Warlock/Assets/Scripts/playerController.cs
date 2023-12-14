@@ -425,6 +425,7 @@ public void takeDamage(int amount)
     {
         string descendantName = "Weapon Holder";
         GameObject weaponHolder = returnChild(gameManager.instance.player, descendantName);
+        
         Transform weaponTransform = weaponHolder.transform;
         foreach (Transform child in weaponTransform)
         {
@@ -436,8 +437,8 @@ public void takeDamage(int amount)
         shootDistance = gun.shootDistance;
         shootRate = gun.shootRate;
         rechargeRate = gun.rechargeRate;
-        string weaponName = gun.weaponName;
-
+        weaponName = gun.weaponName;
+        gameManager.instance.weaponNameUpdate();
         audi.PlayOneShot(pickupSound, pickupVol);
 
         if (weaponTransform != null)
