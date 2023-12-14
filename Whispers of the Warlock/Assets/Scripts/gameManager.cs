@@ -72,6 +72,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject reticle;
     [SerializeField] Slider sensitivitySlider;
     [SerializeField] Text sensitivityText;
+    [SerializeField] Image HealthBar;
+    [SerializeField] GameObject HealthBarBackground;
 
 
     [Header("----- Potions -----")]
@@ -94,6 +96,8 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     bool invenOpen;
     bool fadingUp;
+    
+    bool healthBarOn;
     float timeScaleOrig;
     int index;
     float startTime;
@@ -123,6 +127,12 @@ public class gameManager : MonoBehaviour
     private void UpdateSensitivityText(float sensitivityValue)
     {
         sensitivityText.text = $"Sensitivity: {sensitivityValue}";
+    }
+
+    public void turnOnHealthBar()
+    {
+        healthBarOn = true;
+        HealthBarBackground.SetActive(healthBarOn);
     }
 
     void Update()
@@ -425,6 +435,9 @@ public class gameManager : MonoBehaviour
     }
 
 
-
+    public void changeHealthBarFill(int enemyHp, int enemyHpOrig)
+    {
+        HealthBar.fillAmount = (float)enemyHp / enemyHpOrig;
+    }
 
 }

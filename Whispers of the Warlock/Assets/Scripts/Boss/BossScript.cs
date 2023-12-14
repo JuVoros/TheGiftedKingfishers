@@ -15,8 +15,8 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] Collider damageColli;
     [SerializeField] Collider KneelColli;
     [SerializeField] public GameObject undamageableScreen;
-    [SerializeField] Image HealthBar;
-    
+
+
     [Header("----- Stats -----")]
     [SerializeField] public int enemyHp;
     [Range(1, 10)][SerializeField] int playerFaceSpeed;
@@ -56,7 +56,7 @@ public class BossScript : MonoBehaviour, IDamage
     bool phaseTwo;
     bool phaseThree;
     bool phaseFour;
-    bool healthBarOn;
+
 
 
 
@@ -120,11 +120,7 @@ public class BossScript : MonoBehaviour, IDamage
 
     }
 
-    public void turnOnHealthBar()
-    {
-        healthBarOn = true;
-        HealthBar.enabled = healthBarOn;
-    }
+
 
     void HandleShieldingState()
     {
@@ -156,7 +152,7 @@ public class BossScript : MonoBehaviour, IDamage
         if(!negateDamage)
         {
             enemyHp -= damage;
-            HealthBar.fillAmount = enemyHp / enemyHpOrig;
+            gameManager.instance.changeHealthBarFill(enemyHp, enemyHpOrig);
 
             if (enemyHp <= 0)
             {
