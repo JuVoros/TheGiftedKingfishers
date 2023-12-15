@@ -15,7 +15,7 @@ MonoBehaviour:
   shootDamage: 1
   shootDistance: 50
   shootRate: 0.2
-  rechargeRate: 2
+  rechargeRate: 1.5
   weaponName: Lightning
   model: {fileID: 2770740936225388260, guid: fb9d5b3fa95b9d94294960b5bcb71d61, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: aaffe973d96f87e4c82c1dd01b77c03a, type: 3}
