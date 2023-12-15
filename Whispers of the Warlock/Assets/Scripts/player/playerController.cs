@@ -507,7 +507,6 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
-            gameManager.instance.updateGoal(50);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -547,7 +546,6 @@ public void takeDamage(int amount)
             {
                 isBlinking = true;
                 gameManager.instance.playerBlinkFOVup();
-                gameManager.instance.updateGoal(50);
                 gameManager.instance.teleportIcon.fillAmount = 0;
                 manaCur -= blinkMana;
                 updatePlayerUI();

@@ -236,6 +236,7 @@ public class enemyAI : MonoBehaviour, IDamage
             
 
             int rando = Random.Range(0, 100);
+           
 
             if (agent.CompareTag("Enemy") && agent.GetComponent<TreeitemDrop>() == null)
             {
@@ -296,11 +297,19 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             return;
         }
-
-
-        int drop = Random.Range(0, drops.Count - 1);
-        Instantiate(drops[drop], transform.position, transform.rotation);
-        
+        int drop = Random.Range(0, 9);
+        if (drop > 5)
+        {
+            Instantiate(drops[1], transform.position, transform.rotation);
+        }
+        else if( drop < 6 && drop > 2)
+        {
+            Instantiate(drops[2], transform.position, transform.rotation);
+        }
+        else
+        {
+            return;
+        }
     }
 
     IEnumerator flashRed()
