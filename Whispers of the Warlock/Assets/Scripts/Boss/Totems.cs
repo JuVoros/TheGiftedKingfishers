@@ -13,7 +13,9 @@ public class Totems : MonoBehaviour, IDamage
     [SerializeField] GameObject Boss;
     [SerializeField] float shootRate;
     [SerializeField] int totemHealth;
-    
+    [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioSource sfxSource;
+
     Vector3 bossDir;
     public int totemHealthorig;
     bool isDead;
@@ -49,7 +51,9 @@ public class Totems : MonoBehaviour, IDamage
             isDead = true;
             Destroy(gameObject);
         }
-        
+
+        AudioFeedback.Effect(sfxSource, damageClip);
+
     }
 
     void Channel()

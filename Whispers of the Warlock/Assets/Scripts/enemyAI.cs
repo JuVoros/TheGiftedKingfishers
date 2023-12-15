@@ -19,6 +19,12 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
     [SerializeField] Collider damageColli;
+    [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClip enemyDeadClip;
+    [SerializeField] AudioSource sfxSource;
+    [SerializeField] AudioSource musicSource;
+    
 
 
     [Header("----- Enemy Stats ------")]
@@ -227,6 +233,7 @@ public class enemyAI : MonoBehaviour, IDamage
             anim.SetBool("Death", true);
             StartCoroutine(DeathAnimTimer());
             gameManager.instance.updateGoal(100);
+            
 
             int rando = Random.Range(0, 100);
 
@@ -234,7 +241,7 @@ public class enemyAI : MonoBehaviour, IDamage
             {
                 gameManager.instance.updateGoal(500);
                 DropItem(gameManager.instance.getWeaponDrops());
-
+                AudioLoop.AudioClipSet(enemyDeadClip, musicSource);
             }
             else if (agent.GetComponent<TreeitemDrop>() != null)
             {
@@ -258,12 +265,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
             }
             agent.enabled = false;
+            AudioFeedback.Effect(sfxSource, deathClip);
+
         }
         else
         {
             anim.SetTrigger("Damage");
             StartCoroutine(flashRed());
             agent.SetDestination(gameManager.instance.player.transform.position);
+            AudioFeedback.Effect(sfxSource, damageClip);
         }
     }
 

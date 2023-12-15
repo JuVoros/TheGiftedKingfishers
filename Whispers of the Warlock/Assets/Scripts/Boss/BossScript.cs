@@ -15,6 +15,9 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] Collider damageColli;
     [SerializeField] Collider KneelColli;
     [SerializeField] public GameObject undamageableScreen;
+    [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioSource sfxSource;
 
 
     [Header("----- Stats -----")]
@@ -153,6 +156,7 @@ public class BossScript : MonoBehaviour, IDamage
         {
             enemyHp -= damage;
             gameManager.instance.changeHealthBarFill(enemyHp, enemyHpOrig);
+            AudioFeedback.Effect(sfxSource, damageClip);
 
             if (enemyHp <= 0)
             {
@@ -162,6 +166,8 @@ public class BossScript : MonoBehaviour, IDamage
                 isDead = true;
                 gameManager.instance.updateGoal(2500);
                 StartCoroutine(gameManager.instance.Winner());
+                AudioFeedback.Effect(sfxSource, deathClip);
+
             }
             else
             {

@@ -4,33 +4,57 @@ using UnityEngine;
 
 public class AudioLoop : MonoBehaviour
 {
-    [SerializeField] AudioClip[] audioClips;
+    [SerializeField] AudioClip startClip;
+    [SerializeField] AudioClip priestClip;
+    [SerializeField] AudioClip treeClip;
+    [SerializeField] AudioClip wizardClip;
+    [SerializeField] AudioClip defaultClip;
+    [SerializeField] AudioClip endClip;
     [SerializeField] AudioSource source;
 
-    int audioIndex;
 
-    private void Update()
+    //private void Update()
+    //{
+    //    switch(audioIndex)
+    //    {
+    //        case 0:
+    //            source.PlayOneShot(startClip);
+    //            break;
+    //        case 1:
+    //            source.PlayOneShot(priestClip);
+    //            break;
+    //        case 2:
+    //            source.PlayOneShot(treeClip);
+    //            break;
+    //        case 3:
+    //            source.PlayOneShot(wizardClip);
+    //            break;
+    //        case 4:
+    //            source.PlayOneShot(endClip);
+    //            break;
+    //        default:
+    //            source.PlayOneShot(defaultClip);
+    //            break;
+
+    //    }
+    //}
+
+    public static void AudioClipSet(AudioClip song, AudioSource source)
     {
-        if (!source.isPlaying)
+        if (source.isPlaying)
         {
-
-            if (audioIndex == 0)
-            {
-                StartCoroutine(waitTime());
-                source.PlayOneShot(audioClips[audioIndex]);
-                audioIndex = 1;
-            }
-            else if (audioIndex == 1)
-            { 
-                StartCoroutine(waitTime());
-                source.PlayOneShot(audioClips[audioIndex]);
-                audioIndex = 0;
-            }
+            source.Stop();
+            AudioClipSet(song, source);
         }
-    }IEnumerator waitTime()
-    {
-        yield return new WaitForSeconds(3f);
+        else
+        {
+            source.clip = song;
+            source.Play();
+
+        }
 
     }
+
+
 }
 

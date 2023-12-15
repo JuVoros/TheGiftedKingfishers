@@ -6,7 +6,6 @@ public class BossTeleport : MonoBehaviour
 {
     [SerializeField] GameObject button;
     [SerializeField] GameObject BossRespawnPoint;
-
     bool playerInTrigger;
 
 
@@ -25,6 +24,9 @@ public class BossTeleport : MonoBehaviour
         gameManager.instance.turnOnHealthBar();
 
         gameManager.instance.playerScript.spawnPlayer();
+
+
+
         playerInTrigger = false;
         gameManager.instance.playerSpawnPos = GameObject.FindWithTag("Respawn");
     }
