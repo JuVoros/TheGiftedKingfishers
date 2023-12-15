@@ -113,6 +113,7 @@ public class playerController : MonoBehaviour, IDamage
         if (transform.position.y < fallYLevel)
         {
             spawnPlayer();
+            gameManager.instance.turnOffHealthBar();
         }
         if (!gameManager.instance.isPaused)
         {

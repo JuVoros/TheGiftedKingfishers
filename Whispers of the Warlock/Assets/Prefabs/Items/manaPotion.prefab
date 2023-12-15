@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c9c11fd0e7e0e4793e624f95669eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManaOnPickup: 8
+  ManaOnPickup: 10
 --- !u!222 &1727069985352401286
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
   button: {fileID: 7324808984545694806}
+  attackPointPrefab: {fileID: 0}
   item: {fileID: 11400000, guid: 3efe31fe63d06a949b1f300f5274f32b, type: 2}
 --- !u!1 &5627059144812423969
 GameObject:

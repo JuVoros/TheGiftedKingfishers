@@ -135,6 +135,13 @@ public class gameManager : MonoBehaviour
         HealthBarBackground.SetActive(healthBarOn);
     }
 
+    public void turnOffHealthBar()
+    {
+        healthBarOn = false;
+        HealthBarBackground.SetActive(healthBarOn);
+    }
+
+
     void Update()
     {
         if(Input.GetButtonDown("Cancel") && menuActive == null && !invenOpen)
