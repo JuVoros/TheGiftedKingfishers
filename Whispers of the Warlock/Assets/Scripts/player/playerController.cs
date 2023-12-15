@@ -71,18 +71,21 @@ public class playerController : MonoBehaviour, IDamage
 
     [Header("------Shield Stats------")]
     [Range(1, 5)][SerializeField] int shieldManaCost;
-    [Range(1, 5)][SerializeField] int drainRateWhileShielding;
+    //[Range(1, 5)][SerializeField] int shieldDrainRate;
     [Range(1, 5)][SerializeField] float shieldDrainTimer;
     [Range(5, 10)][SerializeField] float shieldRadius;
     [Range(5, 10)][SerializeField] float bossShieldRadius;
     [Range(1, 10)][SerializeField] float shieldPushForce;
     [Range(1, 10)][SerializeField] float bossShieldPushForce;
+    [Range(1, 10)][SerializeField] float shieldCooldown;
     [SerializeField] GameObject shield;
     public bool isShieldActive = false;
     private bool isHoldingShieldButton = false;
     private float shieldDrainTimerOrig;
     private playerPrefsManager prefsManager;
     private float speedOrig;
+    private float shieldCooldownTimer = 0f;
+    private bool isShieldOnCooldown = false;
 
     private Vector3 playerVelocity;
     private Vector3 move;
@@ -648,14 +651,22 @@ public void takeDamage(int amount)
     {
         shieldDrainTimer -= Time.deltaTime;
         Debug.Log("Shield Drain Timer: " + shieldDrainTimer);
+        int shieldDrainRate = shieldManaCost + Mathf.RoundToInt(rechargeRate);
 
         if (shieldDrainTimer <= 0f)
         {
             
-            manaCur = Mathf.Clamp(manaCur - shieldManaCost, 0, manaMax);
+            int remainingMana = Mathf.Clamp(manaCur - shieldDrainRate, 0, manaMax);
             updatePlayerUI();
-            Debug.Log("Mana Drained: " + manaCur);
+            Debug.Log("Mana Drained: " + remainingMana);
 
+            if(remainingMana == 0)
+            {
+                DeactivateShield();
+                return;
+            }
+
+            manaCur = remainingMana;
             shieldDrainTimer = shieldDrainTimerOrig;
             Debug.Log("Shield Drain Timer Reset: " + shieldDrainTimer);
         }
@@ -663,7 +674,7 @@ public void takeDamage(int amount)
 
     private void ActivateShield()
     {
-        if(manaCur >= shieldManaCost && !isShieldActive)
+        if(!isShieldOnCooldown && manaCur >= shieldManaCost)
         {
             audi.PlayOneShot(shieldSound, shieldSoundVol);
             isShieldActive = true;
@@ -672,9 +683,24 @@ public void takeDamage(int amount)
             updatePlayerUI();
 
             shieldDrainTimer = shieldDrainTimerOrig;
+            startShieldCooldown();
         }
     }
 
+    private void startShieldCooldown()
+    {
+        isShieldOnCooldown = true;
+        StartCoroutine(ShieldCooldown());
+    }
+
+    private IEnumerator ShieldCooldown()
+    {
+        float cooldownDuration = shieldCooldown;
+
+        yield return new WaitForSeconds(cooldownDuration);
+
+        isShieldOnCooldown = false;
+    }
     private void DeactivateShield()
     {
         audi.PlayOneShot(deactivateShieldSound, deactivateShieldSoundVol);
