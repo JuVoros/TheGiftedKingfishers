@@ -498,7 +498,7 @@ public void takeDamage(int amount)
     IEnumerator manaRegen()
     {
         isRegenMana = true;
-
+        gameManager.instance.updateGoal(5);
         yield return new WaitForSeconds(rechargeRate);
         if (manaCur >= manaMax)
         {
@@ -527,7 +527,8 @@ public void takeDamage(int amount)
     public void addHealth(int amount)
     {
 
-            StartCoroutine(gameManager.instance.playerFlashHeals());
+        StartCoroutine(gameManager.instance.playerFlashHeals());
+        StartCoroutine(speedBuff());
             HP += amount;
             audi.PlayOneShot(potionSound, potionVol);
 
@@ -546,6 +547,7 @@ public void takeDamage(int amount)
             {
                 isBlinking = true;
                 gameManager.instance.playerBlinkFOVup();
+                gameManager.instance.updateGoal(25);
                 gameManager.instance.teleportIcon.fillAmount = 0;
                 manaCur -= blinkMana;
                 updatePlayerUI();
@@ -637,7 +639,7 @@ public void takeDamage(int amount)
     {
         isLowHealthFlashing = true;
         audi.PlayOneShot(heartBeat, heartbeatVol);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(14f * HP/PlayerHPOrig);
         isLowHealthFlashing = false;
 
     }
@@ -690,4 +692,14 @@ bool GetKeyUp(string action)
     return Input.GetKeyUp(prefsManager.GetKeybind(playerPrefsManager.GameActionFromString(action)));
 }
 
+    IEnumerator speedBuff()
+    {
+        int speedMod = Mathf.FloorToInt(playerSpeed * .25f);
+
+        playerSpeed += speedMod;
+        sprintSpeed += speedMod;
+        yield return new WaitForSeconds(2f);
+        playerSpeed -= speedMod;
+        sprintSpeed -= speedMod;
+    }
 }
