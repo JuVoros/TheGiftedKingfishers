@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 4739366630831433850}
   - component: {fileID: 596131810689849817}
   - component: {fileID: 4770609175840498689}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Enemy HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2537,7 +2537,7 @@ GameObject:
   - component: {fileID: 2741805740439200222}
   - component: {fileID: 8362897037436095119}
   - component: {fileID: 5298987389306228618}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Enemy HP Background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3025,7 +3025,9 @@ MonoBehaviour:
   damageColli: {fileID: 3512023088874467428}
   damageClip: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
   deathClip: {fileID: 8300000, guid: 5072a94fa6887024985a35d9cf66c949, type: 3}
+  enemyDeadClip: {fileID: 0}
   sfxSource: {fileID: 5277676622624197585}
+  musicSource: {fileID: 0}
   EnemyHP: 25
   playerFaceSpeed: 5
   viewCone: 90

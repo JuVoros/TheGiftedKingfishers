@@ -221,7 +221,9 @@ MonoBehaviour:
   damageColli: {fileID: 1752876550847849733}
   damageClip: {fileID: 8300000, guid: effc0d496f2c4e144a91033290aefb66, type: 3}
   deathClip: {fileID: 8300000, guid: 0e5edb6bccf05984dad128fb1a9fc914, type: 3}
+  enemyDeadClip: {fileID: 0}
   sfxSource: {fileID: 3536682932396085012}
+  musicSource: {fileID: 0}
   EnemyHP: 4
   playerFaceSpeed: 4
   viewCone: 90

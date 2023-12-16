@@ -6,6 +6,8 @@ public class playerBullets : MonoBehaviour
 {
     [Header("---- Components ----")]
     [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject Object;
+    [SerializeField] GameObject ChainLightningEffect;
 
     [Header("---- Stats ----")]
     [SerializeField] int damage;
@@ -53,11 +55,19 @@ public class playerBullets : MonoBehaviour
 
         if (damagable != null)
         {
-            damagable.takeDamage(damage);
-            DamagePopup.Create(other.transform.position, damage);
+            if (!Object.CompareTag("Chain"))
+            {
+                damagable.takeDamage(damage);
+                DamagePopup.Create(other.transform.position, damage);
+            }
+            else
+            {
+                Instantiate(ChainLightningEffect, other.transform.position, Quaternion.identity);
+
+            }
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject,2f);
         
     }
 }

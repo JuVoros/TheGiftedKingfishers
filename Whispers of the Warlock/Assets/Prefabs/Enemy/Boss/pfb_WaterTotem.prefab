@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 3431368395597228775}
   m_Layer: 0
   m_Name: pfb_WaterTotem
-  m_TagString: Untagged
+  m_TagString: Totem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

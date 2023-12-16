@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class SecondaryAbility : MonoBehaviour
 {
@@ -9,11 +13,17 @@ public class SecondaryAbility : MonoBehaviour
     [SerializeField] public AudioSource audi;
     [SerializeField] public GameObject player;
 
+    [Header("-----Cooldowm------")]
+    [SerializeField] TMP_Text textCooldown;
+    float cooldownTime;
+    float cooldownTimer;
+    float tempTimer;
+
 
     [Header("----- Blink ------")]
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
-    [SerializeField] int blinkCooldown; // in Frames
+    [SerializeField] float blinkCooldownTime; // in Frames
     [SerializeField] AudioClip audioTeleport;
     [SerializeField] AudioClip audioTeleportRecharge;
 
@@ -25,9 +35,9 @@ public class SecondaryAbility : MonoBehaviour
     [Range(5, 10)][SerializeField] float bossShieldRadius;
     [Range(1, 10)][SerializeField] float shieldPushForce;
     [Range(1, 10)][SerializeField] float bossShieldPushForce;
-    [Range(1, 10)][SerializeField] float shieldCooldown;
+    [Range(1, 10)][SerializeField] float shieldCooldownTime;
     [SerializeField] public AudioClip shieldSound;
-    [SerializeField] public AudioClip deactivateShieldSound;
+    [SerializeField] public AudioClip audioShieldRecharge;
 
     [Header("----- Rock ------")]
     public GameObject rockPrefab;
@@ -36,34 +46,41 @@ public class SecondaryAbility : MonoBehaviour
     [SerializeField] int rockSpeed;
     [SerializeField] int rockDestroyTime;
     [SerializeField] AudioClip audioRockRecharge;
-    [SerializeField] int rockCooldown;
+    [SerializeField] float rockCooldownTime;
     [SerializeField] int rockMana;
-    Transform rockOne;
-    Transform rockTwo;
-    Transform rockThree;
-
 
 
     [SerializeField] List<Transform> Positions = new List<Transform>();
 
 
     [Header("----- Cryofreeze ------")]
-
+    [SerializeField] float cryoCooldownTime;
 
     [Header("----- Shock ------")]
+    public float damage;
+    public LineRenderer lineRenderer;
+    public float radius = 20f;
+    public Vector3[] listofPosition;
 
 
 
 
 
     //bool
-    bool isBlinking;
+    bool blinkCooldown;
+    bool blinkRechargeStarted;
     public bool isShieldActive = false;
     private bool isHoldingShieldButton = false;
     private bool isShieldOnCooldown = false;
-    bool rechargeStarted;
+    bool shieldRechargeStarted;
     bool rocksSpawned;
     bool rockRechargeStarted;
+    bool rockCooldown;
+    bool cryoCooldown;
+    bool isCooldown;
+    bool shockCooldown;
+
+
 
     //int
     int blinkTimer;
@@ -81,11 +98,14 @@ public class SecondaryAbility : MonoBehaviour
 
     private void Start()
     {
-        blinkTimer = blinkCooldown;
         shieldDrainTimerOrig = shieldDrainTimer;
         manaOrig = gameManager.instance.playerScript.manaMax;
-
-
+        textCooldown.gameObject.SetActive(false);
+        gameManager.instance.teleportImage.fillAmount = 0.0f;
+        gameManager.instance.shieldImage.fillAmount = 0.0f;
+        gameManager.instance.earthImage.fillAmount = 0.0f;
+        gameManager.instance.lightningImage.fillAmount = 0.0f;
+        gameManager.instance.iceImage.fillAmount = 0.0f;
 
     }
     void Update()
@@ -97,22 +117,15 @@ public class SecondaryAbility : MonoBehaviour
             switch (staffName)
             {
                 case "Wind":
-                    if (!isShieldActive)
+                    if (!isShieldOnCooldown && !isCooldown)
                     {
-                        Debug.Log("shield");
                         ActivateShield();
 
-                    }
-                    else if (isShieldActive)
-                    {
-
-                        DeactivateShield();
-
-                    }
+                    }                   
                     break;
 
                 case "Water":
-                    if (!isBlinking)
+                    if (!blinkCooldown && !isCooldown)
                     {
                         Debug.Log("blink");
                         teleport();
@@ -120,92 +133,151 @@ public class SecondaryAbility : MonoBehaviour
                     break;
 
                 case "Ice":
+                    if (!cryoCooldown && !isCooldown)
+                    {
 
-
-                    break;
+                    }
+                        break;
 
                 case "Earth":
-                    
-                    SpawnRocks();
+                    if(!rockCooldown && !isCooldown)
+                        SpawnRocks();
                     
                  
                     break;
 
                 case "Lightning":
-
-
-                    break;
+                    if (!shockCooldown && !isCooldown)
+                    {
+                        Zap();
+                    }
+                        break;
 
             }
 
         }
-        BlinkEnd();
-        RockEnd();
+        if(isCooldown)
+        {
+            Debug.Log("updateCool");
 
+            ApplyCooldown(staffName);
 
+        }
 
 
     }
 
 
 
+
+    void ApplyCooldown(string staff)
+    {
+        
+
+        cooldownTimer -= Time.deltaTime;
+
+        tempTimer = cooldownTimer;
+
+        
+        if ( tempTimer < 0.0f )
+        {
+            textCooldown.gameObject.SetActive(false);
+            switch (staff)
+            {
+                case "Wind":
+                    isShieldOnCooldown = false;
+                    gameManager.instance.shieldImage.fillAmount = 0.0f;
+                    break;
+                case "Water":
+
+                    blinkCooldown = false;
+                    gameManager.instance.teleportImage.fillAmount = 0.0f;
+                    break;
+                case "Ice":
+                    cryoCooldown = false;
+                    gameManager.instance.iceImage.fillAmount = 0.0f;
+                    break;
+                case "Earth":
+                    rockCooldown = false;
+                    gameManager.instance.earthImage.fillAmount = 0.0f;
+                    break;
+                case "Lightning":
+                    shockCooldown = false;
+                    gameManager.instance.lightningImage.fillAmount = 0.0f;
+                    break;
+            }
+            isCooldown = false;
+        }
+        else if( tempTimer == 0)
+        {
+                isShieldOnCooldown = false;
+                gameManager.instance.shieldImage.fillAmount = 0.0f;
+           
+                blinkCooldown = false;
+                gameManager.instance.teleportImage.fillAmount = 0.0f;
+             
+                cryoCooldown = false;
+                gameManager.instance.iceImage.fillAmount = 0.0f;
+              
+                rockCooldown = false;
+                gameManager.instance.earthImage.fillAmount = 0.0f;
+           
+                shockCooldown = false;
+                gameManager.instance.lightningImage.fillAmount = 0.0f;
+
+
+        }
+        else
+        {
+            textCooldown.text = Mathf.RoundToInt(cooldownTimer).ToString();
+            switch (staff)
+            {
+                case "Wind":
+                    gameManager.instance.shieldImage.fillAmount = cooldownTimer / shieldCooldownTime;
+                    break;
+                case "Water":
+                    gameManager.instance.playerBlinkFOVdown();
+                    gameManager.instance.teleportImage.fillAmount = cooldownTimer / blinkCooldownTime;
+                    break;
+                case "Ice":
+                    gameManager.instance.iceImage.fillAmount = cooldownTimer / cryoCooldownTime;
+                    break;
+                case "Earth":
+                    gameManager.instance.earthImage.fillAmount = cooldownTimer / rockCooldownTime;
+                    break;
+                case "Lightning":
+                    gameManager.instance.lightningImage.fillAmount = cooldownTimer / shockCooldownTime;
+                    break;
+            }
+        }
+    }
     //Teleport - Water   
 
     public void teleport()
     {
-        if (!isBlinking)
+        if (manaCur >= blinkMana)
         {
+            blinkCooldown = true;
+            textCooldown.gameObject.SetActive(true);
+            cooldownTimer = blinkCooldownTime;
 
-            if (manaCur >= blinkMana)
+            gameManager.instance.playerBlinkFOVup();
+            gameManager.instance.playerScript.manaCur -= blinkMana;
+            gameManager.instance.playerScript.updatePlayerUI();
+
+            Vector3 teleportPosition = player.transform.position + player.transform.forward * teleportDistance;
+
+            if (audioTeleport != null)
             {
-                isBlinking = true;
-                gameManager.instance.playerBlinkFOVup();
-                gameManager.instance.teleportImage.fillAmount = 0;
-                gameManager.instance.playerScript.manaCur -= blinkMana;
-                gameManager.instance.playerScript.updatePlayerUI();
-                Vector3 teleportPosition = player.transform.position + player.transform.forward * teleportDistance;
-
-                if (audioTeleport != null)
-                {
-                    audi.PlayOneShot(audioTeleport);
-                }
-                gameManager.instance.playerScript.controller.Move(teleportPosition - player.transform.position);
+                audi.PlayOneShot(audioTeleport);
             }
+            gameManager.instance.playerScript.controller.Move(teleportPosition - player.transform.position);
+
+            isCooldown = true;
+            blinkCooldown = true;
         }
+
     }
-    public void BlinkEnd()
-    {
-        if (isBlinking || !rechargeStarted)
-        {
-            gameManager.instance.teleportImage.fillAmount += 1 / blinkCooldown * Time.deltaTime;
-            gameManager.instance.playerBlinkFOVdown();
-
-            if (gameManager.instance.teleportImage.fillAmount >= 1 - audioTeleportRecharge.length / blinkCooldown && rechargeStarted == false)
-            {
-
-                rechargeStarted = true;
-                StartCoroutine(teleportCooldown());
-
-            }
-        }
-    }
-
-    IEnumerator teleportCooldown()
-    {
-        
-        if (audioTeleportRecharge != null)
-        {
-            audi.PlayOneShot(audioTeleportRecharge);
-        }
-        yield return new WaitForSeconds(audioTeleportRecharge.length);
-        isBlinking = false;
-        rechargeStarted = false;
-        Debug.Log("recharge");
-        gameManager.instance.teleportImage.fillAmount = 1;
-    }
-
-
-
     //Shield - Wind
     void FixedUpdate()
     {
@@ -230,25 +302,31 @@ public class SecondaryAbility : MonoBehaviour
 
                 if (enemyAI != null)
                 {
+
                     Vector3 direction = enemy.transform.position - transform.position;
+
                     direction.y = 0f; // Ignore vertical distance
                     float distanceToEnemy = direction.magnitude;
-
+                   
                     float newStoppingDistance = enemyAI.stoppingDistOrig * shieldRadius;
-
+                    
+                    Debug.Log(newStoppingDistance);
                     NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
                     enemyAgent.stoppingDistance = newStoppingDistance;
+                    
                     if (distanceToEnemy <= shieldRadius && enemyAgent.enabled)
                     {
+
                         Vector3 pushDirection = direction.normalized;
+                        Debug.Log(pushDirection);
                         enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
+
                     }
                 }
-
                 else if (bossScript != null)
                 {
                     // Handle stopping distance and pushing logic for BossScript
-                    Vector3 direction = enemy.transform.position - transform.position;
+                    Vector3 direction = enemy.transform.position - player.transform.position;
                     direction.y = 0f; // Ignore vertical distance
                     float distanceToEnemy = direction.magnitude;
 
@@ -266,28 +344,6 @@ public class SecondaryAbility : MonoBehaviour
             }
         }
     }
-    private void DrainManaWhileShielding()
-    {
-        shieldDrainTimer -= Time.deltaTime;
-        int shieldDrainRate = shieldManaCost + Mathf.RoundToInt(1);
-
-        if (shieldDrainTimer <= 0f)
-        {
-
-            int remainingMana = Mathf.Clamp(manaCur - shieldDrainRate, 0, manaOrig);
-            gameManager.instance.playerScript.updatePlayerUI();
-
-            if (remainingMana == 0)
-            {
-                DeactivateShield();
-                return;
-            }
-
-            manaCur = remainingMana;
-            shieldDrainTimer = shieldDrainTimerOrig;
-        }
-    }
-
     private void ActivateShield()
     {
         if (!isShieldOnCooldown && manaCur >= shieldManaCost)
@@ -295,41 +351,29 @@ public class SecondaryAbility : MonoBehaviour
             audi.PlayOneShot(shieldSound);
             isShieldActive = true;
             shield.SetActive(true);
+            StartCoroutine(DeactivateShield());
             manaCur -= shieldManaCost;
             gameManager.instance.playerScript.updatePlayerUI();
-
-
-            shieldDrainTimer = shieldDrainTimerOrig;
-            startShieldCooldown();
-        }
+       }
     }
-
-    private void startShieldCooldown()
+    IEnumerator DeactivateShield()
     {
+        yield return new WaitForSeconds(shieldDrainTimer);
         isShieldOnCooldown = true;
-        StartCoroutine(ShieldCooldown());
-    }
-
-    private IEnumerator ShieldCooldown()
-    {
-        float cooldownDuration = shieldCooldown;
-
-        yield return new WaitForSeconds(cooldownDuration);
-
-        isShieldOnCooldown = false;
-    }
-    private void DeactivateShield()
-    {
-        audi.PlayOneShot(deactivateShieldSound);
+        cooldownTimer = shieldCooldownTime;
+        textCooldown.gameObject.SetActive(true);
+        isCooldown = true;
+        audi.PlayOneShot(audioShieldRecharge);
         isShieldActive = false;
         shield.SetActive(false);
+
     }
     //Yep Rock - Earth
     void SpawnRocks()
     {
         if (manaCur >= rockMana)
         {
-            gameManager.instance.earthImage.fillAmount += 1 / blinkCooldown * Time.deltaTime;
+            gameManager.instance.earthImage.fillAmount = 0;
             gameManager.instance.playerScript.manaCur -= rockMana;
             gameManager.instance.playerScript.updatePlayerUI();
             for (int i = 0; i < 3; i++) //spawn 3 rocks 
@@ -337,40 +381,39 @@ public class SecondaryAbility : MonoBehaviour
                 Instantiate(rockPrefab, Positions[i].position, Quaternion.identity);
 
             }
-            rocksSpawned = true;
+            isCooldown = true;
+            rockCooldown = true;
+            cooldownTimer = rockCooldownTime;
+            textCooldown.gameObject.SetActive(true);
         }
-    }
-    public void RockEnd()
-    {
-        if (isBlinking || !rechargeStarted)
-        {
-            
-            if (gameManager.instance.earthImage.fillAmount >= 1 - audioRockRecharge.length / rockCooldown && rockRechargeStarted == false)
-            {
-
-                rechargeStarted = true;
-                StartCoroutine(RockCooldown());
-
-            }
-        }
-    }
-  
-    IEnumerator RockCooldown()
-    {
-
-        if (audioRockRecharge != null)
-        {
-            audi.PlayOneShot(audioRockRecharge);
-        }
-        yield return new WaitForSeconds(audioRockRecharge.length);
-        isBlinking = false;
-        rockRechargeStarted = false;
-        Debug.Log("recharge");
-        gameManager.instance.earthImage.fillAmount = 1;
     }
 
 
     //Elctro - Lightning
+    
+    void Zap()
+    {
+        if (manaCur >= rockMana)
+        {
+            gameManager.instance.lightningImage.fillAmount = 0;
+            gameManager.instance.playerScript.manaCur -= shockMana;
+            gameManager.instance.playerScript.updatePlayerUI();
+
+
+
+
+
+
+            isCooldown = true;
+            shockCooldown = true;
+            cooldownTimer = shockCooldownTime;
+            textCooldown.gameObject.SetActive(true);
+        }
+    }
+
+
+
+
 
 
 
