@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3123802173711072308}
   - component: {fileID: 1912098258803976646}
   - component: {fileID: 3178190036558725516}
+  - component: {fileID: 3131912764784127292}
   m_Layer: 0
   m_Name: fi_vil_fence_parts_cross03_X1 (2)
   m_TagString: Untagged
@@ -106,6 +107,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d0022036b75761459e800931b9ca1d6, type: 3}
+--- !u!65 &3131912764784127292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287314520932531871}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.049987808, y: 0.1499654, z: 2.5000005}
+  m_Center: {x: -0.008071415, y: 0.67490107, z: -0.0000054534585}
 --- !u!1 &1483598688896338593
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +140,7 @@ GameObject:
   - component: {fileID: 1256894468303094161}
   - component: {fileID: 6606626363289928086}
   - component: {fileID: 7606191756930070160}
+  - component: {fileID: 1391551431809891308}
   m_Layer: 0
   m_Name: fi_vil_fence_parts_cross03_X1 (1)
   m_TagString: Untagged
@@ -212,6 +235,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d0022036b75761459e800931b9ca1d6, type: 3}
+--- !u!65 &1391551431809891308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483598688896338593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.049987808, y: 0.14996529, z: 2.5000005}
+  m_Center: {x: -0.008071415, y: 0.67490864, z: -0.0000054836287}
 --- !u!1 &5576001981763039964
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +268,7 @@ GameObject:
   - component: {fileID: 108272694075990351}
   - component: {fileID: 6819435028604855662}
   - component: {fileID: 7065196954873456792}
+  - component: {fileID: 3774738088389917681}
   m_Layer: 0
   m_Name: fi_vil_fence_parts_cross03_X1
   m_TagString: Untagged
@@ -318,6 +363,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7d0022036b75761459e800931b9ca1d6, type: 3}
+--- !u!65 &3774738088389917681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5576001981763039964}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.049987808, y: 0.14996529, z: 2.5000005}
+  m_Center: {x: -0.008071415, y: 0.67490864, z: -0.0000054836287}
 --- !u!1 &6445615069823404487
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +395,6 @@ GameObject:
   - component: {fileID: 1607273112081685229}
   - component: {fileID: 8393915434217141860}
   - component: {fileID: 3779759538965392919}
-  - component: {fileID: 5098633729310509791}
   - component: {fileID: 604790123463015077}
   m_Layer: 0
   m_Name: fi_vil_fence_parts_post01 (1)
@@ -406,28 +471,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5098633729310509791
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6445615069823404487}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: cfde132f8f6a00d49b984e865ffc15a0, type: 3}
 --- !u!65 &604790123463015077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -447,5 +490,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.53, y: 2.38, z: 0.14996338}
-  m_Center: {x: -1.2, y: 1.2, z: 0.000004634261}
+  m_Size: {x: 2.53, y: 2.38, z: 0.47}
+  m_Center: {x: -1.2, y: 1.15, z: 0.16}

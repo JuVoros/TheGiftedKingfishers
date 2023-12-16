@@ -74,6 +74,21 @@ public class gameManager : MonoBehaviour
     [SerializeField] Text sensitivityText;
     [SerializeField] Image HealthBar;
     [SerializeField] GameObject HealthBarBackground;
+    
+    [Header("----- Secondary Abilities -----")]
+    [SerializeField] public GameObject teleportIcon;
+    [SerializeField] public GameObject shieldIcon;
+    [SerializeField] public GameObject earthIcon;
+    [SerializeField] public GameObject lightningIcon;
+    [SerializeField] public GameObject iceIcon;
+    [SerializeField] GameObject iconActive;
+
+    [Header("----- Secondary Abilities images -----")]
+    [SerializeField] public Image teleportImage;
+    [SerializeField] public Image shieldImage;
+    [SerializeField] public Image earthImage;
+    [SerializeField] public Image lightningImage;
+    [SerializeField] public Image iceImage;
 
 
     [Header("----- Potions -----")]
@@ -84,8 +99,7 @@ public class gameManager : MonoBehaviour
 
     public Image playerHPBar;
     public Image playerManaBar;
-    public Image teleportIcon;
-    public Image shieldIcon;
+   
     public GameObject playerSpawnPos;
     public GameObject player;
     public playerController playerScript;
@@ -446,5 +460,33 @@ public class gameManager : MonoBehaviour
     {
         HealthBar.fillAmount = (float)enemyHp / enemyHpOrig;
     }
+    public void SetSecondAbility(string weaponName)
+    {
+        switch(weaponName)
+        {
+            case "Ice":
+                if (iconActive != null)
+                    iconActive.SetActive(false);
+                iconActive = iceIcon; break;
+            case "Earth":
+                if (iconActive != null)
+                    iconActive.SetActive(false);
+              iconActive = earthIcon; break;
+            case "Lightning":
+                if (iconActive != null)
+                    iconActive.SetActive(false);
+                iconActive = lightningIcon; break;
+            case "Wind":
+                if (iconActive != null)
+                    iconActive.SetActive(false);
+                iconActive = shieldIcon; break;
+            case "Water":
+                if (iconActive != null)
+                    iconActive.SetActive(false);
+                iconActive = teleportIcon; break;
+        }
 
+
+        iconActive.SetActive(true);
+    }
 }

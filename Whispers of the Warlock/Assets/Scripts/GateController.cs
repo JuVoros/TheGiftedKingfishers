@@ -8,19 +8,25 @@ public class GateController : MonoBehaviour
     [SerializeField] GameObject miniBoss;
     [SerializeField] Animator anim;
     [SerializeField] GameObject message;
+    [SerializeField] Collider box;
 
     NavMeshAgent agent;
     private void Start()
     {
-        agent = miniBoss.GetComponent<NavMeshAgent>();
+        if (miniBoss != null) 
+        {
+            agent = miniBoss.GetComponent<NavMeshAgent>();
+        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (!agent.enabled)
+            if (!agent.enabled || agent == null)
             {
                 anim.SetTrigger("Open");
+                box.enabled = false;
             }
             else
             {

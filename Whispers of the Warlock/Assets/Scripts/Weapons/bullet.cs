@@ -32,7 +32,7 @@ public class Bul : MonoBehaviour
 
         playerController playerController = gameManager.instance.player.GetComponent<playerController>();
 
-        if (playerController != null && playerController.isShieldActive)
+        if (playerController != null)
         {
             Destroy(gameObject);
         }

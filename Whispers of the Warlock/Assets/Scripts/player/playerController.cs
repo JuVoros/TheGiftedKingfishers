@@ -7,7 +7,7 @@ using static UnityEngine.UI.Image;
 public class playerController : MonoBehaviour, IDamage
 {
     [Header("-----Components------")]
-    [SerializeField] CharacterController controller;
+    [SerializeField] public CharacterController controller;
     [SerializeField] public AudioSource audi;
 
     [Header("------Audio------")]
@@ -17,20 +17,14 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float audioJumpVol;
     [SerializeField] AudioClip[] audioSteps;
     [SerializeField] float audioStepsVol;
-    [SerializeField] AudioClip audioTeleport;
-    [SerializeField] float audioTeleportVol;
-    [SerializeField] AudioClip audioTeleportRecharge;
-    [SerializeField] float audioTeleportRechargeVol;
+    
     [SerializeField]AudioClip potionSound;
     [SerializeField] float potionVol;
     [SerializeField] AudioClip pickupSound;
     [SerializeField] float pickupVol;
     [SerializeField] public AudioClip heartBeat;
     [SerializeField] float heartbeatVol;
-    [SerializeField] public AudioClip shieldSound;
-    [SerializeField] float shieldSoundVol;
-    [SerializeField] public AudioClip deactivateShieldSound;
-    [SerializeField] float deactivateShieldSoundVol;
+    
 
     [Header("------Player Stats------")]
     [Range(1, 10)][SerializeField] float jumpHeight;
@@ -41,10 +35,6 @@ public class playerController : MonoBehaviour, IDamage
     float gravityValOrig;
     [Range(1, 10)][SerializeField] int jumpsMax;
     [Range(1, 120)][SerializeField] public int HP;
-    [Range(5, 20)][SerializeField] int teleportDistance;
-    [SerializeField] int blinkMana;
-    [SerializeField] int blinkCooldown; // in Frames
-    int blinkTimer;
     [Range(1, 200)][SerializeField] public int manaMax;
     [Range(1, 5)][SerializeField] int manaPerRegen;
     [SerializeField] float fallYLevel;
@@ -60,34 +50,21 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] GameObject stageFiveLow;
 
     //Gun Stats
-    [SerializeField] List<gunStats> staffList = new List<gunStats>();
+    [SerializeField] public List<gunStats> staffList = new List<gunStats>();
     [SerializeField] GameObject staffModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     [SerializeField] float rechargeRate;
-    [SerializeField] string weaponName;
+    [SerializeField] public string weaponName;
     [SerializeField] public Light staffLight;
-    private GameObject currentStaffModel;
-    int staffSelected;
 
-    [Header("------Shield Stats------")]
-    [Range(1, 5)][SerializeField] int shieldManaCost;
-    //[Range(1, 5)][SerializeField] int shieldDrainRate;
-    [Range(1, 5)][SerializeField] float shieldDrainTimer;
-    [Range(5, 10)][SerializeField] float shieldRadius;
-    [Range(5, 10)][SerializeField] float bossShieldRadius;
-    [Range(1, 10)][SerializeField] float shieldPushForce;
-    [Range(1, 10)][SerializeField] float bossShieldPushForce;
-    [Range(1, 10)][SerializeField] float shieldCooldown;
-    [SerializeField] GameObject shield;
-    public bool isShieldActive = false;
-    private bool isHoldingShieldButton = false;
-    private float shieldDrainTimerOrig;
+    private GameObject currentStaffModel;
+    public int staffSelected;
+
     private playerPrefsManager prefsManager;
     private float speedOrig;
-    private float shieldCooldownTimer = 0f;
-    private bool isShieldOnCooldown = false;
+
 
 
     private Vector3 playerVelocity;
@@ -99,8 +76,6 @@ public class playerController : MonoBehaviour, IDamage
     bool isPlayingSteps;
     bool isSprinting;
     bool isRegenMana;
-    bool isBlinking;
-    bool rechargeStarted;
     bool isLowHealthFlashing = false;
     void Awake()
     {
@@ -108,11 +83,8 @@ public class playerController : MonoBehaviour, IDamage
         manaCur = manaMax;
         gravityValOrig = gravityValue;
         speedOrig = playerSpeed;
-        blinkTimer = blinkCooldown;
-        shieldDrainTimerOrig = shieldDrainTimer;
         prefsManager = GetComponent<playerPrefsManager>();
         spawnPlayer();
-
     }
 
     void Update()
@@ -125,14 +97,11 @@ public class playerController : MonoBehaviour, IDamage
         if (!gameManager.instance.isPaused)
         {
             Move();
-            teleport();
-
 
             if (staffList.Count > 0)
             {
                 selectStaff();
 
-                // Reload();
                 if (!isRegenMana)
                 {
                     StartCoroutine(manaRegen());
@@ -156,89 +125,9 @@ public class playerController : MonoBehaviour, IDamage
                 stageFourLow.SetActive(false);
                 stageFiveLow.SetActive(false);
             }
-
-
-            if (GetKeyDown("Shield") && !isHoldingShieldButton && manaCur >= shieldManaCost)
-            {
-                isHoldingShieldButton = true;
-                gameManager.instance.ChangeIconAlpha(gameManager.instance.shieldIcon, 0.4f);
-                ActivateShield();
-            }
-            else if (GetKeyUp("Shield") && isHoldingShieldButton)
-            {
-                isHoldingShieldButton = false;
-                gameManager.instance.ChangeIconAlpha(gameManager.instance.shieldIcon, 1.0f);
-                DeactivateShield();
-            }
-
-            if(isShieldActive)
-            {
-                DrainManaWhileShielding();
-            }
             increaseGravity();
         }
     }
-
-    void FixedUpdate()
-    {
-        if (isShieldActive)
-        {
-            UpdateStoppingDistance("Enemy");
-            UpdateStoppingDistance("Boss");
-            UpdateStoppingDistance("Foe");
-        }
-    }
-
-    void UpdateStoppingDistance(string tag)
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
-
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-                enemyAI enemyAI = enemy.GetComponent<enemyAI>();
-                BossScript bossScript = enemy.GetComponent<BossScript>();
-
-                if (enemyAI != null)
-                {
-                    Vector3 direction = enemy.transform.position - transform.position;
-                    direction.y = 0f; // Ignore vertical distance
-                    float distanceToEnemy = direction.magnitude;
-
-                    float newStoppingDistance = enemyAI.stoppingDistOrig * shieldRadius;
-
-                    NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
-                    enemyAgent.stoppingDistance = newStoppingDistance;
-                    if (distanceToEnemy <= shieldRadius && enemyAgent.enabled)
-                    {
-                        Vector3 pushDirection = direction.normalized;
-                        enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
-                    }
-                }
-
-                else if (bossScript != null)
-                {
-                    // Handle stopping distance and pushing logic for BossScript
-                    Vector3 direction = enemy.transform.position - transform.position;
-                    direction.y = 0f; // Ignore vertical distance
-                    float distanceToEnemy = direction.magnitude;
-
-                    float newStoppingDistance = bossScript.stoppingDistOriginal * shieldRadius;
-
-                    NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
-                    enemyAgent.stoppingDistance = newStoppingDistance;
-
-                    if (distanceToEnemy <= shieldRadius)
-                    {
-                        Vector3 pushDirection = direction.normalized;
-                        enemyAgent.Move(pushDirection * bossShieldPushForce * Time.fixedDeltaTime);
-                    }
-                }
-            }
-        }
-    }
-
     public void Move()
     {
         //Ray tracing
@@ -256,9 +145,6 @@ public class playerController : MonoBehaviour, IDamage
             playerVelocity.y = 0f;
             jumpedTimes = 0;
         }
-        //getting button input
-        //move = Input.GetAxis("Horizontal") * transform.right +
-        //    Input.GetAxis("Vertical") * transform.forward;
         float horizontalInput = prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveRight) - prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveLeft);
         float verticalInput = prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveUp) - prefsManager.GetAxisFromKeybind(playerPrefsManager.GameAction.MoveDown);
 
@@ -304,7 +190,7 @@ public class playerController : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
-        if (manaCur > 0 && !isShieldActive)
+        if (manaCur > 0)
         {
             isShooting = true;
             manaCur--;
@@ -322,12 +208,7 @@ public class playerController : MonoBehaviour, IDamage
                 Vector3 spawnDirection = Camera.main.transform.forward;
 
                 GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, spawnPosition, Quaternion.LookRotation(spawnDirection));
-            }
-            else
-            {
-                Debug.LogError("Attack Point Not Found for weapon: " + weaponName);
-            }
-
+            }           
                 yield return new WaitForSeconds(shootRate);
                 isShooting = false;
         }
@@ -372,6 +253,8 @@ public void takeDamage(int amount)
 
     void selectStaff()
     {
+        
+       
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && staffSelected < staffList.Count - 1)
         {
             staffSelected++;
@@ -402,9 +285,12 @@ public void takeDamage(int amount)
         shootDistance = staffList[staffSelected].shootDistance;
         shootRate = staffList[staffSelected].shootRate;
         rechargeRate = staffList[staffSelected].rechargeRate;
+        gameManager.instance.SetSecondAbility(weaponName);
+
         staffModel.GetComponent<MeshFilter>().sharedMesh = staffList[staffSelected].model.GetComponent<MeshFilter>().sharedMesh;
         staffModel.GetComponent<MeshRenderer>().sharedMaterial = staffList[staffSelected].model.GetComponent<MeshRenderer>().sharedMaterial;
         gameManager.instance.weaponNameUpdate();
+        
 
         isShooting = false;
     }
@@ -448,7 +334,7 @@ public void takeDamage(int amount)
         weaponName = gun.weaponName;
         gameManager.instance.weaponNameUpdate();
         audi.PlayOneShot(pickupSound, pickupVol);
-
+        gameManager.instance.SetSecondAbility(weaponName);
         if (weaponTransform != null)
         {
             GameObject staffObject = Instantiate(gun.model, weaponTransform.transform.position, weaponTransform.transform.rotation);
@@ -484,10 +370,6 @@ public void takeDamage(int amount)
                     };
                     AttackPointManager.instance.AddAttackPoint(point);
                 }
-                else
-                {
-                    Debug.LogError("Attack Point Not Found on staffObject! Make sure the name matches");
-                }
             }
 
             staffModel.GetComponent<MeshFilter>().sharedMesh = gun.model.GetComponent<MeshFilter>().sharedMesh;
@@ -495,10 +377,6 @@ public void takeDamage(int amount)
             gameManager.instance.weaponNameUpdate();
 
             staffSelected = staffList.Count - 1;
-        }
-        else
-        {
-            Debug.LogError("Weapon Holder not found!");
         }
     }
 
@@ -514,7 +392,6 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
-            gameManager.instance.updateGoal(5);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -547,43 +424,7 @@ public void takeDamage(int amount)
         updatePlayerUI() ;
     }
 
-    public void teleport()
-    {
-        if (GetKeyDown("Blink") && !isBlinking)
-        {
-            if (manaCur >= blinkMana)
-            {
-                isBlinking = true;
-                gameManager.instance.playerBlinkFOVup();
-                gameManager.instance.updateGoal(25);
-                gameManager.instance.teleportIcon.fillAmount = 0;
-                manaCur -= blinkMana;
-                updatePlayerUI();
-                Vector3 teleportPosition = transform.position + transform.forward * teleportDistance;
-
-                if (audioTeleport != null)
-                {
-                    audi.PlayOneShot(audioTeleport, audioTeleportVol);
-                }
-                controller.Move(teleportPosition - transform.position);
-            }
-        }
-
-        if (isBlinking)
-        {
-            gameManager.instance.teleportIcon.fillAmount += 1 / blinkCooldown * Time.deltaTime;
-            gameManager.instance.playerBlinkFOVdown();
-
-            if (gameManager.instance.teleportIcon.fillAmount >= 1 - audioTeleportRecharge.length/blinkCooldown && rechargeStarted == false)
-            {
-
-                rechargeStarted = true;
-                StartCoroutine(teleportCooldown());
-            }
-
-
-        }
-    }
+    
     public IEnumerator jumpScare(GameObject screen, AudioClip clip, float volume)
     {
         screen.SetActive(true);
@@ -597,18 +438,7 @@ public void takeDamage(int amount)
         return weaponName;
     }
 
-    IEnumerator teleportCooldown()
-    {
-
-        if (audioTeleportRecharge != null)
-        {
-            audi.PlayOneShot(audioTeleportRecharge, audioTeleportRechargeVol);
-        }
-        yield return new WaitForSeconds(audioTeleportRecharge.length);
-        isBlinking = false;
-        rechargeStarted = false;
-        gameManager.instance.teleportIcon.fillAmount = 1;
-    }
+    
     public void SetLowScreen(int Hp, int original)
     {
         if ((float)original * 0.5 >= Hp && (float)original * 0.4 < Hp)
@@ -651,68 +481,6 @@ public void takeDamage(int amount)
         isLowHealthFlashing = false;
 
     }
-
-    private void DrainManaWhileShielding()
-    {
-        shieldDrainTimer -= Time.deltaTime;
-        Debug.Log("Shield Drain Timer: " + shieldDrainTimer);
-        int shieldDrainRate = shieldManaCost + Mathf.RoundToInt(rechargeRate);
-
-        if (shieldDrainTimer <= 0f)
-        {
-            
-            int remainingMana = Mathf.Clamp(manaCur - shieldDrainRate, 0, manaMax);
-            updatePlayerUI();
-            Debug.Log("Mana Drained: " + remainingMana);
-
-            if(remainingMana == 0)
-            {
-                DeactivateShield();
-                return;
-            }
-
-            manaCur = remainingMana;
-            shieldDrainTimer = shieldDrainTimerOrig;
-            Debug.Log("Shield Drain Timer Reset: " + shieldDrainTimer);
-        }
-    }
-
-    private void ActivateShield()
-    {
-        if(!isShieldOnCooldown && manaCur >= shieldManaCost)
-        {
-            audi.PlayOneShot(shieldSound, shieldSoundVol);
-            isShieldActive = true;
-            shield.SetActive(true);
-            manaCur -= shieldManaCost;
-            updatePlayerUI();
-
-            shieldDrainTimer = shieldDrainTimerOrig;
-            startShieldCooldown();
-        }
-    }
-
-    private void startShieldCooldown()
-    {
-        isShieldOnCooldown = true;
-        StartCoroutine(ShieldCooldown());
-    }
-
-    private IEnumerator ShieldCooldown()
-    {
-        float cooldownDuration = shieldCooldown;
-
-        yield return new WaitForSeconds(cooldownDuration);
-
-        isShieldOnCooldown = false;
-    }
-    private void DeactivateShield()
-    {
-        audi.PlayOneShot(deactivateShieldSound, deactivateShieldSoundVol);
-        isShieldActive = false;
-        shield.SetActive(false);
-    }
-
    bool GetKeyDown(string action)
 {
     return Input.GetKey(prefsManager.GetKeybind(playerPrefsManager.GameActionFromString(action)));
@@ -745,4 +513,5 @@ bool GetKeyUp(string action)
             gravityValue = gravityValOrig;
         }
     }
+   
 }
