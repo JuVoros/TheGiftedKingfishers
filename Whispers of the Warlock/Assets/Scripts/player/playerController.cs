@@ -37,6 +37,8 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 35)][SerializeField] float playerSpeed;
     [Range(10, 35)][SerializeField] float sprintSpeed;
     [Range(-5, -20)][SerializeField] float gravityValue;
+    [Range(0, 1)][SerializeField] float gravityMod;
+    float gravityValOrig;
     [Range(1, 10)][SerializeField] int jumpsMax;
     [Range(1, 120)][SerializeField] public int HP;
     [Range(5, 20)][SerializeField] int teleportDistance;
@@ -87,6 +89,7 @@ public class playerController : MonoBehaviour, IDamage
     private float shieldCooldownTimer = 0f;
     private bool isShieldOnCooldown = false;
 
+
     private Vector3 playerVelocity;
     private Vector3 move;
     GameObject descendant;
@@ -103,6 +106,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         PlayerHPOrig = HP;
         manaCur = manaMax;
+        gravityValOrig = gravityValue;
         speedOrig = playerSpeed;
         blinkTimer = blinkCooldown;
         shieldDrainTimerOrig = shieldDrainTimer;
@@ -171,7 +175,7 @@ public class playerController : MonoBehaviour, IDamage
             {
                 DrainManaWhileShielding();
             }
-
+            increaseGravity();
         }
     }
 
@@ -501,7 +505,7 @@ public void takeDamage(int amount)
     IEnumerator manaRegen()
     {
         isRegenMana = true;
-        gameManager.instance.updateGoal(5);
+        
         yield return new WaitForSeconds(rechargeRate);
         if (manaCur >= manaMax)
         {
@@ -510,6 +514,7 @@ public void takeDamage(int amount)
         else
         {
             manaCur += manaPerRegen;
+            gameManager.instance.updateGoal(5);
         }
         updatePlayerUI();
         isRegenMana = false;
@@ -727,5 +732,17 @@ bool GetKeyUp(string action)
         yield return new WaitForSeconds(2f);
         playerSpeed -= speedMod;
         sprintSpeed -= speedMod;
+    }
+
+    void increaseGravity()
+    {
+        if(!isGrounded && playerVelocity.y < 0)
+        {
+            gravityValue += (gravityValue * gravityMod);
+        }
+        else
+        {
+            gravityValue = gravityValOrig;
+        }
     }
 }

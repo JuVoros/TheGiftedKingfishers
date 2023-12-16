@@ -55587,6 +55587,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2497810979193914190}
     - target: {fileID: 7121552329046046454, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
+      propertyPath: ManaOnPickup
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121552329046046454, guid: a88b7cf524abfb44199a24241e452c54, type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 257849359}
@@ -57532,6 +57536,7 @@ MonoBehaviour:
   playerSpeed: 18
   sprintSpeed: 28
   gravityValue: -15
+  gravityMod: 0.07
   jumpsMax: 1
   HP: 20
   teleportDistance: 10
@@ -57556,12 +57561,12 @@ MonoBehaviour:
   weaponName: 
   staffLight: {fileID: 0}
   shieldManaCost: 4
-  drainRateWhileShielding: 2
   shieldDrainTimer: 1.5
   shieldRadius: 5
   bossShieldRadius: 9
   shieldPushForce: 8
   bossShieldPushForce: 10
+  shieldCooldown: 0
   shield: {fileID: 229576313}
   isShieldActive: 0
 --- !u!4 &6805098382578056292
