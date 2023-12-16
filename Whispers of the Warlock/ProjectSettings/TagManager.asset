@@ -15,11 +15,12 @@ TagManager:
   - Potion
   - Hp
   - Foe
+  - Chain
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
