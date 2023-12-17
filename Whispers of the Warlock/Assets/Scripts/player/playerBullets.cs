@@ -41,7 +41,6 @@ public class playerBullets : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Player camera not found!");
             Destroy(gameObject); 
         }
     }

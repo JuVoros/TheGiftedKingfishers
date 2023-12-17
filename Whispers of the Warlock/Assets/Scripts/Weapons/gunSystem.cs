@@ -74,7 +74,6 @@ public class gunSystem : MonoBehaviour
         //RayCast
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, shootDistance))
         {
-            Debug.Log(rayHit.collider.name);
 
             IDamage damageable = rayHit.collider.GetComponent<IDamage>();
             if (rayHit.transform != transform && damageable != null)

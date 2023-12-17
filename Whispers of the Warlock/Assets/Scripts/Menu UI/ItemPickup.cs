@@ -37,14 +37,12 @@ public class ItemPickup : MonoBehaviour
         if (playerInTrigger && Input.GetButtonDown("Interact") && gameObject.CompareTag("Hp"))
         {
 
-            Debug.Log("Item Pickup");
             PickupPotion();
 
         }
         else if (playerInTrigger && Input.GetButtonDown("Interact") && gameObject.CompareTag("Mana"))
         {
 
-            Debug.Log("Item Pickup");
             PickupPotion();
 
         }
@@ -88,14 +86,11 @@ public class ItemPickup : MonoBehaviour
         if (gameObject.CompareTag("Mana"))
         {
             gameManager.instance.manaPots += 1;
-            Debug.Log("addmana");
 
         }
         if (gameObject.CompareTag("Hp"))
         {
             gameManager.instance.hpPots += 1;
-
-            Debug.Log("addhp");
 
         }
     }

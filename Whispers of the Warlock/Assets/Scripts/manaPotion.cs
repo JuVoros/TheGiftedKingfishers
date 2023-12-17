@@ -10,8 +10,6 @@ public class manaPotion : MonoBehaviour
     {
 
         gameManager.instance.playerScript.addMana(ManaOnPickup);
-        Debug.Log("AddMana");
-        gameManager.instance.updateGoal(250);
     }
 
 

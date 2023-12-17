@@ -15,7 +15,6 @@ public class SecondaryAbility : MonoBehaviour
 
     [Header("-----Cooldowm------")]
     [SerializeField] TMP_Text textCooldown;
-    float cooldownTime;
     float cooldownTimer;
     float tempTimer;
 
@@ -55,12 +54,20 @@ public class SecondaryAbility : MonoBehaviour
 
     [Header("----- Cryofreeze ------")]
     [SerializeField] float cryoCooldownTime;
+    [SerializeField] int cryoMana;
+    [SerializeField] Collider freezeZone;
+    [SerializeField] AudioClip audioFreeze;
+  
+
+
 
     [Header("----- Shock ------")]
     public float damage;
     public LineRenderer lineRenderer;
     public float radius = 20f;
     public Vector3[] listofPosition;
+    public int shockMana;
+    public float shockCooldownTime;
 
 
 
@@ -68,29 +75,20 @@ public class SecondaryAbility : MonoBehaviour
 
     //bool
     bool blinkCooldown;
-    bool blinkRechargeStarted;
     public bool isShieldActive = false;
-    private bool isHoldingShieldButton = false;
     private bool isShieldOnCooldown = false;
-    bool shieldRechargeStarted;
-    bool rocksSpawned;
-    bool rockRechargeStarted;
     bool rockCooldown;
     bool cryoCooldown;
     bool isCooldown;
     bool shockCooldown;
-
+    public bool cryoTriggerActive;
 
 
     //int
-    int blinkTimer;
     int manaCur;
-    int manaOrig;
-    int staffSelscted;
 
     //float
-    private float shieldDrainTimerOrig;
-    private float shieldCooldownTimer = 0f;
+   
 
     //Others
     string staffName;
@@ -98,8 +96,7 @@ public class SecondaryAbility : MonoBehaviour
 
     private void Start()
     {
-        shieldDrainTimerOrig = shieldDrainTimer;
-        manaOrig = gameManager.instance.playerScript.manaMax;
+        freezeZone.enabled = false;
         textCooldown.gameObject.SetActive(false);
         gameManager.instance.teleportImage.fillAmount = 0.0f;
         gameManager.instance.shieldImage.fillAmount = 0.0f;
@@ -127,7 +124,6 @@ public class SecondaryAbility : MonoBehaviour
                 case "Water":
                     if (!blinkCooldown && !isCooldown)
                     {
-                        Debug.Log("blink");
                         teleport();
                     }
                     break;
@@ -135,7 +131,7 @@ public class SecondaryAbility : MonoBehaviour
                 case "Ice":
                     if (!cryoCooldown && !isCooldown)
                     {
-
+                        Freeze();
                     }
                         break;
 
@@ -158,7 +154,6 @@ public class SecondaryAbility : MonoBehaviour
         }
         if(isCooldown)
         {
-            Debug.Log("updateCool");
 
             ApplyCooldown(staffName);
 
@@ -310,7 +305,6 @@ public class SecondaryAbility : MonoBehaviour
                    
                     float newStoppingDistance = enemyAI.stoppingDistOrig * shieldRadius;
                     
-                    Debug.Log(newStoppingDistance);
                     NavMeshAgent enemyAgent = enemy.GetComponent<NavMeshAgent>();
                     enemyAgent.stoppingDistance = newStoppingDistance;
                     
@@ -318,7 +312,6 @@ public class SecondaryAbility : MonoBehaviour
                     {
 
                         Vector3 pushDirection = direction.normalized;
-                        Debug.Log(pushDirection);
                         enemyAgent.Move(pushDirection * shieldPushForce * Time.fixedDeltaTime);
 
                     }
@@ -393,7 +386,7 @@ public class SecondaryAbility : MonoBehaviour
     
     void Zap()
     {
-        if (manaCur >= rockMana)
+        if (manaCur >= shockMana)
         {
             gameManager.instance.lightningImage.fillAmount = 0;
             gameManager.instance.playerScript.manaCur -= shockMana;
@@ -419,8 +412,35 @@ public class SecondaryAbility : MonoBehaviour
 
     // Cryofreeze - Ice
 
+    void Freeze()
+    {
+        if (manaCur >= cryoMana)
+        {
+            gameManager.instance.iceImage.fillAmount = 0;
+            gameManager.instance.playerScript.manaCur -= cryoMana;
+            gameManager.instance.playerScript.updatePlayerUI();
+            
+            StartCoroutine(FreezeTime());
+            
+            isCooldown = true;
+            cryoCooldown = true;
+            cooldownTimer = cryoCooldownTime;
+            textCooldown.gameObject.SetActive(true);
+        }
 
 
 
+
+    }
+    IEnumerator FreezeTime()
+    {
+        freezeZone.enabled = true;
+        cryoTriggerActive = true;
+        audi.PlayOneShot(audioFreeze);
+
+        yield return new WaitForSeconds(1f);
+        freezeZone.enabled = false;
+        cryoTriggerActive = false;
+    }
 
 }

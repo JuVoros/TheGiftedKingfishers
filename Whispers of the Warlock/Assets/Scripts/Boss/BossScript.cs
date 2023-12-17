@@ -18,6 +18,7 @@ public class BossScript : MonoBehaviour, IDamage
     [SerializeField] AudioClip damageClip;
     [SerializeField] AudioClip deathClip;
     [SerializeField] AudioSource sfxSource;
+    [SerializeField] GameObject xLargeIce;
 
 
     [Header("----- Stats -----")]
@@ -312,8 +313,14 @@ public class BossScript : MonoBehaviour, IDamage
                 hit.collider.GetComponent<IDamage>().takeDamage(meleeDamage);
             }
         }
-        
-
+    }
+    public void FreezeEnemy()
+    {
+        xLargeIce.SetActive(true);
+    }
+    public void UnfreezeEnemy()
+    {
+        xLargeIce.SetActive(false);
 
     }
 }

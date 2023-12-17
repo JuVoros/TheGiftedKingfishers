@@ -11,8 +11,6 @@ public class HealthPotion : MonoBehaviour
     {
 
         gameManager.instance.playerScript.addHealth(HpOnPickup);
-        Debug.Log("AddHp");
-        gameManager.instance.updateGoal(200);
     }
 
 

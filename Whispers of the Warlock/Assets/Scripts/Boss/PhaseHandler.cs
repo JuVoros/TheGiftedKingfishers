@@ -9,7 +9,6 @@ public class PhaseHandler : MonoBehaviour
 {
 
     [SerializeField] GameObject boss;
-
     [Header("----- Phase 1 Stats -----")]
     [SerializeField] int phase1DMG;
     [SerializeField] float normalSpeed;

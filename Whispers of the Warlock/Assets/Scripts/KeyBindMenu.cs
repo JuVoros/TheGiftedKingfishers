@@ -26,7 +26,6 @@ public class KeybindMenu : MonoBehaviour
     {
 
         moveUpText = GameObject.Find("MoveUpText").GetComponent<Text>();
-        Debug.Log($"moveUpText: {moveUpText}");
         moveDownText = GameObject.Find("MoveDownText").GetComponent<Text>();
         moveLeftText = GameObject.Find("MoveLeftText").GetComponent<Text>();
         moveRightText = GameObject.Find("MoveRightText").GetComponent<Text>();
@@ -36,15 +35,7 @@ public class KeybindMenu : MonoBehaviour
         shieldText = GameObject.Find("ShieldText").GetComponent<Text>();
         shootText = GameObject.Find("ShootText").GetComponent<Text>();
         interactText = GameObject.Find("InteractText").GetComponent<Text>();
-        Debug.Log($"Jump: {jumpText}");
-        Debug.Log($"Shoot: {shootText}");
-        Debug.Log($"Blink: {blinkText}");
-        Debug.Log($"Sprint: {sprintText}");
-        Debug.Log($"Interact: {interactText}");
-        Debug.Log($"Move Left: {moveLeftText}");
-        Debug.Log($"Move Right: {moveRightText}");
-        Debug.Log($"Move Down: {moveDownText}");
-        Debug.Log($"Move Up: {moveUpText}");
+        
         if (keyBindScript != null)
         {
 

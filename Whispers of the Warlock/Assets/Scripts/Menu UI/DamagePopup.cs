@@ -15,7 +15,6 @@ public class DamagePopup : MonoBehaviour
     {
         
         GameObject damagePopupTransform = Instantiate(gameManager.instance.pfDamagePopup, position, Quaternion.identity);
-        Debug.Log("Create");
 
         DamagePopup damagePopup = damagePopupTransform.GetComponentInChildren<DamagePopup>();
         if (damagePopup != null )
@@ -26,18 +25,15 @@ public class DamagePopup : MonoBehaviour
     private void Awake()
     {
         textMesh = transform.GetComponentInChildren<TextMeshPro>();
-        Debug.Log(textMesh.text);
-        Debug.Log("Awake");
+     
     }
     public void Setup(int damageAmount)
     {
 
         textMesh.text = damageAmount.ToString();
-        Debug.Log(textMesh.text);
 
         textColor = textMesh.color;
         disappearTime = 1f;
-        Debug.Log("Setup");
 
     }
     private void Update()
@@ -45,7 +41,6 @@ public class DamagePopup : MonoBehaviour
 
         float moveYSpeed = 20f;
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime;
-        Debug.Log("Update");
 
         disappearTime -= Time.deltaTime;
         if (disappearTime < 0)

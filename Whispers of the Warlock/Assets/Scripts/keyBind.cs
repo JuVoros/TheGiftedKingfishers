@@ -13,7 +13,6 @@ public class KeyBind : MonoBehaviour
 
         if (prefsManager == null)
         {
-            Debug.LogError("prefsManager is null in KeyBind script.");
         }
         if (prefsManager != null)
         {

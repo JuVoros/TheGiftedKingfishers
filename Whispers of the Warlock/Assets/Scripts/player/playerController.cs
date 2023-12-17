@@ -131,8 +131,7 @@ public class playerController : MonoBehaviour, IDamage
     public void Move()
     {
         //Ray tracing
-        Debug.DrawRay(Camera.main.transform.position,
-            Camera.main.transform.forward * shootDistance, Color.red);
+       
 
         isGrounded = controller.isGrounded;
 

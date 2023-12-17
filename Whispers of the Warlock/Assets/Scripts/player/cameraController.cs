@@ -45,7 +45,6 @@ public class cameraController : MonoBehaviour
     public void UpdateSensitivity(float newSensitivity)
     {
         sensitivity = newSensitivity;
-        Debug.Log($"Sensitivity updated to: {newSensitivity}");
     }
 
     public void blinkFOVup()

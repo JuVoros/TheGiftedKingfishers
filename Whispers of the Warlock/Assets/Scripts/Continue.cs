@@ -19,7 +19,6 @@ public class Continue : MonoBehaviour
         if (Input.GetKeyDown(continueKey))
         {
             loadingScreen.loadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Debug.Log("Switch Scenes");
         }
     }
 }

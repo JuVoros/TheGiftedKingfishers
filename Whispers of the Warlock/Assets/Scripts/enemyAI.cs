@@ -50,6 +50,10 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int meleeDamage;
     [SerializeField] float meleeAttackDamageTiming; //timing within the melee attack anim when damage should be applied, adjust based on our anim
 
+    [Header("----- Cryo Stats -----")]
+    [SerializeField] GameObject ice;
+
+
     Vector3 playerDir;
     bool playerInRange;
     bool isShooting;
@@ -131,7 +135,6 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, 0, playerDir.z), transform.forward);
 
-        Debug.DrawRay(headPos.position, playerDir);
 
         RaycastHit hit;
 
@@ -348,5 +351,16 @@ public class enemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(deathAnimation);
 
     }
+    public void FreezeEnemy()
+    {
+        ice.SetActive(true);
+    }
+    public void UnfreezeEnemy()
+    {
+        ice.SetActive(false);
+
+    }
+
+
     
 }
