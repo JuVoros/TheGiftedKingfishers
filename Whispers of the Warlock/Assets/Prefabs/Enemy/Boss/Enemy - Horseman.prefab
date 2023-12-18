@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 5485882008728522229}
   - component: {fileID: 8530041647336183115}
   - component: {fileID: 1076269058105778295}
+  - component: {fileID: 5952091185361867096}
   m_Layer: 0
   m_Name: Enemy - Horseman
   m_TagString: Boss
@@ -274,13 +275,13 @@ MonoBehaviour:
   damageClip: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
   deathClip: {fileID: 8300000, guid: 5072a94fa6887024985a35d9cf66c949, type: 3}
   sfxSource: {fileID: 1076269058105778295}
-  xLargeIce: {fileID: 3804604717995702809, guid: 6caf998528741c843b71fbbf4c079888, type: 3}
+  xLargeIce: {fileID: 4570488132566294090}
   enemyHp: 65
   playerFaceSpeed: 5
   headPos: {fileID: 8944702807441750245}
   meleeAttackRange: 16
-  meleeDamage: 5
-  meleeAttackDamageTiming: 6
+  meleeDamage: 6
+  meleeAttackDamageTiming: 4.5
   meleeSpawn: {fileID: 0}
   rangeSpawn: {fileID: 0}
   objectToSpawn: {fileID: 142658, guid: c736d3ec2e2475b468c96b998dd9d72b, type: 3}
@@ -321,7 +322,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
+  m_Speed: 16
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -452,6 +453,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5952091185361867096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245524131311825203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b574b08e508474681e247c7b2c1a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 245524131311825203}
+  phase1DMG: 6
+  normalSpeed: 16
+  phase2DMG: 7
+  phase3DMG: 8
+  phase4DMG: 10
 --- !u!1 &293845190326917319
 GameObject:
   m_ObjectHideFlags: 0
@@ -11061,6 +11080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Feet XLarge
       objectReference: {fileID: 0}
+    - target: {fileID: 3804604717995702809, guid: 6caf998528741c843b71fbbf4c079888, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11069,5 +11092,10 @@ PrefabInstance:
 --- !u!4 &56186161747564153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 821507177199546922, guid: 6caf998528741c843b71fbbf4c079888, type: 3}
+  m_PrefabInstance: {fileID: 837961351726376019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4570488132566294090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3804604717995702809, guid: 6caf998528741c843b71fbbf4c079888, type: 3}
   m_PrefabInstance: {fileID: 837961351726376019}
   m_PrefabAsset: {fileID: 0}
