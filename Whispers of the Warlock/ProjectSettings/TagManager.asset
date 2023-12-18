@@ -15,7 +15,8 @@ TagManager:
   - Potion
   - Hp
   - Foe
-  - Chain
+  - Start
+  - End
   layers:
   - Default
   - TransparentFX

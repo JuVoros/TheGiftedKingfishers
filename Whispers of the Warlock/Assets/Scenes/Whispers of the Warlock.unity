@@ -57100,7 +57100,7 @@ MonoBehaviour:
   jumpsMax: 1
   HP: 20
   manaMax: 20
-  manaPerRegen: 1
+  manaPerRegen: 2
   fallYLevel: 540
   PlayerHPOrig: 0
   manaCur: 0
@@ -57705,14 +57705,14 @@ MonoBehaviour:
   bossShieldRadius: 8
   shieldPushForce: 8
   bossShieldPushForce: 10
-  shieldCooldownTime: 6
+  shieldCooldownTime: 10
   shieldSound: {fileID: 8300000, guid: e5c39181596861d419aa1ecfe8312821, type: 3}
   audioShieldRecharge: {fileID: 8300000, guid: db26120a1ae872e46942ae3ede0858d5, type: 3}
   rockPrefab: {fileID: 8437923086024290683, guid: 00b607a76504d40499ef99fc24b903b3, type: 3}
   throwForce: 10
   rockDamage: 3
   rockSpeed: 50
-  rockDestroyTime: 10
+  rockDestroyTime: 8
   audioRockRecharge: {fileID: 8300000, guid: cdfae31f0b58546d3ac1015effc38f01, type: 3}
   rockCooldownTime: 10
   rockMana: 6
@@ -57720,13 +57720,13 @@ MonoBehaviour:
   - {fileID: 1829893100}
   - {fileID: 1090987892}
   - {fileID: 888956503}
+  shockPrefab: {fileID: 1351661747702952405, guid: b5725c6b7e50a27448edeb08e9bf6d86, type: 3}
+  shockMana: 5
+  shockCooldownTime: 10
   cryoCooldownTime: 10
   cryoMana: 6
   freezeZone: {fileID: 7324556835628560013}
   audioFreeze: {fileID: 8300000, guid: 90af38775c5bd43c084091ac77fe7257, type: 3}
-  shockPrefab: {fileID: 8437923086024290683, guid: 1f03c6ebf962e654298f34955464988d, type: 3}
-  shockMana: 1
-  shockCooldownTime: 4
   isShieldActive: 0
   cryoTriggerActive: 0
 --- !u!135 &7324556835628560013
