@@ -44,7 +44,8 @@ public class CryoFreeze : MonoBehaviour
     }
     IEnumerator FrozeTime()
     {
-        nav.isStopped = true;
+        if(nav.isActiveAndEnabled)
+            nav.isStopped = true;
 
         yield return new WaitForSeconds(freezeTime);
         if (nav.CompareTag("Enemy") || nav.CompareTag("Foe"))
@@ -56,9 +57,13 @@ public class CryoFreeze : MonoBehaviour
             nav.GetComponent<BossScript>().UnfreezeEnemy();
         }
 
+        if (!nav.isActiveAndEnabled) 
+        { 
+        
+            nav.isStopped = false;
+        
+        }
 
-
-        nav.isStopped = false;
 
 
     }

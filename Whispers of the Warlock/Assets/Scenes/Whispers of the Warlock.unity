@@ -36561,7 +36561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1604346153
 Transform:
   m_ObjectHideFlags: 0
@@ -57724,12 +57724,9 @@ MonoBehaviour:
   cryoMana: 6
   freezeZone: {fileID: 7324556835628560013}
   audioFreeze: {fileID: 8300000, guid: 90af38775c5bd43c084091ac77fe7257, type: 3}
-  damage: 0
-  lineRenderer: {fileID: 0}
-  radius: 20
-  listofPosition: []
-  shockMana: 5
-  shockCooldownTime: 10
+  shockPrefab: {fileID: 8437923086024290683, guid: 1f03c6ebf962e654298f34955464988d, type: 3}
+  shockMana: 1
+  shockCooldownTime: 4
   isShieldActive: 0
   cryoTriggerActive: 0
 --- !u!135 &7324556835628560013

@@ -12,20 +12,15 @@ public class SecondaryAbility : MonoBehaviour
     [Header("-----Components------")]
     [SerializeField] public AudioSource audi;
     [SerializeField] public GameObject player;
-
-    [Header("-----Cooldowm------")]
     [SerializeField] TMP_Text textCooldown;
     float cooldownTimer;
     float tempTimer;
-
-
     [Header("----- Blink ------")]
     [Range(5, 20)][SerializeField] int teleportDistance;
     [SerializeField] int blinkMana;
     [SerializeField] float blinkCooldownTime; // in Frames
     [SerializeField] AudioClip audioTeleport;
     [SerializeField] AudioClip audioTeleportRecharge;
-
     [Header("----- Shield ------")]
     [SerializeField] GameObject shield;
     [Range(1, 5)][SerializeField] int shieldManaCost;
@@ -37,7 +32,6 @@ public class SecondaryAbility : MonoBehaviour
     [Range(1, 10)][SerializeField] float shieldCooldownTime;
     [SerializeField] public AudioClip shieldSound;
     [SerializeField] public AudioClip audioShieldRecharge;
-
     [Header("----- Rock ------")]
     public GameObject rockPrefab;
     public float throwForce = 10f;
@@ -47,27 +41,17 @@ public class SecondaryAbility : MonoBehaviour
     [SerializeField] AudioClip audioRockRecharge;
     [SerializeField] float rockCooldownTime;
     [SerializeField] int rockMana;
-
-
     [SerializeField] List<Transform> Positions = new List<Transform>();
-
-
+    [Header("----- Shock -----")]
+    public GameObject shockPrefab;
+    [SerializeField] int shockMana;
+    [SerializeField] int shockCooldownTime;
     [Header("----- Cryofreeze ------")]
     [SerializeField] float cryoCooldownTime;
     [SerializeField] int cryoMana;
     [SerializeField] Collider freezeZone;
     [SerializeField] AudioClip audioFreeze;
-  
 
-
-
-    [Header("----- Shock ------")]
-    public float damage;
-    public LineRenderer lineRenderer;
-    public float radius = 20f;
-    public Vector3[] listofPosition;
-    public int shockMana;
-    public float shockCooldownTime;
 
 
 
@@ -344,10 +328,10 @@ public class SecondaryAbility : MonoBehaviour
             audi.PlayOneShot(shieldSound);
             isShieldActive = true;
             shield.SetActive(true);
+            gameManager.instance.playerScript.manaCur -= shieldManaCost;
             StartCoroutine(DeactivateShield());
-            manaCur -= shieldManaCost;
             gameManager.instance.playerScript.updatePlayerUI();
-       }
+        }
     }
     IEnumerator DeactivateShield()
     {
@@ -392,8 +376,14 @@ public class SecondaryAbility : MonoBehaviour
             gameManager.instance.playerScript.manaCur -= shockMana;
             gameManager.instance.playerScript.updatePlayerUI();
 
+            
+            Quaternion rotation = Quaternion.Euler(0,90,0);
+            Quaternion postRota = transform.rotation * rotation;
+            
+            
 
-
+            
+            Instantiate(shockPrefab, Positions[0].transform.position, postRota);
 
 
 
@@ -439,6 +429,7 @@ public class SecondaryAbility : MonoBehaviour
         audi.PlayOneShot(audioFreeze);
 
         yield return new WaitForSeconds(1f);
+        
         freezeZone.enabled = false;
         cryoTriggerActive = false;
     }

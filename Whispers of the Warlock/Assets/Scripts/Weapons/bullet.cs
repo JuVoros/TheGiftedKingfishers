@@ -30,9 +30,9 @@ public class Bul : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        playerController playerController = gameManager.instance.player.GetComponent<playerController>();
+        SecondaryAbility playerController = gameManager.instance.player.GetComponent<SecondaryAbility>();
 
-        if (playerController != null)
+        if (playerController != null && playerController.isShieldActive)
         {
             Destroy(gameObject);
         }

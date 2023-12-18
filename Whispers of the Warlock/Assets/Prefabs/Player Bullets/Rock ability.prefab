@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 248346601793468848}
+  Object: {fileID: 8437923086024290683}
+  ChainLightningEffect: {fileID: 0}
   damage: 3
   speed: 100
   destroyTime: 5
