@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Wind Staff
   m_EditorClassIdentifier: 
   shootDamage: 1
-  shootDistance: 100
+  shootDistance: 30
   shootRate: 0.8
-  rechargeRate: 0.5
+  rechargeRate: 1
   weaponName: Wind
   model: {fileID: 3060654067707716961, guid: efced09bb9328b74bbfae0cff10c2e96, type: 3}
   hitEffect: {fileID: 6705790949940001350, guid: a3d4a9c660208cc4fb4145c66aff31cb, type: 3}

@@ -54,7 +54,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] GameObject staffModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
-    [SerializeField] float shootRate;
+    [SerializeField] public float shootRate;
     [SerializeField] float rechargeRate;
     [SerializeField] public string weaponName;
     [SerializeField] public Light staffLight;
@@ -72,7 +72,7 @@ public class playerController : MonoBehaviour, IDamage
     GameObject descendant;
 
     private bool isGrounded;
-    bool isShooting;
+    public bool isShooting;
     bool isPlayingSteps;
     bool isSprinting;
     bool isRegenMana;
@@ -102,14 +102,14 @@ public class playerController : MonoBehaviour, IDamage
             {
                 selectStaff();
 
-                if (!isRegenMana)
+                if (manaCur < manaMax && !isRegenMana)
                 {
                     StartCoroutine(manaRegen());
                 }
 
 
                 if (GetKeyDown("Shoot") && !isShooting)
-                    StartCoroutine(shoot());
+                    StartCoroutine(Shoot.shoot());
             }
 
             if (PlayerHPOrig * .5 >= HP && !isLowHealthFlashing)
@@ -186,34 +186,6 @@ public class playerController : MonoBehaviour, IDamage
             yield return new WaitForSeconds(0.3f);
         isPlayingSteps = false;
     }
-
-
-    IEnumerator shoot()
-    {
-        if (manaCur > 0)
-        {
-            isShooting = true;
-            manaCur--;
-
-            updatePlayerUI();
-            audi.PlayOneShot(staffList[staffSelected].shootSound, staffList[staffSelected].shootSoundVol);
-
-            string weaponName = staffList[staffSelected].weaponName;
-
-           GameObject attackPoint = AttackPointManager.instance.GetAttackPoint(weaponName);
-
-            if (attackPoint != null)
-            {
-                Vector3 spawnPosition = attackPoint.transform.position;
-                Vector3 spawnDirection = Camera.main.transform.forward;
-
-                GameObject bullet = Instantiate(staffList[staffSelected].bulletPrefab, spawnPosition, Quaternion.LookRotation(spawnDirection));
-            }           
-                yield return new WaitForSeconds(shootRate);
-                isShooting = false;
-        }
-    }
-     
 
 public void takeDamage(int amount)
     {
@@ -338,7 +310,7 @@ public void takeDamage(int amount)
         if (weaponTransform != null)
         {
             GameObject staffObject = Instantiate(gun.model, weaponTransform.transform.position, weaponTransform.transform.rotation);
-            staffObject.transform.SetParent(transform);
+            staffObject.transform.SetParent(Camera.main.transform);
 
             staffObject.SetActive(false);
 
@@ -360,6 +332,7 @@ public void takeDamage(int amount)
               
                 if (attackPointPrefab != null)
                 {
+
                     attackPoint = Instantiate(attackPointPrefab, staffObject.transform).transform;
                     attackPoint.gameObject.name = attackPointName;
 

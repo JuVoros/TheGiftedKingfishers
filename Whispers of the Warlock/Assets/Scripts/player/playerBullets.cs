@@ -6,8 +6,6 @@ public class playerBullets : MonoBehaviour
 {
     [Header("---- Components ----")]
     [SerializeField] Rigidbody rb;
-    [SerializeField] GameObject Object;
-    [SerializeField] GameObject ChainLightningEffect;
 
     [Header("---- Stats ----")]
     [SerializeField] int damage;
@@ -27,17 +25,7 @@ public class playerBullets : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
-                Vector3 hitNormal = hit.normal.normalized;
-               Vector3 incident = ray.direction.normalized;
-                Vector3 reflected = Vector3.Reflect(incident, hitNormal);
-                //Vector3 dir = (hit.point - transform.position).normalized;
-                //Vector3 dir = Vector3.Reflect(ray.direction, hitNormal);
-                rb.velocity = reflected.normalized * speed;
-                rb.rotation = Quaternion.identity;
-            }
-            else
-            {
-                Vector3 dir = playerCamera.transform.forward;
+                Vector3 dir = (hit.point - transform.position).normalized;
                 rb.velocity = dir * speed;
             }
 
@@ -51,31 +39,24 @@ public class playerBullets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || other.CompareTag("Player"))
+        Debug.Log(other);
+
+        if (other.isTrigger || other.CompareTag("Player") || other.gameObject  == gameObject)
             return;
 
-        HandleCollision(other.gameObject);
-
-    }
-
-    private void HandleCollision(GameObject collidedObject)
-    {
-        if (collidedObject.CompareTag("Enemy") || collidedObject.CompareTag("Boss") || collidedObject.CompareTag("Foe") || collidedObject.CompareTag("Totem"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss") || other.CompareTag("Foe") || other.CompareTag("Totem"))
         {
             // Handle logic for damageable objects (enemies, bosses, foes, triggers)
-            IDamage damagable = collidedObject.GetComponent<IDamage>();
+            IDamage damagable = other.GetComponent<IDamage>();
 
             if (damagable != null)
             {
                 damagable.takeDamage(damage);
-                DamagePopup.Create(collidedObject.transform.position, damage);
+                DamagePopup.Create(other.transform.position, damage);
+                Destroy(gameObject);
             }
         }
-        else
-        {
-            // Handle non-damagable collider logic here
-            Destroy(gameObject);
-        }
     }
+
 }
 

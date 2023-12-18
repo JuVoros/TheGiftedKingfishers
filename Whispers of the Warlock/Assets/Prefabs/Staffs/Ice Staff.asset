@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice Staff
   m_EditorClassIdentifier: 
   shootDamage: 2
-  shootDistance: 40
+  shootDistance: 15
   shootRate: 0.8
   rechargeRate: 1.2
   weaponName: Ice

@@ -46,6 +46,7 @@ public class SecondaryAbility : MonoBehaviour
     public GameObject shockPrefab;
     [SerializeField] int shockMana;
     [SerializeField] int shockCooldownTime;
+
     [Header("----- Cryofreeze ------")]
     [SerializeField] float cryoCooldownTime;
     [SerializeField] int cryoMana;
@@ -367,7 +368,7 @@ public class SecondaryAbility : MonoBehaviour
 
 
     //Elctro - Lightning
-    
+
     void Zap()
     {
         if (manaCur >= shockMana)
@@ -376,13 +377,13 @@ public class SecondaryAbility : MonoBehaviour
             gameManager.instance.playerScript.manaCur -= shockMana;
             gameManager.instance.playerScript.updatePlayerUI();
 
-            
-            Quaternion rotation = Quaternion.Euler(0,90,0);
-            Quaternion postRota = transform.rotation * rotation;
-            
-            
 
-            
+            Quaternion rotation = Quaternion.Euler(0, 90, 0);
+            Quaternion postRota = transform.rotation * rotation;
+
+
+
+
             Instantiate(shockPrefab, Positions[0].transform.position, postRota);
 
 
@@ -393,12 +394,6 @@ public class SecondaryAbility : MonoBehaviour
             textCooldown.gameObject.SetActive(true);
         }
     }
-
-
-
-
-
-
 
     // Cryofreeze - Ice
 

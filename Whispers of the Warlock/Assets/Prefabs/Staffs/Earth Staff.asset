@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Earth Staff
   m_EditorClassIdentifier: 
   shootDamage: 3
-  shootDistance: 30
+  shootDistance: 10
   shootRate: 1
   rechargeRate: 1.5
   weaponName: Earth

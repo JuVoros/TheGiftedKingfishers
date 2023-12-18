@@ -48,8 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 248346601793468848}
-  Object: {fileID: 8437923086024290683}
-  ChainLightningEffect: {fileID: 0}
   damage: 3
   speed: 100
   destroyTime: 5
@@ -144,7 +142,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.1
-  m_PreviewTimeScale: 0
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -170,32 +168,14 @@ TrailRenderer:
         inWeight: 0.5806259
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.44819665
-        value: 0.6501945
-        inSlope: -2.0795317
-        outSlope: -2.0795317
+        time: 0.77513146
+        value: 0.42759168
+        inSlope: -1.4924875
+        outSlope: -1.4924875
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.20021044
-      - serializedVersion: 3
-        time: 0.76299644
-        value: 0.31164703
-        inSlope: -1.5667174
-        outSlope: -1.5667174
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.36494544
-      - serializedVersion: 3
-        time: 0.9064343
-        value: 0.13572592
-        inSlope: -1.3449012
-        outSlope: -1.3449012
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.29445952
       - serializedVersion: 3
         time: 1
         value: 0

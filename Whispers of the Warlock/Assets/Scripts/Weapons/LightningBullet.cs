@@ -23,16 +23,20 @@ public class LightningBullet : MonoBehaviour
         {
             Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-
+           
             if (Physics.Raycast(ray, out hit))
             {
                 Vector3 dir = (hit.point - transform.position).normalized;
                 rb.velocity = dir * speed;
+                Debug.DrawRay(dir, rb.velocity, Color.yellow);
+
             }
             else
             {
                 Vector3 dir = playerCamera.transform.forward;
                 rb.velocity = dir * speed;
+                Debug.DrawRay(dir, rb.velocity, Color.magenta);
+
             }
 
 
