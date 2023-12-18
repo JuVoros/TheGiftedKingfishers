@@ -13,29 +13,40 @@ public class GateController : MonoBehaviour
     NavMeshAgent agent;
     private void Start()
     {
+
         if (miniBoss != null) 
         {
             agent = miniBoss.GetComponent<NavMeshAgent>();
         }
         
     }
+    private void Update()
+    {
+        if (miniBoss == null || !agent.enabled )
+        {
+            OpenGate();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && agent.enabled)
         {
-            if (!agent.enabled || agent == null)
-            {
-                anim.SetTrigger("Open");
-                box.enabled = false;
-            }
-            else
-            {
+           
                 message.SetActive(true);
-            }
+            
         }
         
     }
-    
+    void OpenGate()
+    {
+
+        anim.SetTrigger("Open");
+        box.enabled = false;
+    }
+
+
+
     void OnTriggerExit(Collider other)
     {
 

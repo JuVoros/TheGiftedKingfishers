@@ -6,7 +6,7 @@ public class TreeitemDrop : MonoBehaviour
 {
 
     Vector3 dropLoca;
-    Vector3 placeHolder = new Vector3(1,-10,0);
+    Vector3 placeHolder = new Vector3(14,-12,0);
 
 
 

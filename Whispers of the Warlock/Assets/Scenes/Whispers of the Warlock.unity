@@ -52092,7 +52092,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4623398284427400266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -53366,14 +53366,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4570488132566294090, guid: f5a88083362e3e94c8c691fb770e628b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6855497572735725887, guid: f5a88083362e3e94c8c691fb770e628b, type: 3}
-      propertyPath: xLargeIce
-      value: 
-      objectReference: {fileID: 2342388871688160816}
     - target: {fileID: 6855497572735725887, guid: f5a88083362e3e94c8c691fb770e628b, type: 3}
       propertyPath: meleeSpawn
       value: 
@@ -53391,11 +53383,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5a88083362e3e94c8c691fb770e628b, type: 3}
---- !u!1 &2342388871688160816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4570488132566294090, guid: f5a88083362e3e94c8c691fb770e628b, type: 3}
-  m_PrefabInstance: {fileID: 2342388871688160815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2366582377331264014
 GameObject:
   m_ObjectHideFlags: 0
@@ -55478,9 +55465,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6278862578878887909}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: EnemyHP
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: largeIce
       value: 
       objectReference: {fileID: 6278862578878887909}
+    - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
+      propertyPath: shootRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3428008778270767212, guid: 24ced110459baa142a4bb759128af4b4, type: 3}
       propertyPath: musicSource
       value: 
@@ -57041,6 +57036,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442334275}
     - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
+      propertyPath: EnemyHP
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031587435256056722, guid: 188b5aa2a7a659748bf51e3d6c679959, type: 3}
       propertyPath: largeIce
       value: 
       objectReference: {fileID: 442334275}
@@ -57341,6 +57340,14 @@ PrefabInstance:
     - target: {fileID: 2961038999616455031, guid: 384a68dfdb2c0074793870807a3f30b1, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455871345887682815, guid: 384a68dfdb2c0074793870807a3f30b1, type: 3}
+      propertyPath: EnemyHP
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455871345887682815, guid: 384a68dfdb2c0074793870807a3f30b1, type: 3}
+      propertyPath: shootRate
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3455871345887682815, guid: 384a68dfdb2c0074793870807a3f30b1, type: 3}
       propertyPath: musicSource

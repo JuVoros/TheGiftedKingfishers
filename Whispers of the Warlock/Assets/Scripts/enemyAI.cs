@@ -64,7 +64,7 @@ public class enemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     public float stoppingDistOrig;
     Vector3 startingPos;
-   
+    public int gateIndex;
 
 
     void Start()
@@ -73,7 +73,10 @@ public class enemyAI : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         if (agent.CompareTag("Enemy"))
+        {
+            gateIndex += 1;
             enemyHpBar.enabled = false;
+        }
     }
 
     void Update()
@@ -243,6 +246,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
             if (agent.CompareTag("Enemy") && agent.GetComponent<TreeitemDrop>() == null)
             {
+                gateIndex -= 1;
                 gameManager.instance.updateGoal(500);
                 DropItem(gameManager.instance.getWeaponDrops());
                 AudioLoop.AudioClipSet(enemyDeadClip, musicSource);
