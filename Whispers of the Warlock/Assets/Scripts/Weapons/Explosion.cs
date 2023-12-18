@@ -10,14 +10,14 @@ public class Explosion : MonoBehaviour
     [SerializeField] ParticleSystem exploEffect;
     [SerializeField] float damageCooldown;
     float lastDamageTick;
-
+    public bool isClone;
 
     void Start()
     {
-            if (exploEffect != null)
+            if (exploEffect != null && isClone)
                 Instantiate(exploEffect, transform.position, exploEffect.transform.rotation);
-
-            Destroy(gameObject, destroyTime);   
+            if (isClone)
+                Destroy(gameObject, destroyTime);   
     }
 
 

@@ -49,6 +49,7 @@ MonoBehaviour:
   destroyTime: 20
   exploEffect: {fileID: 1496354532029463465, guid: f32f6ba324952784d87186e0f9964055, type: 3}
   damageCooldown: 2
+  isClone: 1
 --- !u!135 &-709523848423202395
 SphereCollider:
   m_ObjectHideFlags: 0
